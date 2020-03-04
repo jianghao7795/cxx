@@ -1,0 +1,12 @@
+git add .
+git commit -m ""
+git clone 
+git init
+git rm   删除
+git config   配置
+git log
+git merge "" 合并指定分支
+git push 
+git diff
+git pull
+git config core.filemode false 选择在git命令里面取消对权限的判断

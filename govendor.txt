@@ -1,0 +1,85 @@
+基本命令
+安装 govendor
+go get -u github.com/kardianos/govendor
+
+
+生成vendor
+init
+
+govendor init
+
+
+从本地添加依赖到vendor
+
+govendor add +e
+
+
+和pakeage.json同样, 我们需要将这个vendor.json添加到GIT, 但忽略vendor下的其他文件.
+
+.gitignore
+
+
+/vendor/*
+!/vendor/vendor.json
+
+
+拉取依赖到vendor
+其他人可以使用vendor.json重新安装依赖包到vendor
+
+govendor sync
+
+使用vendor
+注意vendor所在的目录一定要在第一个GOPAHT下
+
+database/sql 函数和方法
+
+Variables   //某些常量
+type Scanner  //是一个接口，每一个从数据库接收的结果块都有实现该接口的读方法,用于收到的结果列赋值给变量
+type NullBool  //几种基本类型前缀上Null表示可空的该类型，valid为false时表示Null，用于处理数据库Null
+func (n *NullBool) Scan(value interface{}) error //实现了scanner的Scan方法，把值赋给一个bool变量
+func (n NullBool) Value() (driver.Value, error)
+type NullInt64
+func (n *NullInt64) Scan(value interface{}) error
+func (n NullInt64) Value() (driver.Value, error)
+type NullFloat64
+func (n *NullFloat64) Scan(value interface{}) error
+func (n NullFloat64) Value() (driver.Value, error)
+type NullString
+func (ns *NullString) Scan(value interface{}) error
+func (ns NullString) Value() (driver.Value, error)
+type RawBytes   //重定义[]byte
+type Result     //执行的结果类型
+type DB         //数据库的句柄类型
+func Open(driverName, dataSourceName string) (*DB, error) //打开一个数据库并返回db句柄
+func (db *DB) Driver() driver.Driver  //驱动方法
+func (db *DB) Ping() error  //检查是否能ping通
+func (db *DB) Close() error  //关闭数据库
+func (db *DB) SetMaxOpenConns(n int)  //设置最大开连接
+func (db *DB) SetMaxIdleConns(n int)   //限制最大连接数的区间的限制连接数
+func (db *DB) Exec(query string, args ...interface{}) (Result, error) //执行任意语句
+func (db *DB) Query(query string, args ...interface{}) (*Rows, error) //查询返回多行
+func (db *DB) QueryRow(query string, args ...interface{}) *Row //查询单行
+func (db *DB) Prepare(query string) (*Stmt, error)  //为db准备一段将要执行的sql语句
+func (db *DB) Begin() (*Tx, error)   //开启一则事务
+type Row   //查询单行的返回值
+func (r *Row) Scan(dest ...interface{}) error //查询结果赋给指定变量，按列名顺序
+type Rows  //多行返回结果，不能简单的用Scan来赋值，要先Next循环遍历，然后单个Scan入相关变量
+func (rs *Rows) Columns() ([]string, error)  //按列返回,不知道有什么用~~~~
+func (rs *Rows) Scan(dest ...interface{}) error
+func (rs *Rows) Next() bool  //用于遍历rows
+func (rs *Rows) Close() error //关闭rows
+func (rs *Rows) Err() error   //循环过程中出现错误，该错误会被记录在Err()里
+type Stmt
+func (s *Stmt) Exec(args ...interface{}) (Result, error)
+func (s *Stmt) Query(args ...interface{}) (*Rows, error)
+func (s *Stmt) QueryRow(args ...interface{}) *Row
+func (s *Stmt) Close() error
+type Tx
+func (tx *Tx) Exec(query string, args ...interface{}) (Result, error)
+func (tx *Tx) Query(query string, args ...interface{}) (*Rows, error)
+func (tx *Tx) QueryRow(query string, args ...interface{}) *Row
+func (tx *Tx) Prepare(query string) (*Stmt, error)
+func (tx *Tx) Stmt(stmt *Stmt) *Stmt
+func (tx *Tx) Commit() error  //事务提交
+func (tx *Tx) Rollback() error //回滚
+func Register(name string, driver driver.Driver)

@@ -1,0 +1,23 @@
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC45Ni4xMjk6MTIzNC9hcGkvbG9naW4iLCJpYXQiOjE1MDUzNjA4NjYsImV4cCI6MTUwNTM2NDQ2NiwibmJmIjoxNTA1MzYwODY2LCJqdGkiOiJGRU1NemV6eU5WMFAzYldoIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.uoNzcDWvNX2C66JJ9xg_NcKpEZV2CrKBsaLhVEK2G7g
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC45Ni4xMjk6MTIzNC9hcGkvbG9naW4iLCJpYXQiOjE1MDUyODk4NDgsImV4cCI6MTUwNTI5MzQ0OCwibmJmIjoxNTA1Mjg5ODQ4LCJqdGkiOiJpVHNKNXdodjVNT3luSkZsIiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.mLNe3bUG8WZT93bIFuoNV2hPXLZYu9bsQQnQ_Ify4wg
+
+
+{"typ":"JWT","alg":"HS256"}{"iss":"http://192.168.96.129:1234/api/login","iat":1505361256,"exp":1505364856,"nbf":1505361256,"jti":"vdnurchDTzdXwOOQ","sub":1,"prv":"87e0af1ef9fd15812fdec97153a14e0b047546aa"})
+{"typ":"JWT","alg":"HS256"}{"iss":"http://192.168.96.129:1234/api/login","iat":1505360866,"exp":1505364466,"nbf":1505360866,"jti":"FEMMzezyNV0P3bWh","sub":1,"prv":"87e0af1ef9fd15812fdec97153a14e0b047546aa"}）
+
+iat(issued at): 在什么时候签发的token
+exp(expires): token什么时候过期
+jti：JWT ID为web token提供唯一标识
+
+
+
+广东省深圳市南山区高新北区松坪山路奥特迅电力大厦8层
+
+Git 合并失败的解决办法
+1. 首先先运行git remote add (git库名)(haplox) (库的的地址)git@turing.haplox.net:hapyun/hapyun-client.git
+添加一个新的远程，抓取，并从它检出一个分支
+2. 再运行git fetch --all
+从新的存储获取数据
+3. 再运行git merge (git库名)/(分支名)  haplox/master
+合并你的git库并显示出哪些文件需要修改
+重新修改文件、并且提交 

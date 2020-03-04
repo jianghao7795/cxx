@@ -1,0 +1,38 @@
+
+server {
+    listen       8090;
+    server_name  hapyun.dev;
+    root  /apps/www/htdocs/hapyun-client/dist;
+    index index.html index.php;
+
+
+    client_body_buffer_size 8M;
+
+    # access_log  /apps/www/log/nginx/access/haplox_laravel.log main;
+
+
+
+    location / {
+        try_files $uri $uri/ /index.html?$query_string;
+    }
+
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+
+    location ~ \.php$ {
+        # fastcgi_pass   127.0.0.1:9000;
+        fastcgi_pass   unix:/var/run/php/php7.1-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+
+tail /var/log/nginx/error.log -f 查看nginx错误日志

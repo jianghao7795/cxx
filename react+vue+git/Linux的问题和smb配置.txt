@@ -1,0 +1,4 @@
+samba 安装完成后需要配置一个账号 smbpasswd root -a
+填加 [share]  comment = Public Stuff  path = /home/share  public = yes  writable = yes  browseable = yes guest ok = yes
+
+ntpdate cn.ntp.org.cn 同步时间

@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "authorized_methods": [
+                "GET",
+                "PUT",
+                "DELETE"
+            ],
+            "status": "available",
+            "created_time": false,
+            "modified_time": false,
+            "entity_id": "8761c9c8701ff0b49b275a126fe33151",
+            "name": "sz-hapres",
+            "size": "-",
+            "type": "directory",
+            "path": "/sz-hapres"
+        },
+        {
+            "authorized_methods": [
+                "GET",
+                "PUT",
+                "DELETE"
+            ],
+            "status": "available",
+            "created_time": false,
+            "modified_time": false,
+            "entity_id": "da545eac1e591941b36ab6b1a7030226",
+            "name": "sz-hapseq",
+            "size": "-",
+            "type": "directory",
+            "path": "/sz-hapseq"
+        }
+    ],
+    "meta": {
+        "total": 2
+    }
+}
+
+https://chrome.google.com/webstore/search/react%20devtools?hl=zh-CN

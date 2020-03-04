@@ -1,0 +1,12 @@
+Each child in an array or iterator should have a unique "key" prop. Check the render method of `Dialog`. It was passed a child from DetailLog. See https://fb.me/react-warning-keys for more information.
+代表Button 没有设置key的值
+写样式的时候 style = {{color: "red"}} 后面的要""
+
+Q: 为什么我看到的url里有一个’#’？
+A: 这是由于我们给Router组件传入了hashHistory，url中’#’及’#’以后的部分属于hash，hash的变化并不会引起页面的重新刷新，而hashHistory会监听hash的变化使得Router组件能够根据url渲染出正确的组件。除了hash History之外还有browserHistory和memoryHistory。使用browserHistory可以让url变得像标准的url一样（没有#），但是需要在后端做一些特殊处理；memoryHistory是用于做服务端渲染时使用的
+Q: 为什么Home.js里要用Link组件而不是一个标准的a标签
+A: 上面说了，我们使用了hashHistory，正确的页面url中应该都是有一个’#’的，如果直接使用a标签，你需要这么写：<a href=”/#/user/add”>添加用户</a>。但是如果我们想要换成browserHistory，就需要把所有标签中的’#’去掉。使用react-router提供的Link组件可以让我们无视history之间的差异性，直接写标准的路由”/user/add”就可以了。此外，由于我们写的是单页面应用（SPA），Link组件会阻止页面的跳转（仅仅只是改变了url，然后改变了渲染的组件）。
+
+antd 的Form中的getFieldDecorator函数 用mapPropsToFields函数取初始值时 getFieldDecorator('')(在这里不能有比如span div) 否则取不到初始值
+
+由于 babel@7 升级导致的 break change，transform-decorators-legacy 无需引入了。

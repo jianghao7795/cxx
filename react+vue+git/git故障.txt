@@ -1,0 +1,13 @@
+Git 合并失败的解决办法
+1. 首先先运行git remote add (git库名) (库的的地址)      远程库的详细地址
+添加一个新的远程，抓取，并从它检出一个分支
+2. 再运行git fetch --all
+从新的存储获取数据
+3. 再运行git merge (git库名)/(分支名) 如hapyun/master
+合并你的git库并显示出哪些文件需要修改
+重新修改文件、并且提交 
+
+
+git push时出现Username for 'https://github.com': 
+解决方法 git remote set-url origin git+ssh://git@github.com/username/reponame.git
+

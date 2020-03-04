@@ -1,0 +1,24 @@
+Button 实现设置载入状态 在model中应该先loading的状态设置为false之后获取数据再设置为true
+
+this.props里的loading初始值为false  正在加载为true 最后为false
+
+ant-design-pro:  1. .webpackrc 中的disableDynamicImport:true 默认关掉了动态加载（roadhog@2.x 支持） 需要动态加载删掉这个配置
+		 2. const dynamicWrapper = (app, models, component) => {....}
+
+
+umi
+
+src/models/**/*.js 为 global model
+src/pages/**/models/**/*.js 为 page model
+global model 全量载入，page model 在 production 时按需载入，在 development 时全量载入
+page model 为 page js 所在路径下 models/**/*.js 的文件
+page model 要向上查找，比如 page js 为 pages/a/b.js，他的 page model 为 pages/a/b/models/**/*.js + pages/a/models/**/*.js，依次类推
+约定 model.js 为单文件 model，解决只有一个 model 时不需要建 models 目录的问题，有 model.js 则不去找 models/**/*.js
+maybe: 支持合并 model 和 component 的请求，避免文件过于细碎
+
+
+onload加载完成事件    
+onclick单击事件 
+onblur失去焦点事件
+onchange内容发生改变事件  经常用于select下拉列表选中后的内容发生改变时候触发
+onsubmit表单提交事件 经常用来在表单提交的时候验证所有表单项是否合法

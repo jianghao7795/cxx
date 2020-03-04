@@ -1,0 +1,19 @@
+{
+	data:[{authorized_methods: ["GET", "PUT", "DELETE"], id: "5a55e269d741cb246c453a62",…},…]
+	
+		0:{authorized_methods: ["GET", "PUT", "DELETE"], id: "5a55e269d741cb246c453a62",…}
+		authorized_methods:["GET", "PUT", "DELETE"]
+		category:"Customize Tasks"
+		created_time:"2018-01-10 17:52:41'
+		description:null
+		id:"5a55e269d741cb246c453a62"
+		modified_time:"2018-01-10 20:20:34"
+		status:"Running"
+		task_name:"wes-pipeline_2018_01_10_17_51_47"
+		task_url:"http://localhost/api/tasks/wes-pipeline_2018_01_10_17_51_47/"
+		task_version:null
+		type:"private"
+	
+	meta:{total: 7}
+}
+每个数组填加一个process: 为已完成的百分率

@@ -1,0 +1,3 @@
+1. 由于 babel@7 升级导致的 break change，transform-decorators-legacy 无需引入了。 在.webpackrc.js中
+不删会有这个报错。
+Property right of AssignmentExpression expected node to be of a type ["Expression"] but instead got null

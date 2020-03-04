@@ -1,0 +1,82 @@
+<html>  
+<head>  
+<script type="text/javascript" >  
+    
+</script>  
+</head>  
+<body>  
+<table width="100px" height="100px"   bgcolor="blue" style='left:120 ;top: 100;position:absolute'>  
+<tr><td>1</td></tr>  
+<tr><td>2</td></tr>  
+<tr><td>3</td></tr>  
+</table>  
+<table width="100px" height="100px"   bgcolor="yellow"  style='left:280 ;top: 100;position:absolute'>  
+<tr><td>1</td></tr>  
+<tr><td>dsa<td></tr>  
+<tr><td>2</td></tr>  
+<tr><td>3</td></tr>  
+</table>  
+<table width="100px" height="100px" bgcolor="green"  style='left:400 ;top: 100;position:absolute'>  
+<tr><td>1</td></tr>  
+<tr><td>2</td></tr>  
+<tr><td>3</td></tr>  
+</table>  
+<table width="100px" height="100px"  bgcolor="gray"  style='left:520 ;top: 100;position:absolute'>  
+<tr><td>1</td></tr>  
+<tr><td>2</td></tr>  
+<tr><td>3</td></tr>  
+</table>  
+<tr>  
+<td>  
+</tr>  
+</table>
+<script type="text/javascript">  
+var currentMoveObj = null;  
+var relLeft;  
+var relTop;  
+    
+////summary  
+////当按下鼠标时，记录当前点击的坐标，记录当前拖拽的对象  
+function mouseDown(obj)  
+{  
+currentMoveObj =obj;  
+currentMoveObj.setCapture();  
+currentMoveObj.style.position = "absolute";  
+relLeft = event.x - currentMoveObj.style.pixelLeft;  
+relTop = event.y - currentMoveObj.style.pixelTop;  
+}  
+ /////当鼠标松开时，当前拖拽对象置空  
+window.document.attachEvent  
+('onmouseup',function()  
+{  
+currentMoveObj.releaseCapture();  
+currentMoveObj = null;  
+});  
+ ////拖拽时，始终更新当前拖拽对象的坐标即可  
+function mouseMove()  
+{  
+if(null != currentMoveObj)  
+{  
+currentMoveObj.style.pixelLeft = event.x - relLeft;  
+currentMoveObj.style.pixelTop = event.y - relTop;  
+}  
+}  
+    
+ ////为每一个TABLE对象注册mousedown和mousemove事件  
+var elements = document.getElementsByTagName("table");  
+window.onload=function () {  
+for(var i = 0;i < elements.length;i ++)  
+{  
+var obj = elements[i];  
+attachDragAction(obj);  
+}  
+};  
+    
+function attachDragAction(obj) {  
+obj.onmousedown= function(){ mouseDown(obj)};  
+obj.onmousemove= function(){ mouseMove()};  
+}  
+</script>
+<p>JS拖拽</p>  
+</body>  
+</html>
