@@ -1,0 +1,9 @@
+v-bind:class
+:class //绑定
+:style  // 绑定
+
+
+import { mapGetters, mapActions } from 'vuex'
+
+mapGetters 获取 store的属性 进入 computed
+mapActions 获取 store的方法 进入 methods
