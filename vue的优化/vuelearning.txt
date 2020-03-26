@@ -7,3 +7,16 @@ import { mapGetters, mapActions } from 'vuex'
 
 mapGetters 获取 store的属性 进入 computed
 mapActions 获取 store的方法 进入 methods
+
+Vue.prototype
+定义全局变量
+Vue.prototype.$bus = Bus
+
+出现error: Unexpected console statement (no-console) at
+就是不能直接使用window所自带函数
+解决：
+在package.json 中加入
+rules: {
+    ...
+    "no-console":"off"
+}
