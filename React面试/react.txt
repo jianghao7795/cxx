@@ -1,0 +1,266 @@
+1. React 中 keys 的作用是什么？
+   key是React中用于追踪哪些列表中元素被修改、删除或者被添加的辅助标识。在diff算法中，key用来判断该元素节点是被移动过来的还是新创建的元素，减少不必要的元素重复渲染。
+2. React 中有哪些构建组件的方式？
+   1、函数 2、class类
+   函数组件看似只是一个返回值是DOM结构的函数，其实它的背后是无状态组件的思想。
+	函数组件中，你无法使用State，也无法使用组件的生命周期方法，这就决定了函数组件都是展示性组件，接收Props，渲染DOM，而不关注其他逻辑
+	函数组件中没有this
+	函数组件更容易理解。当你看到一个函数组件时，你就知道它的功能只是接收属性，渲染页面，它不执行与UI无关的逻辑处理，它只是一个纯函数。而不用在意它返回的DOM结构有多复杂
+
+3.调用 setState 之后发生了什么？
+	当调用 setState 时，React会做的第一件事情是将传递给 setState 的对象合并到组件的当前状态。这将启动一个称为和解（reconciliation）的过程。和解（reconciliation）的最终目标是以最有效的方式，根据这个新的状态来更新UI。 为此，React将构建一个新的 React 元素树（您可以将其视为 UI 的对象表示）。
+	一旦有了这个树，为了弄清 UI 如何响应新的状态而改变，React 会将这个新树与上一个元素树相比较（ diff ）。
+	通过这样做， React 将会知道发生的确切变化，并且通过了解发生什么变化，只需在绝对必要的情况下进行更新即可最小化 UI 的占用空间。
+
+4.react diff 原理
+	把树形结构按照层级分解，只比较同级元素
+	给列表结构的每个单元添加唯一的 key 属性，方便比较
+	React 只会匹配相同 class 的 component（这里面的 class 指的是组件的名字）
+	选择性子树渲染。开发人员可以重写shouldComponentUpdate 提高 diff 的性能
+
+5. 为什么建议传递给setState的参数是一个callback，而不是一个对象
+	因为props和state的更新可能是异步的，不能依赖他们的值去计算下一个state
+	setState(object,[callback]) //对象式，object为nextState
+	setState(function,[callback]) //函数式，function为(prevState,props) => stateChange
+
+7.setState第二个参数的作用
+	该函数会在setState函数调用完成并且组件开始重渲染的时候被调用，我们可以用该函数来监听渲染是否完成
+
+
+1. 区分Real DOM和Virtual DOM
+Real DOM	Virtual DOM
+1. 更新缓慢。	1. 更新更快。
+2. 可以直接更新 HTML。	2. 无法直接更新 HTML。
+3. 如果元素更新，则创建新DOM。	3. 如果元素更新，则更新 JSX 。
+4. DOM操作代价很高。	4. DOM 操作非常简单。
+5. 消耗的内存较多。	5. 很少的内存消耗。
+2. 什么是React？
+React 是 Facebook 在 2011 年开发的前端 JavaScript 库。
+它遵循基于组件的方法，有助于构建可重用的UI组件。
+它用于开发复杂和交互式的 Web 和移动 UI。
+尽管它仅在 2015 年开源，但有一个很大的支持社区。
+3. React有什么特点？
+React的主要功能如下：
+
+它使用**虚拟DOM **而不是真正的DOM。
+它可以用服务器端渲染。
+它遵循单向数据流或数据绑定。
+4. 列出React的一些主要优点。
+React的一些主要优点是：
+
+它提高了应用的性能
+可以方便地在客户端和服务器端使用
+由于 JSX，代码的可读性很好
+React 很容易与 Meteor，Angular 等其他框架集成
+使用React，编写UI测试用例变得非常容易
+5. React有哪些限制？
+React的限制如下：
+
+React 只是一个库，而不是一个完整的框架
+它的库非常庞大，需要时间来理解
+新手程序员可能很难理解
+编码变得复杂，因为它使用内联模板和 JSX
+6. 什么是JSX？
+JSX 是J avaScript XML 的简写。是 React 使用的一种文件，它利用 JavaScript 的表现力和类似 HTML 的模板语法。这使得 HTML 文件非常容易理解。此文件能使应用非常可靠，并能够提高其性能。下面是JSX的一个例子：
+
+render(){
+    return(        
+        <div>
+            <h1> Hello World from Edureka!!</h1>
+        </div>
+    );
+}
+7. 你了解 Virtual DOM 吗？解释一下它的工作原理。
+Virtual DOM 是一个轻量级的 JavaScript 对象，它最初只是 real DOM 的副本。它是一个节点树，它将元素、它们的属性和内容作为对象及其属性。 React 的渲染函数从 React 组件中创建一个节点树。然后它响应数据模型中的变化来更新该树，该变化是由用户或系统完成的各种动作引起的。
+
+Virtual DOM 工作过程有三个简单的步骤。
+
+每当底层数据发生改变时，整个 UI 都将在 Virtual DOM 描述中重新渲染。
+
+
+Virtual DOM 1
+然后计算之前 DOM 表示与新表示的之间的差异。
+
+
+Virtual DOM 2
+完成计算后，将只用实际更改的内容更新 real DOM。
+
+
+Virtual DOM 3
+8. 为什么浏览器无法读取JSX？
+浏览器只能处理 JavaScript 对象，而不能读取常规 JavaScript 对象中的 JSX。所以为了使浏览器能够读取 JSX，首先，需要用像 Babel 这样的 JSX 转换器将 JSX 文件转换为 JavaScript 对象，然后再将其传给浏览器。
+
+
+9. 与 ES5 相比，React 的 ES6 语法有何不同？
+以下语法是 ES5 与 ES6 中的区别：
+
+require 与 import
+// ES5
+var React = require('react');
+ 
+// ES6
+import React from 'react';
+export 与 exports
+// ES5
+module.exports = Component;
+ 
+// ES6
+export default Component;
+component 和 function
+// ES5
+var MyComponent = React.createClass({
+    render: function() {
+        return
+            <h3>Hello Edureka!</h3>;
+    }
+});
+ 
+// ES6
+class MyComponent extends React.Component {
+    render() {
+        return
+            <h3>Hello Edureka!</h3>;
+    }
+}
+props
+// ES5
+var App = React.createClass({
+    propTypes: { name: React.PropTypes.string },
+    render: function() {
+        return
+            <h3>Hello, {this.props.name}!</h3>;
+    }
+});
+
+// ES6
+class App extends React.Component {
+    render() {
+        return
+            <h3>Hello, {this.props.name}!</h3>;
+    }
+}
+state
+
+// ES5
+var App = React.createClass({
+    getInitialState: function() {
+        return { name: 'world' };
+    },
+    render: function() {
+        return
+            <h3>Hello, {this.state.name}!</h3>;
+    }
+});
+
+// ES6
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = { name: 'world' };
+    }
+    render() {
+        return
+            <h3>Hello, {this.state.name}!</h3>;
+    }
+}
+
+10. React与Angular有何不同？
+主题	React	Angular
+1. 体系结构	只有 MVC 中的 View	完整的 MVC
+2. 渲染	可以在服务器端渲染	客户端渲染
+3. DOM	使用 virtual DOM	使用 real DOM
+4. 数据绑定	单向数据绑定	双向数据绑定
+5. 调试	编译时调试	运行时调试
+6. 作者	Facebook	Google
+
+11. 你理解“在React中，一切都是组件”这句话。
+组件是 React 应用 UI 的构建块。这些组件将整个 UI 分成小的独立并可重用的部分。每个组件彼此独立，而不会影响 UI 的其余部分。
+
+12. 解释 React 中 render() 的目的。
+每个React组件强制要求必须有一个 render()。它返回一个 React 元素，是原生 DOM 组件的表示。如果需要渲染多个 HTML 元素，则必须将它们组合在一个封闭标记内，例如 <form>、<group>、<div> 等。此函数必须保持纯净，即必须每次调用时都返回相同的结果。
+
+13. 如何将两个或多个组件嵌入到一个组件中？
+可以通过以下方式将组件嵌入到一个组件中：
+
+class MyComponent extends React.Component{
+    render(){
+        return(          
+            <div>
+                <h1>Hello</h1>
+                <Header/>
+            </div>
+        );
+    }
+}
+class Header extends React.Component{
+    render(){
+        return
+            <h1>Header Component</h1>   
+   };
+}
+ReactDOM.render(
+    <MyComponent/>, document.getElementById('content')
+);
+
+18. React 中的箭头函数是什么？怎么用？
+箭头函数（=>）是用于编写函数表达式的简短语法。这些函数允许正确绑定组件的上下文，因为在 ES6 中默认下不能使用自动绑定。使用高阶函数时，箭头函数非常有用。
+
+
+//General way
+render() {    
+    return(
+        <MyInput onChange = {this.handleChange.bind(this) } />
+    );
+}
+//With Arrow Function
+render() {  
+    return(
+        <MyInput onChange = { (e)=>this.handleOnChange(e) } />
+    );
+}
+
+19. 区分有状态和无状态组件。
+有状态组件	无状态组件
+1. 在内存中存储有关组件状态变化的信息	1. 计算组件的内部的状态
+2. 有权改变状态	2. 无权改变状态
+3. 包含过去、现在和未来可能的状态变化情况	3. 不包含过去，现在和未来可能发生的状态变化情况
+4. 接受无状态组件状态变化要求的通知，然后将 props 发送给他们。	4.从有状态组件接收 props 并将其视为回调函数。
+
+
+25. 你对 React 的 refs 有什么了解？
+Refs 是 React 中引用的简写。它是一个有助于存储对特定的 React 元素或组件的引用的属性，它将由组件渲染配置函数返回。用于对 render() 返回的特定元素或组件的引用。当需要进行 DOM 测量或向组件添加方法时，它们会派上用场。
+
+
+26. 列出一些应该使用 Refs 的情况。
+以下是应该使用 refs 的情况：
+
+需要管理焦点、选择文本或媒体播放时
+触发式动画
+与第三方 DOM 库集成
+
+46. 什么是React 路由？
+React 路由是一个构建在 React 之上的强大的路由库，它有助于向应用程序添加新的屏幕和流。这使 URL 与网页上显示的数据保持同步。它负责维护标准化的结构和行为，并用于开发单页 Web 应用。 React 路由有一个简单的API。
+
+47. 为什么React Router v4中使用 switch 关键字 ？
+虽然 <div> ** 用于封装 Router 中的多个路由，当你想要仅显示要在多个定义的路线中呈现的单个路线时，可以使用 “switch” 关键字。使用时，<switch>** 标记会按顺序将已定义的 URL 与已定义的路由进行匹配。找到第一个匹配项后，它将渲染指定的路径。从而绕过其它路线。
+
+48. 为什么需要 React 中的路由？
+Router 用于定义多个路由，当用户定义特定的 URL 时，如果此 URL 与 Router 内定义的任何 “路由” 的路径匹配，则用户将重定向到该特定路由。所以基本上我们需要在自己的应用中添加一个 Router 库，允许创建多个路由，每个路由都会向我们提供一个独特的视图
+
+<switch>
+    <route exact path=’/’ component={Home}/>
+    <route path=’/posts/:id’ component={Newpost}/>
+    <route path=’/posts’   component={Post}/>
+</switch>
+49. 列出 React Router 的优点。
+几个优点是：
+
+就像 React 基于组件一样，在 React Router v4 中，API 是 'All About Components'。可以将 Router 可视化为单个根组件（<BrowserRouter>），其中我们将特定的子路由（<route>）包起来。
+无需手动设置历史值：在 React Router v4 中，我们要做的就是将路由包装在 <BrowserRouter> 组件中。
+包是分开的：共有三个包，分别用于 Web、Native 和 Core。这使我们应用更加紧凑。基于类似的编码风格很容易进行切换。
+50. React Router与常规路由有何不同？
+主题	常规路由	React 路由
+参与的页面	每个视图对应一个新文件	只涉及单个HTML页面
+URL 更改	HTTP 请求被发送到服务器并且接收相应的 HTML 页面	仅更改历史记录属性
+体验	用户实际在每个视图的不同页面切换	用户认为自己正在不同的页面间切换
+
