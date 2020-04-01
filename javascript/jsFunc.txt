@@ -1,0 +1,46 @@
+7. 防抖 & 节流
+防抖和节流属于高阶技巧，业务中比较多见的场合也就是搜索内容改变提示信息。即使不加也也不一定能看出区别，但是加了新手维护代码可能会崇拜你哦。
+
+防抖
+
+function debounce(func, wait) {
+    let timeout;
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+            func.apply(context, args)
+        }, wait);
+    }
+}
+
+
+节流
+
+function throttle(func, wait) {
+    let previous = 0;
+    return function() {
+        let now = Date.now();
+        let context = this;
+        let args = arguments;
+        if (now - previous > wait) {
+            func.apply(context, args);
+            previous = now;
+        }
+    }
+}
+
+9.判断小数是否相等
+function epsEqu(x,y) {
+  return Math.abs(x - y) < Math.pow(2, -52);
+}
+// 举例
+0.1 + 0.2 === 0.3 // false
+epsEqu(0.1 + 0.2, 0.3) // true
+
+function epsEqu(x,y) {
+  return Math.abs(x - y) < Number.EPSILON;
+}
