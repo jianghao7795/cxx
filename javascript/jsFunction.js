@@ -835,3 +835,71 @@ function getPageWidth(){
      if(cval!=null)
          document.cookie= name + "="+cval+";expires="+exp.toGMTString();
  }
+
+
+// 数组
+
+// join() 将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符，该方法只接收一个参数：即分隔符。
+// push()和pop() push(): 可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。
+                // pop()：数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项。
+
+
+// shift() 和 unshift()
+// shift()：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 。
+// unshift:将参数添加到原数组开头，并返回数组的长度 。
+//
+// sort()
+// reverse() reverse()：反转数组项的顺序。
+// concat() concat() ：将参数添加到原数组中。这个方法会先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。在没有给 concat()方法传递参数的情况下，它只是复制当前数组并返回副本。
+//
+//
+// slice()
+// splice()
+// indexOf()和 lastIndexOf() （ES5新增）
+// forEach() （ES5新增）
+// map() （ES5新增）
+// filter() （ES5新增） filter()：“过滤”功能，数组中的每一项运行给定函数，返回满足过滤条件组成的数组。 使用 Infinity 作为深度，展开任意深度的嵌套数组
+// every() （ES5新增）
+// some() （ES5新增）
+// reduce()和 reduceRight() （ES5新增）
+// 这两个方法都会实现迭代数组的所有项，然后构建一个最终返回的值。reduce()方法从数组的第一项开始，逐个遍历到最后。而 reduceRight()则从数组的最后一项开始，向前遍历到第一项。
+
+// 这两个方法都接收两个参数：一个在每一项上调用的函数和（可选的）作为归并基础的初始值。
+
+// 传给 reduce()和 reduceRight()的函数接收 4 个参数：前一个值、当前值、项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项。第一次迭代发生在数组的第二项上，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。
+
+
+// 实现 convert 方法，把原始 list 转换成树形结构，要求尽可能降低时间复杂度
+let list =[
+    {id:1,name:'部门A',parentId:0},
+    {id:20,name:'部门B',parentId:0},
+    {id:3,name:'部门C',parentId:1},
+    {id:40,name:'部门D',parentId:1},
+    {id:5,name:'部门E',parentId:20},
+    {id:60,name:'部门F',parentId:3},
+    {id:7,name:'部门G',parentId:20},
+    {id:8,name:'部门H',parentId:40}
+];
+const result = convert(list);
+console.log(result)
+function convert(list) {
+    const res = []
+    const map = list.reduce((res, v) => (res[v.id] = v, res), {})
+    console.log(map)
+    // return map
+    let i = 0;
+    for (const item of list) {
+        i ++
+        if (item.parentId === 0) {
+            res.push(item)
+            continue
+        }
+        if (item.parentId in map) {
+            const parent = map[item.parentId]
+            parent.children = parent.children || []
+            parent.children.push(item)
+        }
+    }
+    console.log(i)
+    return res
+}
