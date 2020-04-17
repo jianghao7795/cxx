@@ -63,3 +63,6 @@ function objectFactory() {
     return typeof ret === 'object' ? ret : obj;//确保构造器总是返回一个对象
 
 };
+
+数组方法：
+flat(Infinity)扁平化嵌套数组

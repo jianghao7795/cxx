@@ -69,3 +69,13 @@ console.log('script end'); //4
 // 子组件更新过程 父beforeUpdate->子beforeUpdate->子updated->父updated
 // 父组件更新过程 父beforeUpdate->父updated
 // 销毁过程 父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
+
+
+
+// 实现一个 new
+function _new(fn, ...arg) {
+    const obj = Object.create(fn.prototype);
+
+    const ret = fn.apply(obj, arg);
+    return ret instanceof Object ? ret : obj;
+}

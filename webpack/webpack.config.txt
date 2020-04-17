@@ -1,0 +1,42 @@
+package.json
+build: "webpack --config build/webpack.config.js"
+
+
+// webpack.config.js
+
+const path = require('path');
+module.exports = {
+    mode:'development', // 开发模式
+    entry: path.resolve(__dirname,'../src/main.js'),    // 入口文件
+    output: { //配置html模板
+        filename: 'output.js',      // 打包后的文件名称
+        path: path.resolve(__dirname,'../dist')  // 打包后的目录
+    },
+    // 插件
+    plugins:[
+      new HtmlWebpackPlugin({
+        template:path.resolve(__dirname,'../public/index.html'),
+        filename:'index.html',
+        chunks:['main'] // 与入口文件对应的模块名
+      }),
+      new HtmlWebpackPlugin({
+        template:path.resolve(__dirname,'../public/header.html'),
+        filename:'header.html',
+        chunks:['header'] // 与入口文件对应的模块名
+      }),
+      new CleanWebpackPlugin(), //clean-webpack-plugin
+    ],
+    //引用css less
+    module:{
+      rules:[
+        {
+          test:/\.css$/,
+          use:['style-loader','css-loader'] // 从右向左解析原则
+        },
+        {
+          test:/\.less$/,
+          use:['style-loader','css-loader','less-loader'] // 从右向左解析原则
+        }
+      ]
+    }
+}
