@@ -903,3 +903,13 @@ function convert(list) {
     console.log(i)
     return res
 }
+
+
+// 惰性函数
+var foo = function() {
+    var t = new Date();
+    foo = function() { // 惰性
+        return t;
+    };
+    return foo();
+};

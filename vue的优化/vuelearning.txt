@@ -20,3 +20,19 @@ rules: {
     ...
     "no-console":"off"
 }
+
+出现Invalid Host header
+
+在vue.config.js
+添加disableHostCheck: true 跳过检查
+
+vue项目中不能使用console对象而只能使用window.console的解决办法
+在pageage.json 中的 rules
+"rules": {
+  "no-console": "off"
+},
+
+Vue.nextTick 的原理和用途
+1.  在Vue生命周期的created()钩子函数进行的DOM操作一定要放在Vue.nextTick()的回调函数中
+
+2.  在数据变化后要执行的某个操作，而这个操作需要使用随数据改变而改变的DOM结构的时候，这个操作都应该放进Vue.nextTick()的回调函数中。

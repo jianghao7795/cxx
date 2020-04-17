@@ -383,3 +383,37 @@ apply 、 call 、bind 三者都是用来改变函数的this对象的指向的�
 apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；
 apply 、 call 、bind 三者都可以利用后续参数传参；
 bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。
+
+
+
+// new运算的过程
+/**
+ * 1、创建一个空对象；
+ * 2、该空对象的原型指向构造函数（链接原型）：将构造函数的 prototype 赋值给对象的 __proto__属性；
+ * 3、绑定 this：将对象作为构造函数的 this 传进去，并执行该构造函数；
+ * 4、返回新对象：如果构造函数返回的是一个对象，则返回该对象；否则（若没有返回值或者返回基本类型），返回第一步中新创建的对象；
+ */
+var Person = function(name) {
+    this.name = name
+    console.log('name is ', this.name)
+}
+Person.prototype.getName = function() {
+    return this.name
+}
+var objectFactory = function() {
+    // 1、创建一个空对象
+    var obj = new Object()
+    console.log('before shift arguments = ',arguments)
+    获取构造函数
+    Constructor = [].shift.call(arguments)
+    console.log('after shift arguments = ', arguments)
+    console.log(`Constructor = ${Constructor}`)
+    // 2、该空对象的原型指向构造函数： 将构造函数的prototype 赋值给空对象的 __proto__属性；
+    obj.__proto__ = Constructor.prototype
+    // 3、将空对象作为构造函数的this传进去，并执行该构造函数
+    var ret = Constructor.apply(obj, arguments)
+    // 4、返回新对象：如果构造函数返回的是一个对象，则返回该对象；否则（若没有返回值或者返回基本类型），返回第一步中新创建的对象；
+    return typeof ret == 'object' ? ret : obj
+}
+var a = objectFactory(Person, 'yandong')
+console.log('执行后的name = ', a.name)

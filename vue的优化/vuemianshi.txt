@@ -245,7 +245,7 @@ slot 和 slot-scope
     <div>
         <h4>这是子组件</h4>
         <input type="text" placeholder="请输入">
-        <slot></slot> 
+        <slot></slot>
     </div>
 </template>
 这时，终于出现了slot。slot的位置就会出现父组件中实践slot这几个大字。
@@ -341,3 +341,8 @@ export default {
 其中，下方三个对象的值，我们本身是在子组件中定义的，按照官方文档中说的，本来父组件中是无法显示出来这些数据的，但是为什么现在显示出来了呢？？？这就要归功于我们强大的slot-scope了。
 
 首先，在子组件中的插槽上有一句data="list"，而在父组件中也有slot-scope="scope"，slot-scope就是取data的值，slot-scope的值是自定义的，我们可以取任何名称，但是data的值传过来时是以对象形式传输的，所以在这scope.data才是list的值。
+
+vue 的内置组件 keep-alive
+<keep-alive>是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。
+<keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
+<keep-alive> 与 <transition>相似，只是一个抽象组件，它不会在DOM树中渲染(真实或者虚拟都不会)，也不在父组件链中存在，比如：你永远在 this.$parent 中找不到 keep-alive 。
