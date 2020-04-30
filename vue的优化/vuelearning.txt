@@ -36,3 +36,43 @@ Vue.nextTick 的原理和用途
 1.  在Vue生命周期的created()钩子函数进行的DOM操作一定要放在Vue.nextTick()的回调函数中
 
 2.  在数据变化后要执行的某个操作，而这个操作需要使用随数据改变而改变的DOM结构的时候，这个操作都应该放进Vue.nextTick()的回调函数中。
+
+
+在Vue.js中，key是6个特殊属性key, ref, is, slot, slot-scope, scope其中之一。
+key的值可以是number，也可以是string。
+key主要作用于Vue的virtual DOM算法，在diff new nodes list和old nodes list时，作为识别VNode的一个线索。
+如果不用key，Vue会用一种算法：最小化element的移动，并且会尝试尽最大程度在同适当的地方对相同类型的element，做patch或者reuse。
+如果使用了key，Vue会根据keys的顺序记录element，曾经拥有了key的element如果不再出现的话，会被直接remove或者destoryed。
+拥有同一个parent的children必须有unique keys。重复的key的导致render error。
+
+
+vue的mixin
+什么时候使用Mixins
+1. 执行的方法和需要的数据类似
+
+var mixin = {
+  methods: {
+    foo: function () {
+      console.log('foo')
+    },
+    conflicting: function () {
+      console.log('from mixin')
+    }
+  }
+}
+
+var vm = new Vue({
+  mixins: [mixin],
+  methods: {
+    bar: function () {
+      console.log('bar')
+    },
+    conflicting: function () {
+      console.log('from self')
+    }
+  }
+})
+
+vm.foo() // => "foo"
+vm.bar() // => "bar"
+vm.conflicting() // => "from self"
