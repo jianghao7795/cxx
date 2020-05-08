@@ -1,1 +1,15 @@
 border-radius //圆角
+
+
+14.overflow:auto与overflow:scroll的区别？
+浏览器在内容溢出时增加滚动条：overflow:auto 。
+
+Desktop browsers provide scrollbars if content overflows.
+
+明确告诉用户这里有滚动条：overflow:scroll。
+因为scroll的话，滚动条一直在。
+浏览器总是显示滚动条，不管是否实际剪切了任何内容，以防止滚动条在内容更改时出现或消失。
+
+Browsers always display scrollbars whether or not any content is actually clipped, preventing scrollbars from appearing or disappearing as content changes.
+
+把scroll理解成”scrollBar“的话更好记一些。
