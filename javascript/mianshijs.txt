@@ -1,0 +1,203 @@
+数据类型
+值类型(基本类型)：字符串（String）、数字(Number)、布尔(Boolean)、对空（Null）、未定义（Undefined）、Symbol。
+引用数据类型：对象(Object)、数组(Array)、函数(Function)。
+
+搞懂JS闭包
+function buildList(list) {
+ var result = [];
+ for(var i = 0; i < list.length; i++) {
+    var item = 'item' + list[i];
+    result.push(
+        function() {
+            console.log(item + ' ' + list[i]);
+        }
+     );
+ }
+ return result;
+}
+
+var fnlist = buildList([1,2,3]);
+for (var j = 0; j < fnlist.length; j++) {
+    fnlist[j]();
+} // 输出 连续输出3个"item3 undefined"
+
+function buildList(list) {
+ var result = [];
+ for(var i = 0; i < list.length; i++) {
+    var item = 'item' + list[i];
+    result.push(
+        (function(i) {
+            console.log(item + ' ' + list[i]);
+        })(i)
+     );
+ }
+ return result;
+}
+
+var fnlist = buildList([1,2,3]);
+输出:
+item1 1
+item2 2
+item3 3
+
+
+var fullname = 'John Doe';
+var obj = {
+   fullname: 'Colin Ihrig',
+   prop: {
+      fullname: 'Aurelio De Rosa',
+      getFullname: function() {
+         return this.fullname;
+      }
+   }
+};
+
+console.log(obj.prop.getFullname());
+
+var test = obj.prop.getFullname;
+
+console.log(test());
+答案：这段代码打印结果是：Aurelio De Rosa 和 John Doe 。原因是，JavaScript中关键字this所引用的是函数上下文，取决于函数是如何调用的，而不是怎么被定义的。
+在第一个console.log()，getFullname()是作为obj.prop对象的函数被调用。因此，当前的上下文指代后者，并且函数返回这个对象的fullname属性。相反，当getFullname()被赋值给test变量时，当前的上下文是全局对象window，这是因为test被隐式地作为全局对象的属性。基于这一点，函数返回window的fullname，在本例中即为第一行代码设置的。
+
+
+apply、call、bind
+在 javascript 中，call 和 apply 都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部 this 的指向。
+JavaScript 的一大特点是，函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
+bind改变某个函数运行时的上下文（context）而存在的返回Function
+
+
+类型转化
+console.log( typeof(1 + '1'))
+console.log(+'1');
+console.log(+[]);
+console.log(+['1']);
+console.log(+['1', '2', '3']);
+console.log(+{});
+
+1、如果 obj 为基本类型，直接返回
+2、否则，调用 valueOf 方法，如果返回一个原始值，则 JavaScript 将其返回。
+3、否则，调用 toString 方法，如果返回一个原始值，则JavaScript 将其返回。
+4、否则，JavaScript 抛出一个类型错误异常。
+
+
+当计算 value1 + value2时：
+
+lprim = ToPrimitive(value1)
+rprim = ToPrimitive(value2)
+如果 lprim 是字符串或者 rprim 是字符串，那么返回 ToString(lprim) 和 ToString(rprim)的拼接结果
+返回 ToNumber(lprim) 和 ToNumber(rprim)的运算结果
+
+const 和 let
+临时死区(Temporal Dead Zone)，简写为 TDZ。
+
+
+ process.nextTick 的回调函数 执行都会早于 Promise 的 .then()的回调 node里 浏览器不支持
+
+
+
+// 面试题
+
+async function async1 () {
+  console.log('async1 start')
+  await async2();
+  console.log('async1 end')
+}
+
+async function async2 () {
+  console.log('async2')
+}
+
+console.log('script start')
+
+setTimeout(function () {
+  console.log('setTimeout')
+}, 0)
+
+async1();
+
+new Promise (function (resolve) {
+  console.log('promise1')
+  resolve();
+}).then (function () {
+  console.log('promise2')
+})
+
+console.log('script end')
+
+结果
+
+script start
+async1 start
+async2
+promise1
+script end
+promise2
+async1 end
+setTimeout
+
+首先执行打印script start
+
+然后来到了setTimeout, 新建一条宏任务，排在第一条宏任务后面
+
+执行async1，打印async1 start
+
+执行await async2 , 从右往左执行，执行async2，打印async2, 返回promise对象，
+
+await会阻塞async1后面的代码执行，所以跳出来
+
+执行new Promise 打印promise1, 把then 里面的函数加入微任务队列
+
+打印script end
+
+把async1 await中返回的promise的then 方法加入微队列, 执行await后面的代码需要then 方法的执行，所以这个时候算是宏任务都执行完了，因为卡在那不动了，开始执行微任务
+
+执行微队列，打印promise2, 执行第二个微任务，啥也没打印
+
+then（）方法参数里拿到结果以后，async2 await算是执行结束了，后面的代码不再被阻塞
+
+打印 await后面的async1 end
+
+来到第二条宏任务线，打印setTimeout
+
+总结一下打印顺序：
+
+script start
+
+async1 start
+
+async2
+
+promise1
+
+script end
+
+promise2
+
+async1 end
+
+setTimeout
+// await
+await做了什么
+从字面意思上看await就是等待，await 等待的是一个表达式，这个表达式的返回值可以是一个promise对象也可以是其他值。
+
+await是一个让出线程的标志。await后面的表达式会先执行一遍，将await后面的代码加入到microtask中，然后就会跳出整个async函数来执行后面的代码。
+
+//
+在 HTTP/1 中，每次请求都会建立一次HTTP连接，也就是我们常说的3次握手4次挥手，这个过程在一次请求过程中占用了相当长的时间，即使开启了 Keep-Alive ，解决了多次连接的问题，但是依然有两个效率上的问题：
+
+第一个：串行的文件传输。当请求a文件时，b文件只能等待，等待a连接到服务器、服务器处理文件、服务器返回文件，这三个步骤。我们假设这三步用时都是1秒，那么a文件用时为3秒，b文件传输完成用时为6秒，依此类推。（注：此项计算有一个前提条件，就是浏览器和服务器是单通道传输）
+第二个：连接数过多。我们假设Apache设置了最大并发数为300，因为浏览器限制，浏览器发起的最大请求数为6，也就是服务器能承载的最高并发为50，当第51个人访问时，就需要等待前面某个请求处理完成。
+HTTP/2的多路复用就是为了解决上述的两个性能问题。
+在 HTTP/2 中，有两个非常重要的概念，分别是帧（frame）和流（stream）。
+帧代表着最小的数据单位，每个帧会标识出该帧属于哪个流，流也就是多个帧组成的数据流。
+多路复用，就是在一个 TCP 连接中可以存在多条流。换句话说，也就是可以发送多个请求，对端可以通过帧中的标识知道属于哪个请求。通过这个技术，可以避免 HTTP 旧版本中的队头阻塞问题，极大的提高传输性能。
+
+
+工厂模式（ES5），组件设计模式（ES6）
+工厂模式（ES5，基于prototype。此例中基类Base，子类Factory)
+
+
+说一下你理解的模块机制
+AMD: 异步模块加载规范。
+a.js，定义一个依赖jQuery和echrts的组件。

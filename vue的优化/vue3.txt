@@ -1,0 +1,12 @@
+生命周期函数
+这里给一个与2.x的对比：
+
+beforeCreate (vue3弃用) -> 使用 setup()
+created (vue3弃用) -> 使用 setup()
+beforeMount -> onBeforeMount
+mounted -> onMounted
+beforeUpdate -> onBeforeUpdate
+updated -> onUpdated
+beforeDestroy -> onBeforeUnmount
+destroyed -> onUnmounted
+errorCaptured -> onErrorCaptured

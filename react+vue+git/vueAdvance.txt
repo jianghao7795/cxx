@@ -1,1 +1,5 @@
 error: Unexpected console statement (no-console) at
+
+设置 package  "rules": {
+       "no-console":"off"
+    },

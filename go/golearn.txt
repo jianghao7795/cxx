@@ -1,0 +1,3 @@
+os.Stdin //输入
+os.stdout // 读取
+json.Marsha1() // 返回json

@@ -10,3 +10,7 @@ A: 上面说了，我们使用了hashHistory，正确的页面url中应该都是
 antd 的Form中的getFieldDecorator函数 用mapPropsToFields函数取初始值时 getFieldDecorator('')(在这里不能有比如span div) 否则取不到初始值
 
 由于 babel@7 升级导致的 break change，transform-decorators-legacy 无需引入了。
+
+安装
+npm -S 为dependencies
+npm -D 为工具 devDependencies
