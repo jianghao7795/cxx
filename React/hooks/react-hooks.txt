@@ -1,0 +1,62 @@
+React Hooks的主要周期函数
+
+useState
+
+
+useEffect
+
+useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行
+
+useReducer
+
+
+componentDidMount
+
+useEffect(()=>{
+    // do something
+},[])
+componentDidUpdate
+
+useEffect(()=>{
+    // do something
+})
+componentWillUnmount
+
+useEffect(()=>{
+    return ()=> {
+        // do something
+    }
+},[])
+
+
+getDerivedStateFromProps:官方教程
+
+function ScrollView({row}) {
+  let [isScrollingDown, setIsScrollingDown] = useState(false);
+  let [prevRow, setPrevRow] = useState(null);
+
+  if (row !== prevRow) {
+    // Row 自上次渲染以来发生过改变。更新 isScrollingDown。
+    setIsScrollingDown(prevRow !== null && row > prevRow);
+    setPrevRow(row);
+  }
+
+  return `Scrolling down: ${isScrollingDown}`;
+}
+
+
+shouldComponentUpdate
+
+可以使用useMemo，如果不涉及比较组件内部state，建议使用memo
+function Parent({ a, b }) {
+  // Only re-rendered if `a` changes:
+  const child1 = useMemo(() => <Child1 a={a} />, [a]);
+  // Only re-rendered if `b` changes:
+  const child2 = useMemo(() => <Child2 b={b} />, [b]);
+  return (
+    <>
+      {child1}
+      {child2}
+    </>
+  )
+}
