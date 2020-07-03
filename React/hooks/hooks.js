@@ -8,6 +8,7 @@ const CountContext = createContext();
 
 function Counter() {
   const count = useContext(CountContext);
+  const [type, setType] = useState(0);
   return (
     <h2>{count}</h2>
   );
@@ -18,7 +19,7 @@ function Example() {
 
   return (
     <div>
-
+div
       <p>You clicked {count} tiems</p>
       <button onClick={() => setCount(count + 1)}>Clicked me</button>
       <CountContext.Provider value={count}>
@@ -30,7 +31,7 @@ function Example() {
 
 
 import React, {
-  useReducer
+  useReducer,
 } from 'react';
 
 function ReducerDemo() {

@@ -634,3 +634,18 @@ vue 的内置组件 keep-alive
 <keep-alive>是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。
 <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
 <keep-alive> 与 <transition>相似，只是一个抽象组件，它不会在DOM树中渲染(真实或者虚拟都不会)，也不在父组件链中存在，比如：你永远在 this.$parent 中找不到 keep-alive 。
+
+Vue实现数据双向绑定的原理：Object.defineProperty（）
+
+Object.defineProperty(obj, 'txt', {
+        get: function () {
+            return obj
+        },
+        set: function (newValue) {
+            document.getElementById('txt').value = newValue
+            document.getElementById('show').innerHTML = newValue
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj.txt = e.target.value
+    })
