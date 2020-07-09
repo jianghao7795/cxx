@@ -1,3 +1,11 @@
+关键字
+break    default      func    interface    select
+case     defer        go      map          struct
+chan     else         goto    package      switch
+const    fallthrough  if      range        type
+continue for          import  return       var
+
+
 os.Stdin //输入
 os.stdout // 读取
 json.Marsha1() // 返回json

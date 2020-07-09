@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Vue</title>
+	<link rel="stylesheet" href="" />
+	<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+	<input type="text" id="userName" />
+	<div id="uName">
+	</div>
+</body>
+</html>
+
+<script>
+	// Vue的defineProperty 的基本实现
+	var obj = {
+		pwd: '123123'
+	};
+	Object.defineProperty(obj, "userName", {
+		get: function() {
+			console.log('get init');
+			return 'get init';
+		},
+		set: function(val) {
+			console.log('set init');
+			document.getElementById('uName').innerText = val;
+			document.getElementById('userName').value = val;
+		}
+	});
+	document.getElementById("userName").addEventListener('keyup', function(event){
+		obj.userName = event.target.value
+	});
+</script>
