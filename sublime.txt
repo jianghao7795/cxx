@@ -1,0 +1,47 @@
+----------------------------------------------------------------------------------------------
+Sulbime Text3 常用插件
+
+1、Emmet
+提高HTML & CSS3编写速度。
+2、Theme – Soda
+一直用的一款皮肤
+3、sideBarEnhancements
+侧边栏右键增效插件，提高页面处理速度。
+4、HTML5
+Sublime Text3支持HTML5
+5、Sass
+Sublime Text3支持Sass
+6、Less
+Sublime Text3支持Less
+6、All Autocomplete
+检查全部打开文件，相似自动补全插件
+7、SublimeCodeIntel
+代码提示工具
+8、BracketHighlighter
+成对匹配增强，并修改括号等的颜色
+9、jQuery
+Sublime Text3支持jQuery
+10、DocBlockr
+快速注释
+11、ColorPicker
+颜色获取
+12、ConvertToUTF8
+UTF8转换
+13、FileDiffs
+查找文档不同
+14、LiveStyle
+配合插件实时调试样式使用grunt watch已经不需要这个插件了。
+15、Alignment
+等号对齐 快捷键会有冲突 重新在Alignment > Key Bindings – User 配置快捷键 ctrl+alt+f
+16、SublimeTmpl
+快速格式化代码
+17、Gutter Color
+颜色提示 需要imageMagick支持
+18、Can I Use
+可以直接调整到caniuse看到当前属性的浏览器支持情况。快捷键
+19、InsertDate
+插入时间，项目文件存在CDN的时候，需要改变时间戳才会看到效果，这个是个好东西。
+20、Git
+Git插件，提供Git常用的命令集合。
+21、AutoFileName
+自动提示路径插件
