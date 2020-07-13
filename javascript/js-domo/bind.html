@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>bind</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+// bind
+function fn1(a, b) {
+	console.log('this', this)
+	console.log(a, b)
+	return 'this is fn1'
+}
+
+Function.prototype.bind = function() {
+	const args = Array.prototype.slice.call(arguments)
+
+	const t = args.shift()
+
+	const self = this
+
+	return function() {
+		return self.apply(t, args)
+	}
+}
+</script>
+</html>

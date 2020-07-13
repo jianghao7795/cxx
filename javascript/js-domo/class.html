@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>class</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	class Student {
+		constructor(name, number) {
+			this.name = name
+			this.number = number
+		}
+
+		sayHi = () => {
+			console.log('name :',this.name, 'number: ', this.number)
+		}
+	}
+
+	const student = new Student('libai', 433)
+	student.sayHi()
+
+	class People {
+		constructor(name) {
+			this.name = name
+		}
+
+		eat = () => {
+			console.log(`${this.name} eat something`)
+		}
+	}
+
+	class Students extends People {
+		constructor(name, number) {
+			super(name)
+			this.number = number
+		}
+
+		sayHi = () => {
+			console.log(`${this.name} | ${this.number}`)
+		}
+	}
+
+	const stu = new Students('zhangsan', 50)
+	console.log(stu)
+	console.log(Students)
+</script>
+</html>
