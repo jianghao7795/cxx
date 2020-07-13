@@ -8,7 +8,7 @@
 	<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
 </head>
 <body>
-	<input type="text" id="userName" />
+	<input type="text" id="userName" value="obj.pwd" />
 	<div id="uName">
 	</div>
 </body>
@@ -33,4 +33,11 @@
 	document.getElementById("userName").addEventListener('keyup', function(event){
 		obj.userName = event.target.value
 	});
+	
+	const sum1 = function() {
+		this.name = 'nnn';
+		alert(this.name);
+		console.log(this)
+	}
+	sum1()
 </script>

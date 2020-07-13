@@ -19,6 +19,27 @@ function deepCopy(data){
     return memory;
 }
 
+function deepClone(obj = {}) {
+    if (typeof obj !== 'object' || obj === null) {
+        return obj
+    }
+
+    let result
+    if(obj instanceof Array) {
+        result = []
+    } else {
+        result = {}
+    }
+
+    for (let key in obj) {
+        if(obj.hasOwnProperty(key)) {
+            result[key] = deepClone(obj[key])
+        }
+    }
+
+    return result
+}
+
 
 // 浅拷贝（单次复制，复制最高层级，引用副本，一个基于对原对象属性引用的副本）
 var copiedObject = Object.assign({},originalObject)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>function</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+	function box() {
+		return 'lee'
+	}
+
+	const func = function(){
+		return 'func lee'
+	}
+
+	// (function(){alert('dfasdfa')})()
+	// function () {
+	// 	var x = "Hello!";
+	// }()
+	// console.lg(x)
+	// 函数里的匿名函数
+ 	function box() {
+        return function(){                  //函数里的匿名函数，产生闭包
+            return'Lee';
+	    }
+	}
+	alert(box()());
+</script>

@@ -76,3 +76,5 @@ var vm = new Vue({
 vm.foo() // => "foo"
 vm.bar() // => "bar"
 vm.conflicting() // => "from self"
+
+给子组件 传click事件 要加click.native
