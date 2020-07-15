@@ -11,15 +11,26 @@
 </body>
 <script type="text/javascript">
 // 闭包只受 定义影响
-function create() {
-	let a = 100
-	return function() {
-		console.log(a)
+// function create() {
+// 	let a = 100
+// 	return function() {
+// 		console.log(a)
+// 	}
+// }
+
+// const fn = create()
+// const a = 200
+// fn()
+//
+var name = 'the window'
+var obj = {
+	name: 'my obj',
+	get: function() {
+		return function(){
+			return this.name
+		}
 	}
 }
-
-const fn = create()
-const a = 200
-fn()
+alert(obj.get()())
 </script>
 </html>
