@@ -1,5 +1,8 @@
 //bind
+// call apply bind
+// call 性能更好
 //
+
 //
 Function.prototype.myBind = function() {
 	var _this = this
