@@ -19,7 +19,6 @@ function Example() {
 
   return (
     <div>
-div
       <p>You clicked {count} tiems</p>
       <button onClick={() => setCount(count + 1)}>Clicked me</button>
       <CountContext.Provider value={count}>
