@@ -8,6 +8,8 @@ div1.appendChild(p1) // 插入节点
 
 const div1 = document.getElementById('div2')
 
+div1.removeChild(p1) // 删除节点
+
 // dom-3
 // 将频繁操作 dom 改为一次
 
