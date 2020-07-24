@@ -76,3 +76,5 @@ console.log(location.hash);//从#开始的锚点部分
 // window.sessionStorage       指向本地储存的sessionStorage 数据
 // window.console        指向 console 对象，用于操作控制台
 // window.screen        指向 Screen 对象，表示屏幕信息
+
+console.log(window.navigator.appName)
