@@ -1,0 +1,37 @@
+git log --pretty=format:"%h %s" --graph // 查看历史记录
+-p	按补丁格式显示每个更新之间的差异。
+--stat	显示每次更新的文件修改统计信息。
+--shortstat	只显示 --stat 中最后的行数修改添加移除统计。
+--name-only	仅在提交信息后显示已修改的文件清单。
+--name-status	显示新增、修改、删除的文件清单。
+--abbrev-commit	仅显示 SHA-1 的前几个字符，而非所有的 40 个字符。
+--relative-date	使用较短的相对时间显示（比如，“2 weeks ago”）。
+--graph	显示 ASCII 图形表示的分支合并历史。
+--pretty	使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）。
+
+
+git init
+
+git clone
+
+git status
+
+git diff
+查看已缓存的改动： git diff --cached
+查看已缓存的与未缓存的所有改动：git diff HEAD
+显示摘要而非整个 diff：git diff --stat
+
+git commit -m '' 写入缓存区
+ git config (--global) // 配置
+
+ git reset HEAD 命令用于取消已缓存的内容。
+
+
+ git rm // 缓存 rm
+
+ git branch -d (branchname) // 删除分支
+
+ git merge (分支) 分支合并
+
+ git branch -d newtest 删除分支
+
