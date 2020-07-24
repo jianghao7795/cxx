@@ -36,3 +36,4 @@ var obj = {
 var getname1 = obj.get
 console.log(obj.get()) // obj
 console.log(getname1()) // window
+// https://blog.csdn.net/yivisir/article/details/107400700

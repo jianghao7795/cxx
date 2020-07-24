@@ -1,25 +1,53 @@
 React Hooks的主要周期函数
 
-useState
+useState //保存组件状态
 
 
-useEffect
+useEffect //处理副作用
 
-useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行
+useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行 //减少组件层级
+2. 共享状态
 
-useReducer
+useReducer // 返回dispatch 和 state
+import React, {useReducer} from 'react'
 
+const initialState = {
+    count: 0
+}
+
+function reducer(state: {count: number}, action: {type: string, payload: number}) {
+    switch (action.type) {
+        case 'increment':
+            return {count: state.count + action.payload}
+        case "decrement":
+            return { count: state.count - action.payload };
+        default:
+            throw new Error();
+    }
+}
+
+export default () => {
+    const [state, dispatch] = useReducer(reducer, initialState)
+
+    return (
+        <>
+            Count: {state.count}
+            <button onClick={() => dispatch({type: 'increment', payload: 3})}> + </button>
+            <button onClick={() => dispatch({type: 'decrement', payload: 3})}> - </button>
+        </>
+    )
+}
 
 componentDidMount
 
 useEffect(()=>{
     // do something
 },[])
-componentDidUpdate
+componentDidUpdate shouldComponentUpdate
 
 useEffect(()=>{
     // do something
-})
+}, [value])
 componentWillUnmount
 
 useEffect(()=>{
@@ -60,3 +88,15 @@ function Parent({ a, b }) {
     </>
   )
 }
+
+
+Hook API
+useState  在函数组件中维护自己的状态
+useEffect 在函数组件中实现生命周期钩子函数 语法：useEffect(fn,Array)
+useContext  用来处理多层级传递数据的方式，减少组件嵌套
+useReducer  跟react-redux的使用方式一样，算是提供一个 mini 的 Redux 版本
+useCallback 获得一个记忆函数，避免在某些情况下重新渲染子组件，用来做性能优化
+useMemo 获得一个记忆组件，和useCallback非常类似，它适用于返回确定的值
+useRef  生成对 DOM 对象的引用，它是一个真正的引用，而不是把值拷过去
+useImperativeHandle 透传ref，用于让父组件获取子组件内的引用
+useLayoutEffect 同步执行副作用，在页面完全渲染完成后，操作DOM
