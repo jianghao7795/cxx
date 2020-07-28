@@ -6,7 +6,7 @@ useState //保存组件状态
 useEffect //处理副作用
 
 useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行 //减少组件层级
-2. 共享状态
+2. 共享状态 数据
 
 useReducer // 返回dispatch 和 state
 import React, {useReducer} from 'react'
@@ -93,10 +93,20 @@ function Parent({ a, b }) {
 Hook API
 useState  在函数组件中维护自己的状态
 useEffect 在函数组件中实现生命周期钩子函数 语法：useEffect(fn,Array)
-useContext  用来处理多层级传递数据的方式，减少组件嵌套
+useContext  用来处理多层级传递数据的方式，减少组件嵌套 共享状态钩子
 useReducer  跟react-redux的使用方式一样，算是提供一个 mini 的 Redux 版本
+const [state, dispatch] = useReducer(reducer, initialState);
+
+
 useCallback 获得一个记忆函数，避免在某些情况下重新渲染子组件，用来做性能优化
 useMemo 获得一个记忆组件，和useCallback非常类似，它适用于返回确定的值
+主要解决 渲染子组件 提高性能
+
+
+
 useRef  生成对 DOM 对象的引用，它是一个真正的引用，而不是把值拷过去
 useImperativeHandle 透传ref，用于让父组件获取子组件内的引用
-useLayoutEffect 同步执行副作用，在页面完全渲染完成后，操作DOM
+useLayoutEffect 同步执行副作用，在页面完全渲染完成后，操作DOM (不经常使用)
+
+
+useCallback：接收一个内联回调函数参数和一个依赖项数组（子组件依赖父组件的状态，即子组件会使用到父组件的值） ，useCallback 会返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新
