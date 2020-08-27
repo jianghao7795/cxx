@@ -7,7 +7,7 @@ import (
 func main() {
 	var myList []int
 
-	myList = []int{1,3,5,7,9}
+	myList = []int{1, 3, 5, 7, 9}
 
 	fmt.Println(binarySearch(myList, 9))
 
