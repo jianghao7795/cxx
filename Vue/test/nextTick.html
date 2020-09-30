@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>nextTick</title>
+	<link rel="stylesheet" href="" />
+	<script src="https://cdn.staticfile.org/vue/2.6.11/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+    <p ref="myWidth" v-if="showMe">{{ message }}</p>
+    <button @click="getMyWidth">获取p元素宽度</button>
+</div>
+</body>
+</html>
+
+<script>
+vm = new Vue({
+	el: '#app',
+	data: {
+		showMe: false,
+		message: 'show P',
+	},
+	methods: {
+		getMyWidth() {
+    this.showMe = true;
+    // console.log(this.$refs.myWidth)
+    // this.message = this.$refs.myWidth.offsetWidth;
+    //报错 TypeError: this.$refs.myWidth is undefined
+    this.$nextTick(()=>{
+        //dom元素更新后执行，此时能拿到p元素的属性
+        this.message = this.$refs.myWidth.offsetWidth;
+			})
+		
+	}
+}
+
+})
+	
+</script>

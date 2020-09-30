@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>before + after</title>
+	<link rel="stylesheet" href="">
+</head>
+<style>
+	p:before{content: "hello "}
+	p:after{content: "you are handsome"}
+
+	a {
+	    position: relative;
+	    display: inline-block;
+	    outline: none;
+	    text-decoration: none;
+	    color: #000;
+	    font-size: 32px;
+	    padding: 5px 10px;
+  }
+
+  a:hover::before, a:hover::after { position: absolute; }
+  a:hover::before { content: "\5B"; left: -10px; }
+  a:hover::after { content: "\5D"; right:  -10px; }
+
+  img{
+     min-height: 50px;
+     position: relative;
+  }
+  img:before: {
+       content: " ";
+       display: block;
+      position: absolute;
+      top: -10px;
+      left: 0;
+      height: calc(100% + 10px);
+      width: 100%;
+      backgound-color: rgb(230, 230,230);
+      border: 2px dotted rgb(200,200,200);
+      border-radius: 5px;
+  }
+  img:after{
+      content: '\f127' " Broken Image of " attr(alt);
+      display: block;
+      font-size: 16px;
+      font-style: normal;
+      font-family: FontAwesome;
+      color: rgb(100,100,100)
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+  }
+</style>
+<body>
+	<p>woyun!</p>
+	<a>WAFTURE</a><br />
+	<a>SUMPTUOUS</a><br />
+	<img src="./test.png" alt="test">
+</body>
+</html>
