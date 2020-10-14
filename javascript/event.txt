@@ -1,0 +1,21 @@
+
+事件	事件处理程序	事件触发
+Click	onclick	浏览者单击某个元素时
+Blur	onblur	当浏览器让某个元素失去焦点时
+Focus	onfocus	当某个元素获得焦点时
+Load	onload	Web页面加载完毕
+Unload	onunload	浏览者离开窗口时
+Reset	onreset	浏览者重置页面内某个表单时
+Submit	onsubmit	浏览者提交页面内某个表单时
+Mousedown	onmousedown	浏览者单击鼠标按钮，未松开之时
+Mouseenter	onmouseenter	浏览者将鼠标移到某个元素上，排除子元素（事件叠加）
+Mouseleave	onmouseleave	浏览者将鼠标从某个元素移走，排除子元素（事件叠加）
+Mousemove	onmousemove	浏览者移动鼠标
+Mouseout	onmouseout	浏览者将鼠标从某个元素移走
+Mouseover	onmouseover	浏览者在某个元素上移到鼠标
+Mouseup	onmouseup	浏览者松开鼠标
+Mousewheel	onmousewheel	浏览者滚动鼠标滑轮
+Keydown	onkeydown	键盘上某个键被按下时
+Keypress	onkeypress	介于keydown与keyup之间
+Keyup	onkeyup	键盘上某键被松开时
+Resize onresize 改变浏览器窗口的大小来触发resize事件.

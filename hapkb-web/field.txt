@@ -1,0 +1,2 @@
+oncogene : 癌基因
+TSG：抑癌基因
