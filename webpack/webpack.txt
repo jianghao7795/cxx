@@ -1,0 +1,2 @@
+You could try changing *webpack-dev-server* to *webpack serve* in your npm run script inside package.json
+webpack-cli v4
