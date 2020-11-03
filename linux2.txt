@@ -402,3 +402,26 @@ hostname show hostname
 host www.example.com lookup hostname to resolve name to ip address and viceversa 
 nslookup www.example.com lookup hostname to resolve name to ip address and viceversa 
 whois www.example.com lookup on Whois database 
+
+命令 screen 的使用
+1，输入命令screen使用工具
+
+2，上下分屏：ctrl + a  再按shift + s
+
+3，切换屏幕：ctrl + a  再按tab键
+
+4，新建一个终端：ctrl + a  再按c
+
+5，关闭一个终端：ctrl + a  再按x （或直接按exit退出）
+eg：
+
+1.screen
+
+上下分屏：ctrl + a  再按shift + s
+
+上屏top命令
+
+2.切换导下屏：ctrl + a  再按tab键
+
+创建下屏终端：ctrl + a  再按c
+下屏tail -f 命令

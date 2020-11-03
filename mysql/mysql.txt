@@ -58,3 +58,6 @@ UPDATE user SET Password = PASSWORD('newpass') WHERE user = 'root'; // 更新
  alter database qmPlus default character set utf8; //更改数据库的字符
 alter table t1 charset=utf8mb4; 更改表的字符集
 show full columns from user; 查看表的字段
+
+
+create database if not exists dbname default character set utf8mb4 collate utf8mb4_general_ci;
