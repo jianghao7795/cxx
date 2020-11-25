@@ -10,6 +10,7 @@ import (
 
 func testRedis() bool {
 	// e.g. REDIS_PORT = tcp://172.17.0.89:6379
+	// time.Unix()
 	fmt.Println("REDIS_PORT", os.Getenv("REDIS_PORT"))
 	addr := strings.Split(os.Getenv("REDIS_PORT"), "://")
 	conn, err := redis.DialTimeout(addr[0], addr[1], 0, 1*time.Second, 1*time.Second)
