@@ -1,0 +1,48 @@
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun // 自动安装源
+
+docker run -i -t ubuntu:15.10 /bin/bash  //运行交互式的容器
+
+启动容器（后台模式）
+docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+
+
+docker ps // 查看容器
+
+CONTAINER ID: 容器 ID。
+
+IMAGE: 使用的镜像。
+
+COMMAND: 启动容器时运行的命令。
+
+CREATED: 容器的创建时间。
+
+STATUS: 容器状态。
+状态
+created（已创建）
+restarting（重启中）
+running 或 Up（运行中）
+removing（迁移中）
+paused（暂停）
+exited（停止）
+dead（死亡）
+
+docker images // 镜像
+
+docker ps -aq // 列出所有容器ID
+docker ps -a // 查看所有运行或者不运行容器
+
+删除images（镜像），通过image的id来指定删除谁 docker rmi <image id>
+
+
+docker exec -it mynginx bash // 进入运行的容器
+-i: 交互式操作。
+-t: 终端。
+mynginx ubuntu:15.10: 这是指用 ubuntu 15.10 版本镜像为基础来启动容器。
+bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 /bin/bash。
+
+docker run -d -p80:80 --name mynginx nginx // 下载镜像 运行容器 重命名文 --name name
+
+docker-compose
+url:https://www.bilibili.com/video/BV1Wt411w72h
+docker-compose up -d
+

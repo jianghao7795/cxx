@@ -1,23 +1,155 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>canvas</title>
-	<link rel="stylesheet" href="">
-</head>
+
 <body>
-	<canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;">
-	</canvas>
+    <div>
+        <canvas id="clock" height="200px" width="200px"></canvas>
+    </div>
+
+    <script type="text/javascript" src="clock.js"></script>
 </body>
-</html>
-<script type="text/javascript">
-	var c = document.getElementById("myCanvas");
-	var ctx = c.getContext("2d");
-	// ctx.fillStyle = "#FF0000";
-	// ctx.fillRect(0,0,500,75)
-	//
-	ctx.moveTo(0, 0);
-	ctx.lineTo(200, 200);
-	ctx.stroke();
+
+<script>
+/**
+ * Created  on 2016/10/9.
+ */
+var dom=document.getElementById("clock");
+var ctx=dom.getContext('2d');
+var width=ctx.canvas.width;
+var height=ctx.canvas.height;
+var r=width / 2;
+
+var rem=width/200;
+
+function drawBackground() {
+    ctx.beginPath();
+    ctx.lineWidth=10 * rem;
+    ctx.arc(0, 0, r-ctx.lineWidth / 2, 0, 2*Math.PI, false);
+    ctx.strokeStyle="#eacd76";
+    ctx.stroke();
+    
+    var hours =[3,4,5,6,7,8,9,10,11,12,1,2];
+    ctx.font=18 * rem +'px Arial';
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
+    hours.forEach(function (number ,i ) {
+        var rad= 2 * Math.PI / 12 * i;
+        var x= Math.cos(rad) * (r - 30 * rem);
+        var y= Math.sin(rad) * (r - 30 * rem);
+        ctx.fillText(number,x ,y);
+    });
+
+    for(var i=0 ;i<60 ;i++){
+        var rad= 2 * Math.PI / 60 * i;
+        var x= Math.cos(rad) * (r - 18 * rem);
+        var y= Math.sin(rad) * (r - 18 * rem);
+        ctx.beginPath();//起始一条路径，或重置当前路径
+        if(i%5==0){
+            ctx.fillStyle ='#000';
+            ctx.arc(x, y, 2 * rem, 0, 2*Math.PI, false);
+        }else{
+            ctx.fillStyle ='#ccc';
+            ctx.arc(x, y, 2 * rem, 0, 2*Math.PI, false);
+        }
+        ctx.fill();
+    }
+}
+//x=r * cosT  y=
+
+function drawHour(hour , minute) {
+    ctx.save();
+
+    ctx.beginPath();//起始一条路径，或重置当前路径
+    var rad= 2 * Math.PI /12 *hour,
+        mard= 2 * Math.PI /12 /60 * minute;
+    ctx.rotate(rad + mard);
+    ctx.lineCap='round';
+    ctx.lineWidth=6 * rem;
+    ctx.moveTo(0,10 * rem);
+    ctx.lineTo(0,-r/2);
+    ctx.strokeStyle="#f2be45";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawMinute(minute) {
+    ctx.save();
+
+    ctx.beginPath();
+    var rad= 2 * Math.PI /60 *minute;
+    ctx.rotate(rad);
+    ctx.lineCap='round';
+    ctx.lineWidth=3;
+    ctx.moveTo(0,10 * rem);
+    ctx.lineTo(0,-r + 30 * rem);
+    ctx.strokeStyle="#f2be45";
+    ctx.stroke();
+
+    ctx.restore();
+}
+
+function drawSecond(second) {
+    ctx.save();
+
+    ctx.beginPath();
+    ctx.fillStyle='#c14543';
+    ctx.lineWidth=1;
+    var rad= 2 * Math.PI /60 *second;
+    ctx.rotate(rad);
+    ctx.moveTo(-2 * rem,20 * rem);
+    ctx.lineTo(2 * rem ,20 * rem);
+    ctx.lineTo(1,-r + 18* rem);
+    ctx.lineTo(-1,-r + 18* rem);
+    ctx.fill();
+
+    ctx.restore();
+}
+
+function drawDot() {
+    ctx.beginPath();
+    ctx.fillStyle = '#fff';
+    ctx.arc(0,0,3 * rem,0,2*Math.PI,false);
+    ctx.fill();
+}
+
+function draw() {
+    ctx.clearRect(0,0,width,height);//在给定的矩形内清除指定的像素
+
+    ctx.save();//**保存当前环境的状态(此时的坐标原点(0,0)还是左上角)
+
+    ctx.translate(r,r);//重新映射画布上的 (0,0) 位置
+    //此时的坐标原点(0,0)已经移至到(r,r)
+
+    var now=new Date(),
+        hour=now.getHours(),
+        minute=now.getMinutes(),
+        seconed=now.getSeconds();
+    drawBackground();
+    drawHour(hour , minute);
+    drawMinute(minute);
+    drawSecond(seconed);
+    drawDot();
+
+    ctx.restore();//**返回之前保存过的路径状态和属性;
+    //目的：clearRect(0,0,width,height);清除矩形的(0,0)点还原为左上角
+}
+setInterval(function(){
+    draw()
+},1000);
+
+//小结：canvas入门的很好例子！赞
+//
+/*1：save() 与 restore() 成对出现一个是保存当前的状态，因一个是还原之前保存过的路径状态和属性;
+* 2:beginPath()出场率较高--原因：起始一条路径，或重置当前路径都会调用此方法
+* 3：画图的两种方式fill() 与 stroke()
+* 4：创建线条lineTo();创建弧/曲线 arc()
+* 5：改变绘制原点-重新映射画布上的 (0,0) 位置translate()
+* 6：rotate(arg)旋转当前绘图 , 参数弧度制
+* 7：弧度制，满圆的弧度=2 * Math.PI
+* 8 :小时钟的自适应-等比放大 */
+
+//扩展：可以用canvas绘制一个圆形的百分比视图会比svg简单很多吧，以后补充吧！
+
+//最后感谢慕课网的老师传授canvas时钟的绘制，再次感谢！
+//
+
 </script>

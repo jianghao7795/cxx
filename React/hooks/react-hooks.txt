@@ -5,7 +5,7 @@ useState //保存组件状态
 
 useEffect //处理副作用
 
-useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行 //减少组件层级
+useContext 1、createContext()创建组件 组件中包含 子组件 如hooks.js 1行 //减少组件层级传递数据的问题
 2. 共享状态 数据
 
 useReducer // 返回dispatch 和 state
