@@ -57,3 +57,6 @@ doc/**/*.pdf
 创建标签
 git tag -a v1.4 -m "my version 1.4"
 git tag
+
+忽略文件权限
+git config core.filemode false

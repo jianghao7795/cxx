@@ -10,23 +10,23 @@
 	<canvas id="solar" width="500" height="500" />
 </body>
 <script>
-	init();
+init();
 
-	function init() {
-		let canvas = document.querySelector("#solar");
+function init() {
+	let canvas = document.querySelector("#solar");
     let ctx = canvas.getContext("2d");
     ctx.fillStyle="#000";
-		ctx.fillRect(0,0,0,0);
+	ctx.fillRect(0,0,0,0);
     draw(ctx);
-	}
-	function draw(ctx){
+}
+function draw(ctx){
     requestAnimationFrame(function step(){
         drawDial(ctx); //绘制表盘
         drawAllHands(ctx); //绘制时分秒针
         requestAnimationFrame(step);
     });
-	}
-	/*绘制时分秒针*/
+}
+/*绘制时分秒针*/
 function drawAllHands(ctx){
     let time = new Date();
  
@@ -59,6 +59,9 @@ function drawHand(angle, len, width, color, ctx){
     ctx.lineTo(len, 0);  // 沿着x轴绘制针
     ctx.lineWidth = width;
     ctx.strokeStyle = color;
+    // if(color === 'red') {
+    //     ctx.fillText('12')
+    // }
     ctx.lineCap = "round";
     ctx.stroke();
     ctx.closePath();
@@ -67,19 +70,38 @@ function drawHand(angle, len, width, color, ctx){
  
 /*绘制表盘*/
 function drawDial(ctx){
+    var width=ctx.canvas.width;
+    var height=ctx.canvas.height;
+    var r=width / 2;
+
     let pi = Math.PI;
  
     ctx.clearRect(0, 0, 300, 300); //清除所有内容
     ctx.save();
+
  
     ctx.translate(150, 150); //一定坐标原点到原来的中心
     ctx.beginPath();
     ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
     ctx.stroke();
     ctx.closePath();
+    // ctx.fillText('12', -5, -100)
+    var hour = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+
+    hour.forEach(function(num,i){
+        var rad = 2 * Math.PI / 12 * i;
+        var x = Math.cos(rad) * (r - 150);
+        var y = Math.sin(rad) * (r - 150);
+        ctx.font = "bold 14px Arial"
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(num, x, y);
+    });
  
     for (let i = 0; i < 60; i++){//绘制刻度。
+
         ctx.save();
+
         ctx.rotate(-pi / 2 + i * pi / 30);  //旋转坐标轴。坐标轴x的正方形从 向上开始算起
         ctx.beginPath();
         ctx.moveTo(110, 0);
