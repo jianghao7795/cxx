@@ -61,3 +61,6 @@ show full columns from user; 查看表的字段
 
 
 create database if not exists dbname default character set utf8mb4 collate utf8mb4_general_ci;
+
+// 创建用户
+create user 'tux'@'localhost' identified by 'really_securd_passwordcre'
