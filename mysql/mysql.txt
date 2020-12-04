@@ -83,3 +83,5 @@ create database database_name default charset utf8 collate utf8_unicode_ci;
 
 设置 auto_increment字段 的最小值
 ALETER TABLE table_name AUTO_INCREMENT=100000
+
+create user 'tux'@'localhost' identified by 'really_securd_passwordcre'

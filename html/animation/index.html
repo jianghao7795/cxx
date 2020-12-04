@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=animation, initial-scale=1.0">
+    <title>animation</title>
+
+    <style>
+        body{
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1db7c2;
+        }
+        .card {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            perspective: 1000px;
+        }
+        .cover, .back{
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            transition: all 1s ease-in-out;
+
+            font-size: 4em;
+            border-radius: 8px;
+            box-shadow: 2px 4px 40px #999;
+        }
+
+        .cover{
+            transform: rotateY(0deg);
+        }
+        .back{
+            transform: rotateY(-180deg);
+        }
+        .card:hover .cover{
+            transform: rotateY(180deg);
+        }
+        .card:hover .back{
+            transform: rotateY(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+</body>
+</html>
