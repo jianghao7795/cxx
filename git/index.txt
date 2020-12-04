@@ -60,3 +60,33 @@ git tag
 
 忽略文件权限
 git config core.filemode false
+
+基本配置操作
+查看git全局配置:
+git config --global -l				#不加global查看本项目配置
+
+git中可以加入忽略文件权限的配置，具体如下：
+git config core.filemode false                    // 当前版本库
+git config --global core.fileMode false       // 所有版本库
+
+这样就设置了忽略文件权限。查看下配置：
+
+cat .git/config        // 查看git的配置文件
+
+忽略空格修改：
+git config --global apply.whitespace nowarn  //忽略文件中的空格修改
+
+设置git commit编辑器为vim
+git config --global core.editor vim
+
+编辑配置文件
+git config --global -e
+
+查看配置文件
+git config --global -l
+
+忽略换行符号
+git config --global core.whitespace cr-at-eol
+
+忽略filemod:
+git config --add core.filemode false
