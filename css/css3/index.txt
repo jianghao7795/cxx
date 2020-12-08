@@ -1,0 +1,72 @@
+@keyframes 规则
+{
+	width:100px;
+	height:100px;
+	background:red;
+	position:relative;
+	animation:mymove 5s infinite;
+	-webkit-animation:mymove 5s infinite; /* Safari and Chrome */
+}
+@keyframes mymove
+{
+from {top:0px;}
+to {top:200px;}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+from {top:0px;}
+to {top:200px;}
+}
+
+@keyframes mymove
+{
+0%   {top:0px; left:0px; background:red;}
+25%  {top:0px; left:100px; background:blue;}
+50%  {top:100px; left:100px; background:yellow;}
+75%  {top:100px; left:0px; background:green;}
+100% {top:0px; left:0px; background:red;}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+0%   {top:0px; left:0px; background:red;}
+25%  {top:0px; left:100px; background:blue;}
+50%  {top:100px; left:100px; background:yellow;}
+75%  {top:100px; left:0px; background:green;}
+100% {top:0px; left:0px; background:red;}
+}
+
+
+background-image: linear-gradient(to bottom right, red , yellow); // 渐变
+background-image: linear-gradient(0deg, red, yellow); // 0 90 180 -90 deg支持渐变
+transition: width 2s; 变化 随时间
+-webkit-transition: width 2s; /* Safari */
+background-image: radial-gradient(red 5%, green 15%, blue 60%); /* 标准的语法（必须放在最后） */
+// 文本阴影
+text-shadow: 5px 5px 5px #FF0000;
+// 图片的模糊
+img {
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+}
+img {
+    width: 33%;
+    height: auto;
+    float: left; 
+    max-width: 235px;
+}
+
+.blur {-webkit-filter: blur(4px);filter: blur(4px);}
+.brightness {-webkit-filter: brightness(250%);filter: brightness(250%);}
+.contrast {-webkit-filter: contrast(180%);filter: contrast(180%);}
+.grayscale {-webkit-filter: grayscale(100%);filter: grayscale(100%);}
+.huerotate {-webkit-filter: hue-rotate(180deg);filter: hue-rotate(180deg);}
+.invert {-webkit-filter: invert(100%);filter: invert(100%);}
+.opacity {-webkit-filter: opacity(50%);filter: opacity(50%);}
+.saturate {-webkit-filter: saturate(7); filter: saturate(7);}
+.sepia {-webkit-filter: sepia(100%);filter: sepia(100%);}
+.shadow {-webkit-filter: drop-shadow(8px 8px 10px green);filter: drop-shadow(8px 8px 10px green);}
+
+
+:hover 使用 :hover 选择器来修改鼠标悬停在按钮上的样式。
