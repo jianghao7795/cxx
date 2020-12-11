@@ -20,6 +20,7 @@
             width: 100px;
             height: 100px;
             perspective: 1000px;
+            margin: 0 30px;
         }
         .cover, .back{
             background-color: rgba(255, 255, 255, 0.5);
@@ -49,12 +50,60 @@
         .card:hover .back{
             transform: rotateY(0deg);
         }
+
+        .icon-box {
+            font-size: 4em;
+            border-radius: 8px;
+            box-shadow: 2px 4px 40px #999;
+            transition: all .3s;
+            padding: 24px;
+
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            /* transition: all 1s; */
+        }
+
+        .icon-box:hover {
+            color: #1fb19e;
+            transform: scale(.8) rotate(180deg); /* scale() 触发hover是 增大的倍数  rotate旋转的度数 */
+            transition: all 1s;
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <div class="cover">👨</div>
         <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="cover">👨</div>
+        <div class="back">👩‍⚕</div>
+    </div>
+    <div class="card">
+        <div class="icon-box">👨</div>
+        <!-- <div class="back">👩‍⚕</div> -->
     </div>
 </body>
 </html>

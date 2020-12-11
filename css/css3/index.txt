@@ -69,4 +69,4 @@ img {
 .shadow {-webkit-filter: drop-shadow(8px 8px 10px green);filter: drop-shadow(8px 8px 10px green);}
 
 
-:hover 使用 :hover 选择器来修改鼠标悬停在按钮上的样式。
+:hover 使用 :hover 选择器来修改鼠标悬停在元素上的样式。
