@@ -15,3 +15,38 @@ const Button2 = () => {
 		</div>
 	)
 }
+
+const  params = {id: 8};
+
+fetch({...params})  fetch({id: 8})
+
+callback = () => {
+
+
+	dispatch({
+		type: '',
+		payloads: {
+
+		},
+		callback: () => {
+
+		}
+	})
+}
+
+callback && callback()
+
+if (typeof callback === 'function') {
+	callback()
+}
+
+params = {
+	city: "shanghai"
+};
+qs
+
+stringify()
+
+${stringify(params)}
+
+const {dispatch} = this.props;
