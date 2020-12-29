@@ -90,3 +90,8 @@ git config --global core.whitespace cr-at-eol
 
 忽略filemod:
 git config --add core.filemode false
+
+
+git diff <filename> 查看文件在工作目录与暂存区的差别
+
+git diff --cached <filename>  意义：表示查看已经 add 进暂存区但是尚未 commit 的内容同最新一次 commit 时的内容的差异。 也可以指定仓库版本：
