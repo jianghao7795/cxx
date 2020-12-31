@@ -13,7 +13,7 @@ const usePerson = personId => {
 			.then(data => {
 				setPerson(() => data);
 				setLoading(() => false);
-			})
+			});
 	}, [personId])
 
 	return [loading, person];
