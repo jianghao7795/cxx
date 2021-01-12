@@ -85,3 +85,10 @@ create database database_name default charset utf8 collate utf8_unicode_ci;
 ALETER TABLE table_name AUTO_INCREMENT=100000
 
 create user 'tux'@'localhost' identified by 'really_securd_passwordcre'
+
+//
+MySQL报错Lost connection to MySQL server at ‘reading initial communication packet’的解决办法
+mysql 限制了外网的连接
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456';
+FLUSH PRIVILEGES;
