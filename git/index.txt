@@ -98,3 +98,21 @@ git diff --cached <filename>  意义：表示查看已经 add 进暂存区但是
 
 
 git config --global http.postBuffer 524288000 增加git缓冲区大小
+
+commit之后，想撤销commit
+
+git add . // 添加所有文件
+git commit -m "Hello World"
+
+// 撤销commit和add. 不删除工作空间改动代码
+git reset --mixed HEAD^
+
+// 撤销commit
+git reset --soft HEAD^
+
+// 撤销commit和add. 删除工作空间改动代码
+git reset --hard HEAD^
+
+// 如果改commit的注释
+git commit --amend
+此时会进入默认的vim编辑器，修改注释完毕后保存就ok

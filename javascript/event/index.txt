@@ -1,0 +1,43 @@
+Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态，常用事件如下：
+
+onchange
+
+用户改变域的内容
+
+onclick
+
+鼠标点击某个对象
+
+onfocus、onblur
+
+元素获得焦点、失去焦点时触发
+
+onkeydown、onkeyup
+
+某个键盘的键被按下、被松开时触发
+
+onload、 onunload
+
+某个页面或图像被完成“加载”、用户退出页面
+
+onmousedown、onmouseup
+
+某个鼠标按键被按下、被松开时触发
+
+onmousemove
+
+鼠标被移动
+
+onmouseout
+
+鼠标从某元素移开
+
+onmouseover
+
+鼠标被移到某元素之上
+
+onselect
+
+文本被选定
+
+// 通过元素（Element）事件监听器添加事件
