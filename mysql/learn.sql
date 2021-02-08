@@ -116,3 +116,18 @@ mysql -uroot -p123456 < runoob.sql
 -- source /home/abc/abc.sql
 -- 使用 LOAD DATA 导入数据
 -- LOAD DATA LOCAL INFILE 'dump.txt' INTO TABLE mytbl;
+
+
+drop table if exists employee_tbl;
+create table employee_tbl (
+	id int(11) not null,
+	name char(10) not null default '',
+	`date` datetime not null,
+	singin tinyint(4) not null default 0 comment '登录次数',
+	primary key (id)
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE `tcount_tbl` (
+  `runoob_author` varchar(255) NOT NULL DEFAULT '',
+  `runoob_count` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
