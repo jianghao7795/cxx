@@ -55,7 +55,12 @@ print、println     -- 底层打印函数，在部署环境中建议使用 fmt �
 
 内置接口error
 type error interface { //只要实现了Error()函数，返回值为String的都实现了err接口
-
         Error()    String
-
 }
+
+var s = x.(T) // 类型断言
+
+强制类型转换
+包unsafe
+
+方法： 实体和指针 都能调用 看定义为指针 改变实体 不为指针实体不会改

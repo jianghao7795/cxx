@@ -131,3 +131,14 @@ CREATE TABLE `tcount_tbl` (
   `runoob_author` varchar(255) NOT NULL DEFAULT '',
   `runoob_count` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table blog_comment (
+	id int(10) unsigned not null AUTO_INCREMENT,
+	auth_id int(10) unsigned not null,
+	article_id int(10) unsigned NOT NULL,
+	content text,
+	created_on int(11) default null,
+	updated_on int(11) default null,
+	deleted_on int(11) default null,
+	PRIMARY key (id)
+) engine=InnoDB default CHARSET=utf8 comment="评论";
