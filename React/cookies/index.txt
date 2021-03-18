@@ -1,0 +1,6 @@
+import cookie from 'react-cookies'
+
+
+cookie.load('userId') // 得到userId的cookie
+cookie.save('userId', userId, { path: '/' }) // 设置cookies
+cookie.remove('userId', { path: '/' }) 删除cookies

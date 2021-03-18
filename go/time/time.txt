@@ -1,0 +1,5 @@
+定时
+
+time.NewTimer(d)
+time.AfterFunc(d, f)
+time.After(d)
