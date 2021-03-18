@@ -116,3 +116,6 @@ git reset --hard HEAD^
 // 如果改commit的注释
 git commit --amend
 此时会进入默认的vim编辑器，修改注释完毕后保存就ok
+
+
+du -h .

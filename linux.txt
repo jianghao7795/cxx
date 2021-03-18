@@ -172,3 +172,6 @@ yum clean packages 清理rpm缓存删除下载的包
 yum clean headers 删除所有头文件
 yum clean all 删除所有缓存的包和头文件
 
+查看当前目录下所有目录以及子目录的大小
+du -h .
+du -h --max-depth=1 user // https://blog.csdn.net/ouyang_peng/article/details/10414499
