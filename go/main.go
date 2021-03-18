@@ -40,6 +40,7 @@ func testRedis() bool {
 
 func main() {
 	fmt.Println(time.Now(), "[Redis test start]")
+	fmt.Println("dfasdfasdfasd")
 
 	if testRedis() {
 		fmt.Println("[Redis test ok]")
