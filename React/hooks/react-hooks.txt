@@ -43,11 +43,15 @@ componentDidMount
 useEffect(()=>{
     // do something
 },[])
+
+
 componentDidUpdate shouldComponentUpdate
 
 useEffect(()=>{
     // do something
 }, [value])
+
+
 componentWillUnmount
 
 useEffect(()=>{
