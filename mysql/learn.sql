@@ -142,3 +142,13 @@ create table blog_comment (
 	deleted_on int(11) default null,
 	PRIMARY key (id)
 ) engine=InnoDB default CHARSET=utf8 comment="评论";
+
+-- learning
+
+create table if not exists tasks (
+	task_id int(11) auto_increment,
+	subject varchar(45) default null,
+	start_date date default null,
+	description varchar(200) default null,
+	primary key (task_id)
+) engine=InnoDB default charset=utf8mb4;

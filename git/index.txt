@@ -120,4 +120,4 @@ git commit --amend
 du -h .
 
 // clone 指定分支 
-git clone -b
+git clone -b 分支 地址

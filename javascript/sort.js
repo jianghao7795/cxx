@@ -16,3 +16,14 @@ function bubbleSort(arr) {
 bubbleSort(arr)
 
 
+function Person() {}
+
+Person.prototype.name = 'name';
+Person.prototype.sayName = function() {
+	console.log(this.name);
+	alert(this.name);
+}
+
+var sayName = Person.prototype.sayName;
+
+sayName();
