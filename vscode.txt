@@ -1,0 +1,2 @@
+vscode 更新字体
+D:\Programs\Microsoft VS Code\resources\app\out\vs\workbench

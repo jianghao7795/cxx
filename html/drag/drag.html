@@ -44,6 +44,7 @@
     </body>
 
     <script>
+        console.log(event);
         var ul = document.getElementById("list");
         var li = ul.getElementsByTagName("li");
         var liFirst = li[0].offsetTop; // 第一个li位置
@@ -55,6 +56,7 @@
         }
         function drag(obj) {
             obj.onmousedown = function (ev) {
+                console.log(ev);
                 var ev = ev || event;
                 // 创建空白节点，插入原节点位置占位
                 var blank = document.createElement("li");
