@@ -1,2 +1,67 @@
 vscode 更新字体
 D:\Programs\Microsoft VS Code\resources\app\out\vs\workbench
+
+{
+    "editor.fontFamily": "Courier New",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 150,
+    "prettier.jsxSingleQuote": false,
+    "prettier.singleQuote": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "go.gopath": "Z:/go",
+    "go.goroot": "D:/Program Files/Go",
+    "emmet.triggerExpansionOnTab": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    // "editor.tabCompletion": "on",
+    "files.eol": "\n",
+    "security.workspace.trust.untrustedFiles": "open",
+    "path-intellisense.extensionOnImport": true,
+    "path-intellisense.autoSlashAfterDirectory": true,
+    "path-intellisense.mappings": {
+        "@": "${workspaceRoot}/src"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.preferredDarkColorTheme": "Atom One Light",
+    "workbench.colorTheme": "Atom One Light",
+    "workbench.preferredLightColorTheme": "Atom One Light",
+    "workbench.colorCustomizations": {
+        // 写在 Atom One Light  里面则只对该主题有效
+        "[Atom One Light]": {
+            "editor.background": "#f6f7b5",
+            "sideBar.background": "#f0eec2",
+            "activityBar.background": "#e9ecb7",
+            // 终端前景背景色
+            "terminal.foreground": "#141416",
+            "terminal.background": "#a0ecd9",
+
+            "editor.selectionHighlightBorder": "#94767c00",
+            "editor.selectionHighlightBackground": "#f3bf708c",
+            "editorIndentGuide.activeBackground": "#9ba4af",
+            "editorBracketMatch.background": "#ff8a05a9",
+            "editorBracketMatch.border": "#ff0000",
+            "tab.activeBackground": "#c0d9f070",
+
+            "titleBar.activeBackground": "#839eb870"
+        },
+        "editorLineNumber.foreground": "#f19012"
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.preferredHighContrastColorTheme": "Atom One Light",
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
+    "editor.formatOnSaveMode": "modifications"
+}
