@@ -62,7 +62,7 @@ body, .navbar, .navbar ul {
 body {
 	height: 100vh;
 	/* 背景渐变色 */
-	background: linear-gradient(#99f, #f99);
+	background-image: linear-gradient(to top right, #99f, #f99);
 }
 body,
 .navbar,
