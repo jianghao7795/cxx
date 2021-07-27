@@ -148,3 +148,9 @@ body,
 	background-color: #fb7299;
 	transition: top 0.3s ease-in-out, transform 0.3s ease-in-out 0.3s;
 }
+
+.dispalyDiv {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}

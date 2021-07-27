@@ -121,3 +121,6 @@ du -h .
 
 // clone 指定分支 
 git clone -b 分支 地址
+
+// 统一页面显示
+git config --global core.pager "less -FRSX"

@@ -1,0 +1,182 @@
+FLEXBOX FROGGY
+fcdada
+fcdada
+前端自带美化
+​关注他
+第一关
+
+#pond {
+  display: flex;
+   justify-content:flex-end;
+}
+第二关
+
+#pond {
+  display: flex;
+justify-content:center;
+}
+第三关
+
+#pond {
+  display: flex;
+justify-content:space-around;
+}
+第四关
+
+#pond {
+  display: flex;
+justify-content:space-between
+}
+第五关
+
+#pond {
+  display: flex;
+align-items:flex-end
+}
+sumTips
+
+轴有两端 , 可是选择从那一端 开始摆放
+
+第六关
+
+#pond {
+  display: flex;
+justify-content:center;
+align-items:center;
+}
+第七关
+
+#pond {
+  display: flex;
+align-items:flex-end;
+justify-content:space-around;
+}
+第八关
+
+#pond {
+  display: flex;
+flex-direction:row-reverse;
+}
+第九关
+
+#pond {
+  display: flex;
+flex-direction:column;
+}
+第十关
+
+#pond {
+  display: flex;
+flex-direction:row-reverse;
+justify-content:flex-end;
+}
+第十一关
+
+#pond {
+  display: flex;
+flex-direction:column;
+justify-content:flex-end;
+}
+第十二关
+
+#pond {
+  display: flex;
+flex-direction:column-reverse;
+justify-content:space-between;
+}
+第十三关
+
+#pond {
+  display: flex;
+align-items:flex-end;
+flex-direction:row-reverse;
+justify-content:center;
+}
+第十四关
+
+#pond {
+  display: flex;
+}
+
+.yellow {
+order:1;
+}
+第十五关
+
+#pond {
+  display: flex;
+}
+
+.red {
+order:-1;
+}
+第十六关
+
+#pond {
+  display: flex;
+  align-items: flex-start;
+}
+
+.yellow {
+align-self:flex-end;
+}
+十七关
+
+#pond {
+  display: flex;
+  align-items: flex-start;
+}
+
+.yellow {
+align-self:flex-end;
+order:1;
+}
+十八关
+
+#pond {
+  display: flex;
+flex-wrap:wrap;
+}
+十九关
+
+#pond {
+  display: flex;
+flex-direction:column;
+flex-wrap:wrap;
+}
+二十关
+
+#pond {
+  display: flex;
+flex-flow:column wrap;
+}
+二十一关
+
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+align-content:flex-start;
+}
+二十二关
+
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+align-content:flex-end;
+}
+二十三关
+
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+flex-direction:column-reverse;
+align-content:center;
+}
+二十四关
+
+#pond {
+  display: flex;
+flex-flow:column-reverse wrap-reverse;
+align-content:space-between;
+justify-content:center;
+}
