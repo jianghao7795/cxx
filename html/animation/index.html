@@ -1,109 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=animation, initial-scale=1.0">
-    <title>animation</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=animation, initial-scale=1.0" />
+		<title>animation</title>
 
-    <style>
-        body{
-            min-height: 100vh;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #1db7c2;
-        }
-        .card {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            perspective: 1000px;
-            margin: 0 30px;
-        }
-        .cover, .back{
-            background-color: rgba(255, 255, 255, 0.5);
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backface-visibility: hidden;
-            transition: all 1s ease-in-out;
+		<style>
+			body {
+				min-height: 100vh;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #1db7c2;
+			}
+			.card {
+				position: relative;
+				width: 100px;
+				height: 100px;
+				perspective: 1000px;
+				margin: 0 30px;
+			}
+			.cover,
+			.back {
+				background-color: rgba(255, 255, 255, 0.5);
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				backface-visibility: hidden;
+				transition: all 1s ease-in-out;
 
-            font-size: 4em;
-            border-radius: 8px;
-            box-shadow: 2px 4px 40px #999;
-        }
+				font-size: 4em;
+				border-radius: 8px;
+				box-shadow: 2px 4px 40px #999;
+			}
 
-        .cover{
-            transform: rotateY(0deg);
-        }
-        .back{
-            transform: rotateY(-180deg);
-        }
-        .card:hover .cover{
-            transform: rotateY(180deg);
-        }
-        .card:hover .back{
-            transform: rotateY(0deg);
-        }
+			.cover {
+				transform: rotateY(0deg);
+			}
+			.back {
+				transform: rotateY(-180deg);
+			}
+			.card:hover .cover {
+				transform: rotateY(180deg);
+			}
+			.card:hover .back {
+				transform: rotateY(0deg);
+			}
 
-        .icon-box {
-            font-size: 4em;
-            border-radius: 8px;
-            box-shadow: 2px 4px 40px #999;
-            transition: all .3s;
-            padding: 24px;
+			.icon-box {
+				font-size: 4em;
+				border-radius: 8px;
+				box-shadow: 2px 4px 40px #999;
+				transition: all 1.5s;
+				padding: 24px;
 
-            background-color: rgba(255, 255, 255, 0.5);
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backface-visibility: hidden;
-            /* transition: all 1s; */
-        }
+				background-color: rgba(255, 255, 255, 0.5);
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				backface-visibility: hidden;
+				/* transition: all 1s; */
+			}
 
-        .icon-box:hover {
-            color: #1fb19e;
-            transform: scale(.8) rotate(180deg); /* scale() 触发hover是 增大的倍数  rotate旋转的度数 */
-            transition: all 1s;
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="cover">👨</div>
-        <div class="back">👩‍⚕</div>
-    </div>
-    <div class="card">
-        <div class="icon-box">👨</div>
-        <!-- <div class="back">👩‍⚕</div> -->
-    </div>
-</body>
+			.icon-box:hover {
+				color: #1fb19e;
+				transform: scale(0.65) rotate(180deg); /* scale() 触发hover是 增大的倍数  rotate旋转的度数 */
+				transition: all 1.5s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="cover">👨</div>
+			<div class="back">👩‍⚕</div>
+		</div>
+		<div class="card">
+			<div class="icon-box">👨</div>
+			<!-- <div class="back">👩‍⚕</div> -->
+		</div>
+	</body>
 </html>
