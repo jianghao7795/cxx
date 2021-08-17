@@ -124,18 +124,43 @@ ALTER TABLE tbl_name ADD UNIQUE index_name (column_list): 这条语句创建索�
 ALTER TABLE tbl_name ADD INDEX index_name (column_list): 添加普通索引，索引值可出现多次。
 ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list):该语句指定了索引为 FULLTEXT ，用于全文索引。
 
-where 运算符
-=
-等于，几乎任何数据类型都可以使用它。
-<> 或 !=
-不等于
-<
-小于，通常使用数字和日期/时间数据类型。
->
-大于，
-<=
-小于或等于
->=
-大于或等于
 
-CREATE DATABASE `mydb` CHARACTER SET utf8 COLLATE utf8_general_ci; // 创建库 和 表的编码
+运算符	描述
+=	等于
+<> !=	不等于。注释：在 SQL 的一些版本中，该操作符可被写成 !=
+>	大于
+<	小于
+>=	大于等于
+<=	小于等于
+BETWEEN	在某个范围内
+LIKE	搜索某种模式
+IN	指定针对某个列的多个可能值
+
+CREATE DATABASE `mydb` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; // 创建库 和 表的编码
+更改数据库编码：ALTER DATABASE caitu99 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+更改表编码：ALTER TABLE TABLE_NAME CONVERT TO CHARACTER SET utf8mb4 COLLATEutf8mb4_general_ci; \\
+SHOW VARIABLES WHERE Variable_name LIKE 'character_set_%' OR Variable_name LIKE 'collation%'; // 查看系统变量
+
+
+修改MySQL配置文件
+修改mysql配置文件my.cnf（windows为my.ini） 
+my.cnf一般在etc/mysql/my.cnf位置。找到后请在以下三部分里添加如下内容： 
+[client] 
+default-character-set = utf8mb4 
+[mysql] 
+default-character-set = utf8mb4 
+[mysqld] 
+character-set-client-handshake = FALSE 
+character-set-server = utf8mb4 
+collation-server = utf8mb4_unicode_ci 
+init_connect='SET NAMES utf8mb4'
+
+
+查询 select
+
+select distinct collumn from tabelname; // 去除字段重复
+
+INNER JOIN：如果表中有至少一个匹配，则返回行
+LEFT JOIN：即使右表中没有匹配，也从左表返回所有的行
+RIGHT JOIN：即使左表中没有匹配，也从右表返回所有的行
+FULL JOIN：只要其中一个表中存在匹配，则返回行
