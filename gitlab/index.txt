@@ -11,3 +11,68 @@ deploy-aliyun-hims-hcovis: //hcovis 改namespace 都要改
     - cd helm/${CI_PROJECT_NAME}
     - echo "helm upgrade --install -f values-hcovis.yaml --set image.repository=${DOCKER_IMAGE},image.tag=${CI_COMMIT_REF_NAME}-$(echo $CI_COMMIT_SHA | cut -b -7) --namespace hcovis ${CI_PROJECT_NAME} ."
     - helm upgrade --install -f values-hcovis.yaml --set image.repository=${DOCKER_IMAGE},image.tag=${CI_COMMIT_REF_NAME}-$(echo $CI_COMMIT_SHA | cut -b -7) --namespace hcovis ${CI_PROJECT_NAME} .
+	
+deployment.yaml
+配置
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "template-web.fullname" . }}
+  labels:
+    app: {{ template "template-web.name" . }}
+    chart: {{ template "template-web.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    environment: {{ .Values.env.GIN_MODE }}
+    appenv: {{ .Values.nodeSelector.appenv }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "template-web.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "template-web.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      {{- if .Values.image.pullSecrets }}
+      imagePullSecrets:
+      {{- range .Values.image.pullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.container.command }}
+          command: ["bash", "-c", {{ .Values.container.command }}]
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          #livenessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: http
+          #readinessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: http
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

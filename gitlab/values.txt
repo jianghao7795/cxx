@@ -1,0 +1,58 @@
+# Default values for ncov-web
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 2
+
+image:
+  repository: registry-vpc.cn-shenzhen.aliyuncs.com/hapweb/template-web
+  tag: latest
+  pullPolicy: Always
+  pullSecrets:
+    - registrykey-cn-shenzhen-aliyuncs-vpc
+
+container:
+  command: "gunzip /usr/share/nginx/html/template/*.js.gz && sed -i 's|//api.hapyun.com|//hapi.hapyun.com|g' /usr/share/nginx/html/template/*.js && gzip /usr/share/nginx/html/template/*.js && nginx -g 'daemon off;'"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: kong
+    # kubernetes.io/tls-acme: "true"
+  path: /template/
+  hosts:
+    - hcovis.hapyun.com
+  tls:
+    - secretName: hapyun-com
+      hosts:
+        - hcovis.hapyun.com
+
+resources:
+  {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+env:
+  APP_NAME: template-web
+  GIN_MODE: release
+
+# production,test
+nodeSelector:
+  appenv: production
+  nodetype: front
+
+tolerations: []
+
+affinity: {}
