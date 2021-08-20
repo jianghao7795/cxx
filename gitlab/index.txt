@@ -1,0 +1,13 @@
+部署
+deploy-aliyun-hims-hcovis: //hcovis 改namespace 都要改
+  only:
+    - master@hapweb/template-web
+  stage: deploy
+  image:
+    name: alpine/helm:3.6.3
+    entrypoint: ['']
+  script:
+    - export KUBECONFIG=/config/.kube/config.hims
+    - cd helm/${CI_PROJECT_NAME}
+    - echo "helm upgrade --install -f values-hcovis.yaml --set image.repository=${DOCKER_IMAGE},image.tag=${CI_COMMIT_REF_NAME}-$(echo $CI_COMMIT_SHA | cut -b -7) --namespace hcovis ${CI_PROJECT_NAME} ."
+    - helm upgrade --install -f values-hcovis.yaml --set image.repository=${DOCKER_IMAGE},image.tag=${CI_COMMIT_REF_NAME}-$(echo $CI_COMMIT_SHA | cut -b -7) --namespace hcovis ${CI_PROJECT_NAME} .
