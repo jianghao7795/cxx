@@ -164,3 +164,19 @@ INNER JOIN：如果表中有至少一个匹配，则返回行
 LEFT JOIN：即使右表中没有匹配，也从左表返回所有的行
 RIGHT JOIN：即使左表中没有匹配，也从右表返回所有的行
 FULL JOIN：只要其中一个表中存在匹配，则返回行
+
+
+// 远程登陆的用户
+首先登陆到mysql后，进入到mysql数据库：use mysql;
+
+修改用户密码和密码的模式为以前的那种密码加密模式：ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123';
+
+查看所用的用户以及允许访问的地址和加密方式：select user,host,plugin from user;
+
+创建一个用于远程登陆的用户remoteroot,密码123456：CREATE USER 'remoteroot'@'%' IDENTIFIED BY '123456';
+
+给上面创建的用户授予所有权限：GRANT ALL ON *.* TO 'remoteroot'@'%';
+
+刷新保存（执行完这句后上面的更改才能生效）：FLUSH PRIVILEGES;
+
+4.然后就可以用navicat链接这个mysql了，remoteroot 123456

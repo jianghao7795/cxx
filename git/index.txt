@@ -77,7 +77,9 @@ cat .git/config        // 查看git的配置文件
 git config --global apply.whitespace nowarn  //忽略文件中的空格修改
 
 设置git commit编辑器为vim
-git config --global core.editor vim
+git config --global core.editor vim //指定编辑器
+
+ git config --global core.pager '' // 该配置项指定 Git 运行诸如 log 和 diff 等命令所使用的分页器。 你可以把它设置成用 more 或者任何你喜欢的分页器（默认用的是 less），当然也可以设置成空字符串，关闭该选项
 
 编辑配置文件
 git config --global -e
