@@ -142,6 +142,13 @@ toUpperCase()	把字符串转换为大写。
 toSource()	代表对象的源代码。
 toString()	返回字符串。
 valueOf()	返回某个字符串对象的原始值。
+startsWith() 方法用于检测字符串是否以指定的子字符串开始。
+
+
+属性	
+constructor	对创建该对象的函数的引用
+length	字符串的长度
+prototype	允许您向对象添加属性和方法
 
 事件句柄
 
