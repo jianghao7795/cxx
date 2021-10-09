@@ -20,6 +20,11 @@ toString()	把数组转换为字符串，并返回结果。
 toLocaleString()	把数组转换为本地数组，并返回结果。
 unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
 valueOf()	返回数组对象的原始值
+some()：数组中只要有一项满足条件就返回true
+filter()：返回满足给定条件的数据项组成的新数组，不改变原数组
+reduce()：遍历数组，归并方法
+every()：数组的每一项都满足给定条件则返回true
+indexOf(x, start)、lastIndexOf()：查找数组元素的位置，参数：要查的项和起点位置索引
 
 Boolean 对象方法
 toSource()	返回该对象的源代码。
