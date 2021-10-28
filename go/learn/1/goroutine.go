@@ -27,5 +27,5 @@ func main() {
 	go producer("dog", channel)
 	customer(channel)
 
-	go producer("asdfasd", channel);
+	go producer("asdfasd", channel)
 }
