@@ -1,0 +1,11 @@
+{
+	"files.associations": {
+		"unistd.h": "c",
+		"conio.h": "c",
+		"string.h": "c",
+		"time.h": "c",
+		"mmsystem.h": "c",
+		"stdlib.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
