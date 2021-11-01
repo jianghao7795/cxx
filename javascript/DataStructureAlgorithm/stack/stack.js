@@ -43,7 +43,7 @@ class Stack {
 
 	toString() {
 		if (this.isEmpty()) {
-			return "";
+			return '';
 		}
 
 		let objString = `${this.items[0]}`;
@@ -59,7 +59,7 @@ function decimalToBinary(decNumber) {
 	const remStack = new Stack();
 	let number = decNumber;
 	let rem;
-	let binaryString = "";
+	let binaryString = '';
 
 	while (number > 0) {
 		rem = Math.floor(number % 2);
