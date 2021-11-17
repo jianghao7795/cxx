@@ -1,0 +1,16 @@
+transition的几个css相关设置属性：
+v-enter：过渡1（从无到有）开始前
+v-enter-to：过渡1（从无到有）结束
+v-enter-active：包含v-enter、v-enter-to，在这里可以设置过渡时间、曲线等
+v-leave：过渡2（从有到无）开始前
+v-leave-to：过渡2（从有到无）结束
+v-leave-active：包含v-leave、v-leave-to，在这里可以设置过渡时间、曲线等
+
+
+过渡动画的class
+v-enter-from：进入过渡开始的前一帧
+v-enter-active：进入过渡的过程
+v-enter-to：进入过渡结束的状态，完成过渡的过程的最后一帧
+v-leave-from:离开过渡的前一帧
+v-leave-active:离开过渡的过程
+v-leave-to：离开过渡结束的状态，完成过渡的过程的最后一帧
