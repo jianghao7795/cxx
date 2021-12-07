@@ -130,3 +130,6 @@ git config --global core.pager "less -FRSX"
 
 // :删除分支
 git branch -d 
+
+// 修改 git commit 的信息注释
+git commit --amend
