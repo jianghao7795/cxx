@@ -2,4 +2,31 @@ https://turing.haplox.net/
 
 https://health.hapyun.com/
 report
-pm
+pm、
+
+
+开始采样时间 例如：2021-12-06 00:00:00
+结束采样时间 例如：2021-12-06 23:59:59
+
+ncov/upload/order/202112/0490229b7e38304df22c1bc102a1d1a0.png
+ncov/upload/order/202112/0490229b7e38304df22c1bc102a1d1a0.png
+
+- 3 = 冲红 // 无
+- 2 = 废单 // 无
+ -1 = 驳回 // s
+ 0 = 待审核 // 有 审核
+ 1 = 审核通过// 有 废单 和 冲红
+
+ '-3': 'magenta',
+ '-2': 'volcano',
+ '-1': 'cyan',
+ 0: 'gold',
+ 1: 'green'
+
+ amount: 5
+area: "SZ"
+id: 2834
+put_storage_at: "2021-12-14"
+remark: "test111"
+sample_type: 105
+status: -1
