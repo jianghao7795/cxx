@@ -133,3 +133,6 @@ git branch -d
 
 // 修改 git commit 的信息注释
 git commit --amend
+ 
+// 强制拉取远程分支 小心使用
+git pull origin main --allow-unrelated-histories
