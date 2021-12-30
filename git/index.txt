@@ -136,3 +136,12 @@ git commit --amend
  
 // 强制拉取远程分支 小心使用
 git pull origin main --allow-unrelated-histories
+
+// 查看已经 add 的修改
+git diff --cached 
+// 查看历史提交
+git log --pretty=format:"%h %s" --graph
+
+// 远程仓库的重命名与移除
+git remote rename pb paul
+git remote remove paul
