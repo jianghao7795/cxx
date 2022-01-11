@@ -10,6 +10,7 @@ func producer(header string, channel chan<- string) {
 	for {
 		channel <- fmt.Sprintf("%s:%v", header, rand.Int31())
 		time.Sleep(time.Second)
+		fmt.Println(time.Now())
 	}
 }
 
