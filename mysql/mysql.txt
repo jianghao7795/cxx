@@ -180,3 +180,16 @@ FULL JOIN：只要其中一个表中存在匹配，则返回行
 刷新保存（执行完这句后上面的更改才能生效）：FLUSH PRIVILEGES;
 
 4.然后就可以用navicat链接这个mysql了，remoteroot 123456
+
+
+SELECT - 从数据库中提取数据
+UPDATE - 更新数据库中的数据
+DELETE - 从数据库中删除数据
+INSERT INTO - 向数据库中插入新数据
+CREATE DATABASE - 创建新数据库
+ALTER DATABASE - 修改数据库
+CREATE TABLE - 创建新表
+ALTER TABLE - 变更（改变）数据库表
+DROP TABLE - 删除表
+CREATE INDEX - 创建索引（搜索键）
+DROP INDEX - 删除索引
