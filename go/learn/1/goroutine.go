@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"time"
 )
@@ -15,6 +16,7 @@ func producer(header string, channel chan<- string) {
 }
 
 func customer(channel <-chan string) {
+	log.Println("123123123")
 	for {
 		message := <-channel
 		fmt.Println(message)

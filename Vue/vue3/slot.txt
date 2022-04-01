@@ -1,0 +1,78 @@
+1.简单的使用
+// 封装组件:Packagin.vue
+<div>
+    <span>封装的组件</span>
+    <slot/>
+</div>
+ 
+// 父组件使用它
+<div>
+    <Packagin>
+        <input/>  //传入的DOM
+    </Packagin>
+</div>
+
+2.让插槽在没有DOM显示的时候有默认值
+// 封装组件:Packagin.vue
+<div>
+    <span>封装的组件</span>
+    <slot>
+        <span>默认值</span>
+    </slot>
+</div>
+3.当传入多个DOM,我们想按照想要的顺序对DOM进行摆放,就需要用到具名插槽
+// 封装组件:Packagin.vue
+<div>
+    <span>封装的组件</span>
+    <slot name="herder">头部</slot>
+    <slot name="main">中间</slot>
+    <slot name="bottom">底部</slot>
+     
+    <slot>默认位置</slot>
+    //等于name="default" 当外来DOM没指定具名插槽时,都会放默认插槽
+</div>
+ 
+// 父组件使用它
+<div>
+    <Packagin>
+        <templete v-solt:header>
+            <div>头部传入DOM</div>
+        </templete>
+        <templete #main>  //v-solt简写形式#
+            <div>头部传入DOM</div>
+        </templete>
+        <templete #bottom>
+            <div>头部传入DOM</div>
+        </templete>
+    </Packagin>
+</div>
+
+4.接收插槽子组件的返回数据
+// 封装组件:Packagin.vue
+<div>
+    <slot :msg="item.msg" :age='item.age' :id='item.id' />
+</div>
+ 
+<script setup>
+    defineProps(['item'])
+</script>
+ 
+// 父组件使用它
+<div>
+    <Packagin v-for="item of data" :key=item.id  :item=item>
+        <template #default='slotProps' onClick={delete(slotProps.id)}>
+         
+        //只需要其中少量数据时,别忘记解构语法  #default='{id,age}'
+            {{slotProps}}  
+        //显示:{msg:'数据' , age:'数据'}
+         
+        </template>
+    </Packagin>
+</div>
+ 
+<script setup>
+    const data = [
+        {msg:'嘿嘿',age:10,id:1},
+        {msg:'哈哈',age:16,id:2},
+    ]
+</script>
