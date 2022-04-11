@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/gomodule/redigo/redis"
 	"os"
 	"strings"
 	"time"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 func testRedis() bool {

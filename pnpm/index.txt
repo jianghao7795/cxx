@@ -1,0 +1,33 @@
+index.txt
+命令	含义
+pnpm add sax	保存到 dependencies 配置项下
+pnpm add -D sax	保存到 devDependencies 配置项下
+pnpm add -O sax	保存到 optionalDependencies 配置项下
+pnpm add -g sax	安装软件包到全局环境中
+pnpm add sax@next	安装标记为 next 的版本
+pnpm add sax@3.0.0	安装指定版本 3.0.0
+
+pnpm remove
+别名： rm、uninstall、un
+
+从 node_modules 目录下和 package.json 文件中删除软件包。
+
+参数
+--recursive, -r
+当在 workspace 下使用时，将从 workspace 下的每个软件包中删除指定的一个或多个依赖包。
+
+当不在 workspace 下使用时，将在 子目录下寻找所有软件包并删除指定的一个或多个依赖包。
+
+--global
+从全局环境中删除指定的软件包。
+
+--save-dev, -D
+仅删除 devDependencies 中列出的依赖包。
+
+--save-optional, -O
+仅删除 optionalDependencies 中列出的依赖包。
+
+--save-prod, -P
+仅删除 dependencies 中列出的依赖包。
+
+--filter <package_selector>
