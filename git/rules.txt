@@ -17,7 +17,7 @@ refactor 重构
 
 revert 撤销修改
 
-test 测试相关
+test 测试相关/home/jianghao/Desktop/ngstar.png
 
 docs 文档/注释
 
@@ -32,3 +32,5 @@ types 类型定义文件更改
 wip 开发中
 request(
 '/ncov-sz/
+pay_evidence: "https://hapcdn.hapyun.com/hmshop/upload/order/202204/04bbc97a480e86516cc4bd359a570e2e.png,https://hapcdn.hapyun.com/hmshop/upload/order/202204/a431ee85f63894caab4d7080f3d53fbb.png,https://hapcdn.hapyun.com/hmshop/upload/order/202204/13ce46fb762c38a04b1c09"
+pay_evidence: "https://hapcdn.hapyun.com/hmshop/upload/order/202204/04bbc97a480e86516cc4bd359a570e2e.png,https://hapcdn.hapyun.com/hmshop/upload/order/202204/a431ee85f63894caab4d7080f3d53fbb.png,https://hapcdn.hapyun.com/hmshop/upload/order/202204/13ce46fb762c38a04b1c09"
