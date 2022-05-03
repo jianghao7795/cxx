@@ -193,3 +193,6 @@ ALTER TABLE - 变更（改变）数据库表
 DROP TABLE - 删除表
 CREATE INDEX - 创建索引（搜索键）
 DROP INDEX - 删除索引
+
+unique // 唯一约束
+foreign key (字段) references 表(字段) // 外键
