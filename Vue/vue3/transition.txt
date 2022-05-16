@@ -14,3 +14,6 @@ v-enter-to：进入过渡结束的状态，完成过渡的过程的最后一帧
 v-leave-from:离开过渡的前一帧
 v-leave-active:离开过渡的过程
 v-leave-to：离开过渡结束的状态，完成过渡的过程的最后一帧
+
+
+import.meta.env.VITE_BASE_API 引入

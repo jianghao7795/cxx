@@ -1,0 +1,2 @@
+导出mysql 数据
+ sudo docker exec -it mysql57 mysqldump -uroot -p123456 gva > /home/jianghao/gva.sql
