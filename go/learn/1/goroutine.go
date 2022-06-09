@@ -31,4 +31,5 @@ func main() {
 	customer(channel)
 
 	go producer("asdfasd", channel)
+
 }

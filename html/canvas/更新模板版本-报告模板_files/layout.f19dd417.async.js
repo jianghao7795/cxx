@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[7],{"8yLC":function(t,n,a){"use strict";a.r(n);var e=a("1QO0"),c=a.n(e),i=a("t12N"),r=c.a.Fragment,s=t=>Object(i["jsx"])(r,{"data-inspector-line":"7","data-inspector-column":"9","data-inspector-relative-path":"src/layout/index.tsx",children:t.children});n["default"]=s}}]);
