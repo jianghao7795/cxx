@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>病原微生物高通量基因检测报告</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./yogizz/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./bootstrap-table.min.css">
+  <link rel="stylesheet" href="./yogizz/fonts/ionicons/css/ionicons.min.css">
+</head>
+
+<body>
+  <div id="Container" class="container">
+    <p class="Title"> 病原微生物高通量基因检测报告</p>
+    <div style="margin-top:50px" class="row">
+      <div class="col-md-12">
+        <div style="margin-top:0" class="divContainer"><i class="fa fa-address-card-o">&nbsp;</i><span
+            class="rightTitle">基本信息</span></div>
+        <table class="table table-bordered basicInfo">
+          <tr class="active">
+            <th colspan="2">受检人信息</th>
+            <th colspan="4">样本信息</th>
+          </tr>
+          <tr class="info">
+            <td>姓名</td>
+            <td>—</td>
+            <td>样品编号</td>
+            <td colspan="3">mNGS_test001</td>
+          </tr>
+          <tr class="active">
+            <td>性别</td>
+            <td>—</td>
+            <td>检测单位</td>
+            <td>—</td>
+            <td>检测科室</td>
+            <td>—</td>
+          </tr>
+          <tr class="info">
+            <td>年龄</td>
+            <td>—</td>
+            <td>检测医师</td>
+            <td>—</td>
+            <td>检测类型</td>
+            <td>脑脊液</td>
+          </tr>
+          <tr class="active">
+            <td>初诊结果</td>
+            <td>细菌感染</td>
+            <td>采样日期</td>
+            <td>2018年3月30日</td>
+            <td>检测日期</td>
+            <td>2018年4月2日</td>
+          </tr>
+        </table>
+        <div style="margin-top:0" class="divContainer"><i class="fa fa-medkit">&nbsp;</i><span
+            class="rightTitle">检测内容</span>
+          <p class="rightText">
+            本检测主要基于临床样本中游离核酸进行高通量测序，检测样本中可能存在的病原微生物。本检测报告提供样本中可检出的所有具有有效检测结果的微生物，检测范围包含已知基因组序列的6494种细菌、98种支原体/衣原体和608种真菌，以及15078种病毒序列。通过对本报告的解读可以协助临床医师对感染疾病的类型进行判断。
+          </p>
+        </div>
+        <div class="divContainer"><i class="fa fa-stethoscope">&nbsp;</i><span class="rightTitle">检测方法</span>
+          <p class="rightText">本检测基于高通量测序技术，对临床样本中所有类型微生物的基因序列进行分类鉴定，检测过程包括：临床样本核酸提取、测序文库构建、高通量测序、微生物分类鉴定以及检测报告解读等。</p>
+        </div>
+        <div class="divContainer"><i class="fa fa-bell">&nbsp;</i><span class="rightTitle">声明</span>
+          <p class="rightText">1）本次检测报告仅针对本次送检样本检测结果负责，如有疑问，7个工作日内联系我们进行咨询。</p>
+          <p class="rightText">2）本次检测结果仅作为临床诊断的参考，不作为最终临床诊断结果，如有需要请咨询专业医生。</p>
+        </div>
+        <div class="divBottom">
+          <p class="sampleBottomText">检测单位:</p>
+          <p class="sampleBottomText">盖章:</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div style="margin-top:0" class="divContainer"><i class="fa fa-medkit">&nbsp;</i><span
+            class="rightTitle">检测结果</span>
+          <p class="sampleRightText">1、检测结果概述</p>
+          <p class="tableText">微生物检测结果统计表</p>
+          <table id="sampleTable1" class="table table-bordered"></table>
+          <p class="tableText"> 微生物检测结果展示</p><iframe
+            src="./krona.html" width="100%"
+            height="1000px"></iframe>
+          <p class="sampleRightText">2、病原细菌检测结果</p>
+          <table id="sampleTable2" class="table table-bordered resultTable">
+            <table id="sampleTable3" class="table table-bordered resultTable"></table>
+            <p class="sampleRightText">4、病原真菌检测结果</p>
+            <table id="sampleTable4" class="table table-bordered resultTable"></table>
+            <p class="sampleRightText">5、支原体/衣原体检测结果</p>
+            <table id="sampleTable5" class="table table-bordered resultTable"></table>
+        </div>
+        <div class="divContainer"><i class="fa fa-question-circle-o">&nbsp;</i><span class="rightTitle">结果说明</span>
+          <p class="rightText">
+            检测结果概述部分统计了该受检样本中所有微生物的检测结果统计。各个部分检测结果的列表中所列物种均是受检样本中所检测到的病原微生物及其耐药和毒力信息，以细菌、病毒、真菌、支原体和衣原体进行分类展示。列表中分别按照检出序列数由高到底进行排序，检测序列数越多，其相对含量越高，排名越靠前。所有在受检样本中检测为阳性的病原微生物致病信息简介如下：
+          </p>
+          <table id="sampleTable6" class="table table-bordered resultTable"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./yogizz/js/jquery-3.2.1.min.js"></script>
+  <!--script(src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js')-->
+  <script src="./bootstrap-table.min.js"></script>
+  <script>var sampleId = "mNGS_test001";
+    var userId = "Project_mNGS01";</script>
+    <script src="./data.js"></script>
+  <script src="./sampleInfo.js"></script>
+</body>
+
+</html>

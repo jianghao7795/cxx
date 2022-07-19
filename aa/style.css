@@ -1,0 +1,95 @@
+body {
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+.Title {
+  text-align: center;
+  color: #548dd4;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.SeTitle {
+  font-size: 20px;
+  text-align: center;
+}
+#Container {
+  padding: 30px 20px;
+}
+.leftTitle {
+  text-align: center;
+  font-size: 26px;
+  color: #548dd4;
+}
+#ulList {
+  list-style: none;
+  text-align: center;
+  padding-left: 0;
+}
+#ulList li {
+  margin: 20px 0;
+}
+#ulList li a {
+  font-size: 18px;
+}
+#ulList li span {
+  font-size: 16px;
+}
+.rightTitle {
+  font-size: 26px;
+  color: #548dd4;
+}
+.fa {
+  font-size: 34px !important;
+}
+.rightText {
+  font-size: 18px;
+  text-indent: 2em;
+  line-height: 36px;
+}
+.divContainer {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.divBottom {
+  float: right;
+}
+.bottomText {
+  font-size: 18px;
+  margin-right: 150px;
+}
+.sampleBottomText {
+  font-size: 18px;
+  margin-right: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.basicInfo td {
+  width: 200px;
+}
+th {
+  font-size: 16px;
+  text-align: center !important;
+}
+td {
+  font-size: 16px;
+  text-align: center;
+}
+.sampleRightText {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.tableText {
+  font-size: 16px;
+  text-indent: 2em;
+  margin: 20px 0;
+}
+.resultTable td,
+.bottomTable td {
+  height: 35px;
+}
+.info {
+  width: 400px;
+}
