@@ -10,6 +10,8 @@ mysqldump -u用户名 -p密码 -d 数据库名 > 数据库名.sql
 #/usr/local/mysql/bin/   mysqldump -uroot -p -d abc > abc.sql
 
 注：/usr/local/mysql/bin/  --->  mysql的data目录
+docker 导出数据
+docker exec -it  mysql_server【docker容器名称/ID】 mysqldump -uroot -p123456【数据库密码】 test_db【数据库名称】 > /opt/sql_bak/test_db.sql【导出表格路径】
 
 
 二、导入数据库
@@ -26,7 +28,17 @@ mysql>set names utf8;
 mysql>source /home/abc/abc.sql;
 方法二：
 mysql -u用户名 -p密码 数据库名 < 数据库名.sql
-#mysql -uabc_f -p abc < abc.sql
+#mysql -uabc_f -p abc < abc.sql\
+
+docker 导入
+1. 先将文件导入到容器
+#docker cp **.sql 【容器名】:/root/
+进入容器
+#docker exec -ti 【容器名/ID】sh
+将文件导入数据库
+# mysql -uroot -p 【数据库名】 < ***.sql
+
+2. docker exec -i  mysql_server【docker容器名称/ID】 mysqltest_db_copy【数据库名称】 < /opt/sql_bak/test_db.sql【本地数据表路径】
 
 mysql S U I D
 
