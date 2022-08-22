@@ -1,58 +1,7 @@
 导出mysql 数据
  sudo docker exec -it mysql57 mysqldump -uroot -p123456 gva > /home/jianghao/gva.sql
 
-{
-            "id": 27,
-            "customer": "test66666666",
-            "project_type": "大筛查",
-            "sign_contract": true,
-            "settlement_method": "周结",
-            "billing_time": "",
-            "sale_id": 2910,
-            "sale_name": "吴凯欣",
-            "merchandiser_id": 3110,
-            "merchandiser": "吴婷婷",
-            "business_model": "采样+检测",
-            "door_service_price": 1122,
-            "expedited_fee": 11,
-            "terminate_contract": true,
-            "contact": "吴刚",
-            "phone": "13522331122",
-            "org_name": "test6666666",
-            "contract_file": "https://hapcdn.hapyun.com/ncov/order/202205/71ffde3ac2b16423b931080b150b06bd.png",
-            "company": "深圳海普洛斯医学检验实验室",
-            "pay_customer": "test5555555",
-            "status": 0,
-            "remark": "test 66666666",
-            "sample_price": [
-                {
-                    "id": 1,
-                    "customer_id": 27,
-                    "sample_type": 1,
-                    "sampling_model": 1,
-                    "price": 120,
-                    "door_service_price": 112,
-                    "expedited_fee": 110,
-                    "remark": "test 5555",
-                    "status": 0,
-                    "user_id": 0,
-                    "user_name": "",
-                    "updated_id": 143,
-                    "updated_user": "姜浩",
-                    "unit": "元/管",
-                    "created_at": "2022-05-26 17:50:05",
-                    "updated_at": "2022-05-27 14:29:55"
-                }
-            ],
-            "user_id": 143,
-            "user_name": "姜浩",
-            "updated_id": 0,
-            "updated_user": "",
-            "contract_start_date": "2022-05-27 10:47:46",
-            "contract_end_date": "2022-05-27 10:47:44",
-            "price_start_date": "2022-05-27 10:47:53",
-            "price_end_date": "2022-05-27 10:47:50",
-            "created_at": "0001-01-01 08:05:43",
-            "updated_at": "2022-05-27 14:29:55"
-        },
+sudo docker exec -it  mysql_server【docker容器名称/ID】 mysqldump -uroot -p123456【数据库密码】 test_db【数据库名称】 > /opt/sql_bak/test_db.sql【导出表格路径】
 
+导入
+docker exec -i  mysql_server【docker容器名称/ID】 mysqltest_db_copy【数据库名称】 < /opt/sql_bak/test_db.sql【本地数据表路径】

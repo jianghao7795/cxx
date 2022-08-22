@@ -209,3 +209,29 @@ $ git revert <commit> 撤消提交
 
 帮助 | HELP帮助 | HELP
 $ git help <command>  获取命令行上的帮助
+
+git show 显示当前HEAD上的最近一次的提交 git log -n1 -p 一样
+git commit --amend --only -m 'xxxxxxx'  修改commit -m 信息内容
+git clone --recursive git://github.com/foo/bar.git 克隆所有子模块
+
+~/.gitconfig
+[alias]  
+    a = add  
+    amend = commit --amend  
+    c = commit  
+    ca = commit --amend  
+    ci = commit -a  
+    co = checkout  
+    d = diff  
+    dc = diff --changed  
+    ds = diff --staged  
+    f = fetch  
+    loll = log --graph --decorate --pretty=oneline --abbrev-commit  
+    m = merge  
+    one = log --pretty=oneline  
+    outstanding = rebase -i @{u}  
+    s = status  
+    unpushed = log @{u}  
+    wc = whatchanged  
+    wip = rebase -i @{u}  
+    zap = fetch -p
