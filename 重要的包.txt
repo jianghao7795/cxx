@@ -2,3 +2,4 @@ Swiper 图片滑动
 ECharts 图
 wangEditor 富文本编辑器
 vditor markdown编辑器
+better-scroll 滑动刷新 滑动
