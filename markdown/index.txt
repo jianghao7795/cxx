@@ -11,3 +11,6 @@ codeTheme: atom、a11y、github、gradient、kimbie、paraiso、qtcreator、stac
 @on-upload-img="onUploadImg"
 
 https://github.com/imzbf/md-editor-v3
+
+
+http://localhost:8080/api/uploads/file/7b5b4b35a9d0ba2814cba4adbef691bd_20220829183859.jpg

@@ -1,4 +1,4 @@
-var cars = ['Saab', "volvo", 'BMW'];
+var cars = ['Saab', 'volvo', 'BMW'];
 
 /**
 // Array 对象属性
