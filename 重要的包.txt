@@ -42,3 +42,21 @@ group: "name",  // or { name: "...", pull: [true, false, clone], put: [true, fal
  scrollFn: function(offsetX, offsetY, originalEvent, touchEvt, hoverTargetEl) { ... }
  scrollSensitivity: 30, // px, how near the mouse must be to an edge to start scrolling.
  scrollSpeed: 10, // px
+
+包icon @icon-park/vue-next
+
+prop description type  default note
+
+theme Theme of the icons. 'outline' | 'filled' | 'two-tone' | 'multi-color' 'outline'
+
+size  The width/height of the icon  number | string '1em'
+
+spin  Rotate icon with animation  boolean false
+
+fill  Colors of theme string | string[] 'currentColor'
+
+strokeLinecap the stroke-linecap prop of svg element  'butt' | 'round' | 'square' 'round'
+
+strokeLinejoin  the stroke-linejoin prop of svg element 'miter' | 'round' | 'bevel' 'round'
+
+strokeWidth the stroke-width prop of svg element  number  4

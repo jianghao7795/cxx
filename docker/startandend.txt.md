@@ -3,6 +3,8 @@
 docker run --name mysql01 -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
 sudo docker run --name mariadb -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mariadb
 
+docker run --name mysql8 -d -e MYSQL_ROOT_PASSWORD=123456 -p 3316:3306 mysql:latest
+
 解析：
 
 --name mysql01                                       #  对容器的命名
@@ -11,3 +13,5 @@ sudo docker run --name mariadb -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/co
 -v /home/mysql/conf:/etc/mysql/conf.d     #配置文件挂载到当前宿主机的/home/mysql/conf
 -v /home/mysql/data:/var/lib/mysql            #数据挂载到当前宿主机的 /home/mysql/data
 -e MYSQL_ROOT_PASSWORD=123456    #设置mysql的root用户的密码是：·123456
+
+mysql:latest #镜像 REPOSTORY:TAG

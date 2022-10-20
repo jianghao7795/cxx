@@ -58,11 +58,11 @@ docker build 命令用于使用 Dockerfile 创建镜像。
  -t: 镜像的名字及标签，通常 name:tag 或者 name 格式；可以在一次构建中为一个镜像设置多个标签。
 
  docker push : 将本地的镜像上传到镜像仓库
- 
+
  docker run -i -t 运行交互式的容器
  docker run -d 启动容器（后台模式）
   docker ps 查看运行的容器
-  
+
   # 进入容器
 docker exec -it mysql bash
 
