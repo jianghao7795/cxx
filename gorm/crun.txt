@@ -49,3 +49,7 @@ db.Scan() / db.Rows()
 
 db.Scan(&ptr)将结果保存到&ptr
 db.Rows()返回一个*sql.Row，可以通过.Next()遍历
+
+
+
+Preload("") // 

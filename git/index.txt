@@ -133,7 +133,7 @@ git branch -d
 
 // 修改 git commit 的信息注释
 git commit --amend
- 
+
 // 强制拉取远程分支 小心使用
 git pull origin main --allow-unrelated-histories
 
@@ -213,6 +213,16 @@ $ git help <command>  获取命令行上的帮助
 git show 显示当前HEAD上的最近一次的提交 git log -n1 -p 一样
 git commit --amend --only -m 'xxxxxxx'  修改commit -m 信息内容
 git clone --recursive git://github.com/foo/bar.git 克隆所有子模块
+
+```shell
+git push <远程主机名> <本地分支名>:<远程分支名>
+```
+
+```shell
+git push origin --delete master //删除线上分支
+```
+
+
 
 ~/.gitconfig
 [alias]  
