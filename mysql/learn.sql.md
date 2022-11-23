@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `runoob_tbl`(
    `runoob_author` VARCHAR(40) NOT NULL,
    `submission_date` DATE,
    PRIMARY KEY ( `runoob_id` )
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 create table if not exists runoob_tbl (
 runoob_id int unsigned auto_increment,
@@ -64,7 +64,7 @@ runoob_title varchar(100) not null,
 runoob_author varchar(40) not null,
 submission_date date,
 primary key (runoob_id)
-)Engine=innoDB DEFAULT charset=utf8;
+)Engine=innoDB DEFAULT charset=utf8mb4;
 
 -- 插入数据
 insert int runoob_tbl (runoob_title, runoob_author, submission_date) values ("学习mysql", "菜鸟教程", NOW())
@@ -126,12 +126,12 @@ create table employee_tbl (
 	`date` datetime not null,
 	singin tinyint(4) not null default 0 comment '登录次数',
 	primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
 
 CREATE TABLE `tcount_tbl` (
   `runoob_author` varchar(255) NOT NULL DEFAULT '',
   `runoob_count` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 create table blog_comment (
 	id int(10) unsigned not null AUTO_INCREMENT,
@@ -142,7 +142,7 @@ create table blog_comment (
 	updated_on int(11) default null,
 	deleted_on int(11) default null,
 	PRIMARY key (id)
-) engine=InnoDB default CHARSET=utf8 comment="评论";
+) engine=InnoDB default CHARSET=utf8mb4 comment="评论";
 
 -- learning
 
