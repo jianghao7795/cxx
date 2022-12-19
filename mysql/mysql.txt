@@ -329,3 +329,89 @@ VIEW
 
 14.主键和唯一键有什么区别
 虽然两者都用于强制定义的列的唯一性，但主键会创建聚集索引，而唯一键会在列上创建非聚集索引。主键不允许'NULL'，但唯一键允许它。
+
+COLLATE=utf8mb4_0900_ai_ci 搜索字符集 mysql8 特有的 
+
+COLLATE=**utf8mb4_general_ci** 搜索字符集 mysql5.7
+
+mysql:  show global variables 查看全局所有用户级别可以看到的系统变量。
+
+- `show session variables; | show variables;`：查看当前会话的所有系统变量。
+
+- `ps -ef | grep mysql`：`Linux`查看`MySQL`后台进程的命令。
+
+  `kill -9 MySQL进程ID`：强杀`MySQL`服务的命令。
+
+  `mysql -h地址 -p端口 -u账号 -p`：客户端连接`MySQL`服务（需要二次输入密码）。
+
+  `show status;`：查看`MySQL`运行状态。
+
+  `SHOW VARIABLES like %xxx%;`：查看指定的系统变量。
+
+  `show processlist;`：查看当前库中正在运行的所有客户端连接/工作线程。
+
+  `show status like "Threads%";`：查看当前数据库的工作线程系统。
+
+  `help data types;`：查看当前版本`MySQL`支持的所有数据类型。
+
+  `help xxx`：查看`MySQL`的帮助信息。
+
+  `quit`：退出当前数据库连接。
+
+
+
+
+
+对于`MySQL`表相关的命令，首先来聊一聊创建表的`SQL`命令，如下：
+
+```sql
+CREATE TABLE `库名`.`表名`  (
+    字段名称1 数据类型(精度限制) [字段选项],
+    字段名称2 数据类型(精度限制) [字段选项]
+) [表选项];
+```
+
+
+
+
+
+字段选项（可以不写，不选使用默认值）：
+
+- `NULL`：表示该字段可以为空。
+- `NOT NULL`：表示改字段不允许为空。
+- `DEFAULT 默认值`：插入数据时若未对该字段赋值，则使用这个默认值。
+- `AUTO_INCREMENT`：是否将该字段声明为一个自增列。
+- `PRIMARY KEY`：将当前字段声明为表的主键。
+- `UNIQUE KEY`：为当前字段设置唯一约束，表示不允许重复。
+- `CHARACTER SET 编码格式`：指定该字段的编码格式，如`utf8`。
+- `COLLATE 排序规则`：指定该字段的排序规则（非数值类型生效）。
+- `COMMENT 字段描述`：为当前字段添加备注信息，类似于代码中的注释。
+
+
+
+
+
+表选项（可以不写，不选使用默认值）：
+
+- `ENGINE = 存储引擎名称`：指定表的存储引擎，如`InnoDB、MyISAM`等。
+- `CHARACTER SET = 编码格式`：指定表的编码格式，未指定使用库的编码格式。
+- `COLLATE = 排序规则`：指定表的排序规则，未指定则使用库的排序规则。
+- `ROW_FORMAT = 格式`：指定存储行数据的格式，如`Compact、Redundant、Dynamic....`。
+- `AUTO_INCREMENT = n`：设置自增列的步长，默认为`1`。
+- `DATA DIRECTORY = 目录`：指定表文件的存储路径。
+- `INDEX DIRECTORY = 目录`：指定索引文件的存储路径。
+- `PARTITION BY ...`：表分区选项，后续讲《MySQL表分区》再细聊。
+- `COMMENT 表描述`：表的注释信息，可以在这里添加一张表的备注。
+
+
+
+- 表选项（可以不写，不选使用默认值）：
+  - `ENGINE = 存储引擎名称`：指定表的存储引擎，如`InnoDB、MyISAM`等。
+  - `CHARACTER SET = 编码格式`：指定表的编码格式，未指定使用库的编码格式。
+  - `COLLATE = 排序规则`：指定表的排序规则，未指定则使用库的排序规则。
+  - `ROW_FORMAT = 格式`：指定存储行数据的格式，如`Compact、Redundant、Dynamic....`。
+  - `AUTO_INCREMENT = n`：设置自增列的步长，默认为`1`。
+  - `DATA DIRECTORY = 目录`：指定表文件的存储路径。
+  - `INDEX DIRECTORY = 目录`：指定索引文件的存储路径。
+  - `PARTITION BY ...`：表分区选项，后续讲《MySQL表分区》再细聊。
+  - `COMMENT 表描述`：表的注释信息，可以在这里添加一张表的备注。

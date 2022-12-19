@@ -1,2 +1,23 @@
 oncogene : 癌基因
 TSG：抑癌基因
+
+MET外显子14跳读信息 met_exon14_skipping_info
+
+ 另外一个是判断的过程
+
+MET外显子14跳读结果 met_exon14_skipping_result
+
+一个是判断结果，应该是MET exon14-skipping，MET PPT-SNV或者为空
+
+```tex
+exon14-skipping SA：           c.2888-1,c.2888-2
+exon14-skipping SD：           c.3028+1,c.3028+2
+exon14-skipping  c.3028+3：c.3028+3
+exon14-skipping BS：            c.2888-29
+exon14-skipping PPT：          c.2888-24_c.2888-9  这个区间的indel
+exon14-skipping  D1010：     c.3028
+CBL BS Y1003：                        p.Y1003
+下面这个单独定义一下：
+MET PPT-SNV：c.2888-24_c.2888-9  这个区间的SNV
+```
+

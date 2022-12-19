@@ -154,3 +154,24 @@ create table if not exists tasks (
 	primary key (task_id)
 ) engine=InnoDB default charset=utf8mb4;
 ```
+
+
+
+```mysql
+# CROSS JOIN子句从连接的表返回行的笛卡儿乘积。
+#假设使用CROSS JOIN连接两个表。 结果集将包括两个表中的所有行，其中结果集中的每一行都是第一个表中的行与第二个表中的行的组合。 当连接的表之间没有关系时，会使用这种情况。
+#要特别注意的是，如果每个表有1000行，那么结果集中就有1000 x 1000 = 1,000,000行，那么数据量是非常巨大的。
+SELECT 
+    *
+FROM
+    T1
+        CROSS JOIN
+    T2;
+
+```
+
+```mysql
+# 查询为NULL
+select name from customer where referee_id != 2 or referee_id is NULL; # is null
+```
+
