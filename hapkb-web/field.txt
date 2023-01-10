@@ -21,3 +21,11 @@ CBL BS Y1003：                        p.Y1003
 MET PPT-SNV：c.2888-24_c.2888-9  这个区间的SNV
 ```
 
+结构域
+
+```sh
+HGNC	   gene	 transcript	domain	    accession	        Reviewed	protein_start	protein_end
+HGNCID		基因	转录本	    结构域名称	不同数据库结构域ID 	  审核状态	  蛋白起始位置	 蛋白结束位置
+编号
+```
+
