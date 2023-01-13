@@ -27,7 +27,9 @@
 	// .append("div")
 	// .style("height", (d) => d + 'px')
 
-	d3.select('#chart')
+```javascript
+d3.select('#chart')
+```
   .selectAll("div")
   .data([4, 8, 15, 16, 23, 42])
   .enter()
