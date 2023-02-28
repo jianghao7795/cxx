@@ -222,7 +222,7 @@ git push <远程主机名> <本地分支名>:<远程分支名>
 git push origin --delete master //删除线上分支
 ```
 
-
+git reset --soft HEAD^
 
 ~/.gitconfig
 [alias]  

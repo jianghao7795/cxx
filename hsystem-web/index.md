@@ -1,1 +1,1 @@
-![配置](/home/jianghao/man/cxx/hsystem-web/配置.png)
+![变异输入格式约束](/home/jianghao/man/cxx/hapkb-web/变异输入格式约束.jpg)![配置](/home/jianghao/man/cxx/hsystem-web/配置.png)
