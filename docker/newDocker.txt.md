@@ -104,3 +104,18 @@ Shell
 ```shell
 $ docker exec -it container-id bash
 ```
+
+
+
+获取镜像
+
+```shell
+docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
+```
+
+镜像体积
+
+```shell
+docker system df
+```
+
