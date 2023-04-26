@@ -22,6 +22,8 @@ Shell
 ```shell
 $ docker build -t image-name docker-file-location
 Shell
+
+docker build -t server .
 ```
 
 *-t*：它用于指定使用提供的名称来标记Docker映像。
