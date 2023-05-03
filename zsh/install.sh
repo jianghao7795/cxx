@@ -1,3 +1,4 @@
+```sh
 #!/bin/sh
 #
 # This script should be run via curl:
@@ -321,3 +322,4 @@ EOF
 }
 
 main "$@"
+```

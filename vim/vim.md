@@ -1,0 +1,3 @@
+```go
+const a = "aaaaa";
+```

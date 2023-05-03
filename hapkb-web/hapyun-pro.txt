@@ -1,3 +1,7 @@
 存要改的数据
 hapyun-pro
 计算机 资源？？？
+
+体细胞变异 字段规则
+
+![变异输入格式约束](/home/jianghao/man/cxx/hapkb-web/变异输入格式约束.jpg)

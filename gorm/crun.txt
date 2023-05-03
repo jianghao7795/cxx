@@ -20,3 +20,36 @@ type User struct {
 }
 
 INSERT INTO `user` (`username`,`created_at`,`updated_at`,`deleted_at`) VALUES ('bobo11','2022-01-24 16:42:12.102','2022-01-24 16:42:12.102',NULL)
+
+db.Select()是指定需要更新的列
+db.Omit()是指定不需要更新的列
+db.Create()会为&user回填主键的值。
+db.Model()可以通过db.Model()方法制定Model结构，方便直接关联数据库表：
+db.Clauses() 可以通过db.Clauses()配置增加操作导致冲突时的解决策略：
+db.First() / db.Take() / db.Last() 
+db.First() db.Take() db.Last()均为单条查询语句：
+db.First()查询第一条
+db.Take()查询随机的一条
+db.Last()查询最后一条
+
+db.Table()提供类似于SQL中的FROM操作，但是需要注意，与db.First() db.Last()配合时，需要使用db.Model()，因为db.First() db.Last()需要对主键进行排序：
+
+db.Find()db.Find()可以检索所有记录：
+
+db.Where().Or()相当于SQL中的条件查询
+
+db.Not()相当于SQL中的NOT
+
+db.Order()
+db.Limit().Offset() 分页查询
+db.Group().Having() 实现分组查询：
+
+db.Scan() / db.Rows()
+返回查询结果：
+
+db.Scan(&ptr)将结果保存到&ptr
+db.Rows()返回一个*sql.Row，可以通过.Next()遍历
+
+
+
+Preload("") // 

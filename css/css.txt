@@ -22,3 +22,51 @@ https://csslayout.io/
 https://loading.io/flexbox
 https://cssgrid-generator.netlify.app/
 https://grid.layoutit.com/
+
+## 绝对长度
+
+绝对长度单位是一个固定的值，它反应一个真实的物理尺寸。绝对长度单位视输出介质而定，不依赖于环境（显示器、分辨率、操作系统等）。
+
+| 单位 | 描述                                     | 在线实例                                                     |
+| :--- | :--------------------------------------- | :----------------------------------------------------------- |
+| cm   | 厘米                                     | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_cm) |
+| mm   | 毫米                                     | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_mm) |
+| in   | 英寸 (1in = 96px = 2.54cm)               | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_in) |
+| px * | 像素 (1px = 1/96th of 1in)               | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_px) |
+| pt   | point，大约1/72英寸； (1pt = 1/72in)     | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_pt) |
+| pc   | pica，大约 12pt，1/6英寸； (1pc = 12 pt) | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_pc) |
+
+像素或许被认为是最好的"设备像素"，而这种像素长度和你在显示器上看到的文字屏幕像素无关。px实际上是一个按角度度量的单位。
+
+## 浏览器支持
+
+下表中的数字表示支持该长度单位的最低浏览器版本。
+
+| 长度单位                          | Chrome | IE     | Firefox | Safari | Opera |
+| :-------------------------------- | :----- | :----- | :------ | :----- | :---- |
+| em, ex, %, px, cm, mm, in, pt, pc | 1.0    | 3.0    | 1.0     | 1.0    | 3.5   |
+| ch                                | 27.0   | 9.0    | 1.0     | 7.0    | 20.0  |
+| rem                               | 4.0    | 9.0    | 3.6     | 4.1    | 11.6  |
+| vh, vw                            | 20.0   | 9.0    | 19.0    | 6.0    | 20.0  |
+| vmin                              | 20.0   | 9.0*   | 19.0    | 6.0    | 20.0  |
+| vmax                              | 26.0   | 不支持 | 19.0    | 不支持 | 20.0  |
+
+**注意:** Internet Explorer 9 通过不标准的名称 vm 来支持 vmin 。
+
+## 相对长度
+
+相对长度单位指定了一个长度相对于另一个长度的属性。对于不同的设备相对长度更适用。
+
+ 
+
+| 单位 | 描述                                                         | 在线实例                                                     |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| em   | 它是描述相对于应用在当前元素的字体尺寸，所以它也是相对长度单位。一般浏览器字体大小默认为16px，则2em == 32px； | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_em) |
+| ex   | 依赖于英文字母小 x 的高度                                    | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_ex) |
+| ch   | 数字 0 的宽度                                                |                                                              |
+| rem  | rem 是根 em（root em）的缩写，rem作用于非根元素时，相对于根元素字体大小；rem作用于根元素字体大小时，相对于其出初始字体大小。 | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_rem) |
+| vw   | viewpoint width，视窗宽度，1vw=视窗宽度的1%                  | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_vw) |
+| vh   | viewpoint height，视窗高度，1vh=视窗高度的1%                 | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_vh) |
+| vmin | vw和vh中较小的那个。                                         | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_vmin) |
+| vmax | vw和vh中较大的那个。                                         | [尝试一下](https://www.runoob.com/try/tryit.php?filename=trycss_unit_vmax) |
+| %    |                                                              |                                                              |

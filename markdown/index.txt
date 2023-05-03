@@ -1,0 +1,16 @@
+markdown包: md-editor-v3
+
+theme: 'dark'|'light'
+
+预览主题
+previewTheme: default、github、vuepress、mk-cute、smart-blue、cyanosis
+
+代码主题
+codeTheme: atom、a11y、github、gradient、kimbie、paraiso、qtcreator、stackoverflow
+图片上传
+@on-upload-img="onUploadImg"
+
+https://github.com/imzbf/md-editor-v3
+
+
+http://localhost:8080/api/uploads/file/7b5b4b35a9d0ba2814cba4adbef691bd_20220829183859.jpg
