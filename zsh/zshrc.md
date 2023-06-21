@@ -221,11 +221,3 @@ export PNPM_HOME="/home/jianghao/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # pnpm end
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-
-#[[! -f ~/.p10k.zsh]] || source ~/.p10k.zsh #**_MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${_**MY_VMOPTIONS_SHELL_FILE}" ]; then . "${\_\_\_MY_VMOPTIONS_SHELL_FILE}"; fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-
-# [[! -f ~/.p10k.zsh]] || source ~/.p10k.zsh
