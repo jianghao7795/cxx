@@ -175,3 +175,28 @@ FROM
 select name from customer where referee_id != 2 or referee_id is NULL; # is null
 ```
 
+```sql
+CREATE TABLE user(
+    id INT,
+    username VARCHAR(32),
+    password VARCHAR(32),
+    sex VARCHAR(6),
+    email VARCHAR(50)
+);
+DELIMITER $$ 
+
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    START TRANSACTION;
+    WHILE(i<=10000000)DO
+        INSERT INTO user VALUES(i,CONCAT('jack',i),MD5(i),'male',CONCAT('jack',i,'@itcast.cn'));
+        SET i=i+1;
+    END WHILE;
+    COMMIT;
+END$$
+DELIMITER;
+SHOW CREATE PROCEDURE auto_insert;
+CALL auto_insert();
+
+```
+

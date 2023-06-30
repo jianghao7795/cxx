@@ -1,0 +1,52 @@
+default_shell: zsh
+on_force_close: detach
+
+simplified_ui: false # 简单 UI（不包含提示字体）
+pane_frames: false # pane 之间的边框
+theme: default
+
+default_mode: normal # 启动时的模式，locked 可选
+mouse_mode: true # 鼠标模式（选取）
+scroll_buffer_size: 10000 # 缓冲大小
+
+template:
+  direction: Horizontal # 排布方向
+  parts:
+    - direction: Vertical # part 1，垂直分割
+      borderless: true # 边框
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: 'zellij:tab-bar' # 加载标签栏
+    - direction: Vertical # part 2
+      body: true # 加载主体
+    - direction: Vertical # part 3
+      borderless: true
+      split_size:
+        Fixed: 2
+      run:
+        plugin:
+          location: 'zellij:status-bar' # 加载状态栏
+
+tabs: # 每个标签 pane 的排布
+  - name: 'Tab 1' # 每个标签的名字
+    direction: Horizontal # 水平排布
+    parts:
+      - direction: Vertical # 垂直分割
+        split_size:
+          Percent: 60 # 上半部分占比
+      - direction: Vertical
+        parts:
+          - direction: Horizontal # 水平分割
+          - direction: Horizontal
+keybinds:
+  resize:
+    - action: [Resize: Left]
+      key: [Char: 'h', Alt: 'h']
+    - action: [Resize: Right]
+      key: [Char: 'l', Alt: 'l']
+    - action: [Resize: Down]
+      key: [Char: 'j', Alt: 'j']
+    - action: [Resize: Up]
+      key: [Char: 'k', Alt: 'k']
