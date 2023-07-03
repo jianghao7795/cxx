@@ -1,2 +1,165 @@
 使用expose函数来控制组件被ref时向外暴露的对象内容，借此来维护组件的封装性。 可以通过父组件的模板 ref 访问
 emit 调用父组件的方法
+
+### 依赖注入 provide
+
+```vue
+<script setup>
+import { ref, provide } from 'vue'
+import { fooSymbol } from './injectionSymbols'
+
+// 提供静态值
+provide('foo', 'bar')
+
+// 提供响应式的值
+const count = ref(0)
+provide('count', count)
+
+// 提供时将 Symbol 作为 key
+provide(fooSymbol, count)
+</script>
+```
+
+
+
+inject 接受provide 所传的值
+
+```vue
+<script setup>
+import { inject } from 'vue'
+import { fooSymbol } from './injectionSymbols'
+
+// 注入值的默认方式
+const foo = inject('foo')
+
+// 注入响应式的值
+const count = inject('count')
+
+// 通过 Symbol 类型的 key 注入
+const foo2 = inject(fooSymbol)
+
+// 注入一个值，若为空则使用提供的默认值
+const bar = inject('foo', 'default value')
+
+// 注入一个值，若为空则使用提供的工厂函数
+const baz = inject('foo', () => new Map())
+
+// 注入时为了表明提供的默认值是个函数，需要传入第三个参数
+const fn = inject('function', () => {}, false)
+</script>
+```
+
+## 响应式API
+
+### ref
+
+```vue
+<script>
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const count = ref(0)
+
+    // 返回值会暴露给模板和其他的选项式 API 钩子
+    return {
+      count
+    }
+  },
+
+  mounted() {
+    console.log(this.count) // 0
+  }
+}
+</script>
+
+<template>
+  <button @click="count++">{{ count }}</button>
+</template>
+```
+
+
+
+## Setup 上下文
+
+```vue
+<script>
+export default {
+  setup(props, context) {
+    // 透传 Attributes（非响应式的对象，等价于 $attrs）
+    console.log(context.attrs)
+
+    // 插槽（非响应式的对象，等价于 $slots）
+    console.log(context.slots)
+
+    // 触发事件（函数，等价于 $emit）
+    console.log(context.emit)
+
+    // 暴露公共属性（函数）
+    console.log(context.expose)
+  }
+}
+</script>
+```
+
+expose
+
+```vue
+// 父组件
+<template>
+	<div>
+    	<change-count ref="counts"></change-count>
+        <button @click="onClick">
+            changeCount
+    </button>
+    </div>
+</template>
+<script>
+	import changeCount from "./changeCount.vue";
+    import {ref} from 'vue';
+    
+    export default {
+        commponents: {
+            changeCount,
+        },
+        setup(props, context) {
+            const counts = ref();
+            const onClick = () => {
+                counts.value.onClick()
+            }
+            
+            return {
+                counts,
+                onClick,
+            }
+        }
+    }
+</script>
+```
+
+子组件
+
+```vue
+<template>
+	<button @click="onClick">
+        count is {{ count }}
+    </button>
+</template>
+<script>
+	export default {
+        setup(props, {expose}) {
+            const count = ref(0);
+           	const onClick = () => {
+                count.value += 1;
+            }
+            expose({count});
+            expose({onClick});
+            return {
+                count,
+                onClick,
+            };
+        }
+    };
+</script>
+```
+

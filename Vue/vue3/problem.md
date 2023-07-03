@@ -25,7 +25,7 @@ watch(
 </script>
 ```
 
-### 方式二：computed 的 get 和 set
+### 方式二：computed 的 get 和 set get   更新父级传来的props
 
 ```vue
 <!-- 子组件 -->
@@ -33,6 +33,7 @@ watch(
   <input type="text" v-model="proxy" />
 </template>
 <script setup>
+const props = defineProps();
 const proxy = computed({
   get() {
     return props.modelValue;
