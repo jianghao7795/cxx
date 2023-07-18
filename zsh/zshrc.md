@@ -221,3 +221,8 @@ export PNPM_HOME="/home/jianghao/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # pnpm end
+
+
+
+LANGUAGE=en_US
+LANG=en_US.UTF-8
