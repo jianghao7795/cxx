@@ -6,7 +6,15 @@
 
 ### 整数类型
 
+# [格式化输出](https://rustwiki.org/zh-CN/rust-by-example/hello/print.html#格式化输出)
 
+打印操作由 [`std::fmt`](https://rustwiki.org/zh-CN/std/fmt/) 里面所定义的一系列[宏](https://rustwiki.org/zh-CN/rust-by-example/macros.html)来处理，包括：
+
+- `format!`：将格式化文本写到[字符串](https://rustwiki.org/zh-CN/rust-by-example/std/str.html)。
+- `print!`：与 `format!` 类似，但将文本输出到控制台（io::stdout）。
+- `println!`: 与 `print!` 类似，但输出结果追加一个换行符。
+- `eprint!`：与 `print!` 类似，但将文本输出到标准错误（io::stderr）。
+- `eprintln!`：与 `eprint!` 类似，但输出结果追加一个换行符。
 
 
 
