@@ -226,3 +226,31 @@ export PATH="$PNPM_HOME:$PATH"
 
 LANGUAGE=en_US
 LANG=en_US.UTF-8
+
+# 检查系统是否完全运行
+systemctl is-system-running
+
+# 关闭并停止系统
+sudo systemctl halt
+# 关闭并切断系统电源
+sudo systemctl poweroff
+# 关闭并重启系统
+sudo systemctl reboot
+# 用 kexec 关闭并重启系统
+sudo systemctl kexec
+
+# 暂停系统
+sudo systemctl suspend
+# 使系统休眠
+sudo systemctl hibernate
+# 休眠并暂停系统休眠并暂停系统
+sudo systemctl hybrid-sleep
+# 暂停系统，在一段时间后唤醒，然后休眠
+sudo systemctl suspend-then-hibernate
+
+# 进入系统默认模式
+sudo systemctl default
+# 进入系统救援模式
+sudo systemctl rescue
+# 进入系统紧急模式
+sudo systemctl emergency
