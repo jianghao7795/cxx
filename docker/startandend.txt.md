@@ -1,4 +1,4 @@
- 2.创建并运行容器
+2.创建并运行容器
 
 docker run --name mysql01 -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
 sudo docker run --name mariadb -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mariadb
@@ -7,18 +7,16 @@ docker run --name mysql8 -d -e MYSQL_ROOT_PASSWORD=123456 -p 3316:3306 mysql:lat
 
 解析：
 
---name mysql01                                       #  对容器的命名
--d                                                              #后台运行
--p 3310:3306                                           #对外暴露端口号3310
--v /home/mysql/conf:/etc/mysql/conf.d     #配置文件挂载到当前宿主机的/home/mysql/conf
--v /home/mysql/data:/var/lib/mysql            #数据挂载到当前宿主机的 /home/mysql/data
--e MYSQL_ROOT_PASSWORD=123456    #设置mysql的root用户的密码是：·123456
+--name mysql01 # 对容器的命名
+-d #后台运行
+-p 3310:3306 #对外暴露端口号 3310
+-v /home/mysql/conf:/etc/mysql/conf.d #配置文件挂载到当前宿主机的/home/mysql/conf
+-v /home/mysql/data:/var/lib/mysql #数据挂载到当前宿主机的 /home/mysql/data
+-e MYSQL_ROOT_PASSWORD=123456 #设置 mysql 的 root 用户的密码是：·123456
 
 mysql:latest #镜像 REPOSTORY:TAG
 
 docker inspect mysql8 | grep Mounts -A 20
-
-
 
 **docker inspect :** 获取容器/镜像的元数据。
 
@@ -30,15 +28,15 @@ docker inspect mysql8 | grep Mounts -A 20
 docker inspect [OPTIONS] NAME|ID [NAME|ID...]
 ```
 
-OPTIONS说明：
+OPTIONS 说明：
 
 - **-f :**指定返回值的模板文件。
 - **-s :**显示总的文件大小。
-- **--type :**为指定类型返回JSON。
+- **--type :**为指定类型返回 JSON。
 
 ### 实例
 
-获取镜像mysql:5.6的元信息。
+获取镜像 mysql:5.6 的元信息。
 
 ```shell
 runoob@runoob:~$ docker inspect mysql:5.6
@@ -66,7 +64,7 @@ runoob@runoob:~$ docker inspect mysql:5.6
 ...
 ```
 
-获取正在运行的容器mymysql的 IP。
+获取正在运行的容器 mymysql 的 IP。
 
 ```shell
 runoob@runoob:~$ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mymysql
