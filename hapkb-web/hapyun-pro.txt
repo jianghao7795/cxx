@@ -4,7 +4,7 @@ hapyun-pro
 
 体细胞变异 字段规则
 
-![变异输入格式约束](/home/jianghao/man/cxx/hapkb-web/变异输入格式约束.jpg)
+![变异输入格式约束](./变异输入格式约束.jpg)
 
 mgmt：
 
