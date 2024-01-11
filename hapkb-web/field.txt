@@ -1,6 +1,10 @@
 oncogene : 癌基因
 TSG：抑癌基因
 
+OncoKB: **[肿瘤学精准知识库 OncoKB  ](https://www.x-mol.com/paperRedirect/1534049344014848000)**满足对注释癌症体细胞改变的致癌作用和临床
+
+##### **COSMIC** : 来自不同研究机构和数据库的体细胞突变数据
+
 MET外显子14跳读信息 met_exon14_skipping_info
 
  另外一个是判断的过程
@@ -9,7 +13,7 @@ MET外显子14跳读结果 met_exon14_skipping_result
 
 一个是判断结果，应该是MET exon14-skipping，MET PPT-SNV或者为空
 
-```tex
+```rust
 exon14-skipping SA：           c.2888-1,c.2888-2
 exon14-skipping SD：           c.3028+1,c.3028+2
 exon14-skipping  c.3028+3：c.3028+3
@@ -23,7 +27,7 @@ MET PPT-SNV：c.2888-24_c.2888-9  这个区间的SNV
 
 结构域
 
-```sh
+```tex
 HGNC	   gene	 transcript	domain	    accession	        Reviewed	protein_start	protein_end
 HGNCID		基因	转录本	    结构域名称	不同数据库结构域ID 	  审核状态	  蛋白起始位置	 蛋白结束位置
 编号
@@ -40,3 +44,11 @@ NM_052900:c.2497T>A:19.91/0
 
 
 NM_005359:c.1082G>A:11.95
+
+```json
+{
+    "aa": 1
+}
+```
+
+
