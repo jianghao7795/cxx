@@ -17,7 +17,7 @@ obj.count = 1
     var root = this;
 
     function watch(target, func) {
-
+    
         var proxy = new Proxy(target, {
             get: function(target, prop) {
                 return target[prop];
@@ -27,10 +27,10 @@ obj.count = 1
                 func(prop, value);
             }
         });
-
+    
         return proxy;
     }
-
+    
     this.watch = watch;
 })()
 
@@ -45,3 +45,28 @@ var newObj = watch(obj, function(key, newvalue) {
 document.getElementById('button').addEventListener("click", function() {
     newObj.value += 1
 });
+
+
+
+```javascript
+const handler = {
+    get(target, prop, receiver) {
+        console.log(`Getting property "${prop}"`);
+    	return Reflect.get(target, prop, receiver);
+    },
+    set(target, prop, value, receiver) {
+        console.log(`Setting property "${prop}" to ${value}`);
+    	return Reflect.set(target, prop, value, receiver);
+    }
+}
+
+const obj = {
+    name: "ab"
+};
+
+const proxyObj = new Proxy(obj, handler);
+console.log(proxyObj.name);
+proxyObj.age = 25;
+console.log(proxyObj);
+
+```

@@ -2,3 +2,24 @@
 Proxy 用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 
 Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
+
+代理有许多自定义处理程序，允许我们基本上“捕获”任何对象操作并用它做一些有趣的事情。最常用的方法是👍：
+
+- `proxy.apply(objects, thisObject, argList)`- 捕获函数调用的方法。
+- `proxy.construct(object, argList, newTarget)`- 使用 constructor 关键字调用函数时捕获的方法。`new`
+- `proxy.defineProperty(object, prop, descriptor)`- 使用将新属性添加到对象时捕获的方法。`Object.defineProperty`
+- `proxy.deleteProperty(object, prop)`- 从对象中删除属性时捕获的方法。
+- `proxy.get(object, prop, receiver)`- 如前所述，当有人试图从对象获取属性时，一种陷阱的方法。`get`
+- `proxy.set(object, prop, value, receiver)`- 当属性被赋予值时捕获的方法。
+- `proxy.has(object, prop)`- 一种诱捕操作员的方法。`in`
+
+上面的方法足以完成你想用代理做的几乎所有事情。它们很好地覆盖了所有主要对象操作，可以根据需要进行修改和自定义。
+
+不过，还有一些 - 因此，除了这些非常基本的对象操作外，我们还可以访问：
+
+- `proxy.getPrototypeOf(object)`- 捕获方法的方法。`Object.getPrototypeOf`
+- `proxy.getOwnPropertyDescriptor(object, prop)`- 捕获 的方法，它返回特定属性的描述符 - 例如，它是可枚举的，等等。`getOwnPropertyDescriptor`
+- `proxy.isExtensible(object)`- 一种在触发时捕获的方法。`Object.isExtensible()`
+- `proxy.preventExtensions(object)`- 一种在触发时捕获的方法。`Object.preventExtensions()`
+- `proxy.setPrototypeOf(object, prototype)`- 一种在触发时捕获的方法。`Object.setPrototypeOf()`
+- `proxy.ownKeys(object)`- 一种在触发 like 方法时捕获的方法。`Object.getOwnPropertyNames()`
