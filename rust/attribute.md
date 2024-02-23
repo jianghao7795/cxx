@@ -254,3 +254,235 @@ Rust 内建了 14 类属性。OMG @_@!!
   - `feature` — 用于启用非稳定的或实验性的编译器特性。参见 [The Unstable Book](https://doc.rust-lang.org/unstable-book/index.html) 了解在 `rustc` 中实现的特性。
 - 类型系统(Type System)
   - [`non_exhaustive`](https://rustwiki.org/zh-CN/reference/attributes/type_system.html#the-non_exhaustive-attribute) — 表明一个类型将来会添加更多的字段/变体。
+
+```rust
+
+#![allow(unused)]
+fn main() {
+// 指定 crate 名称.
+#![crate_name = "projx"]
+
+// 指定编译输出文件的类型
+#![crate_type = "lib"]
+
+// 打开一种警告
+// 这句可以放在任何模块中, 而不是只能放在匿名 crate 模块里。
+#![warn(non_camel_case_types)]
+}
+```
+
+
+
+
+
+## 1.条件编译
+
+针对不同的编译目标来生成不同的代码，比如在编写跨平台模块时。
+
+- cfg
+  - debug_assertions: 若没有开启编译优化时就会成立。
+  - target_arch = “…”: 目标平台的CPU架构，包括但不限于x86, x86_64, mips, powerpc, arm或aarch64。
+  - target_endian = “…”: 目标平台的大小端，包括big和little。
+  - target_env = “…”: 表示使用的运行库，比如musl表示使用的是MUSL的libc实现, msvc表示使用微软的MSVC，gnu表示使用GNU的实现。 但在部分平台这个数据是空的。
+  - target_family = “…”: 表示目标操作系统的类别，比如windows和unix。这个属性可以直接作为条件使用，如#[unix]，#[cfg(unix)]。
+  - target_os = “…”: 目标操作系统，包括但不限于windows, macos, ios, linux, android, freebsd, dragonfly, bitrig, openbsd, netbsd。
+  - target_pointer_width = “…”: 目标平台的指针宽度，一般就是32或64。
+  - target_vendor = “…”: 生产商，例如apple, pc或大多数Linux系统的unknown。
+  - test: 当启动了单元测试时（即编译时加了—test参数，或使用cargo test）。
+- cfg_attr: cfg_attr(a, b)] 这表示若a成立，则这个就相当于#[cfg(b)]。
+
+## 2.测试
+
+- test: 指明这个函数为单元测试函数，在非测试环境下不会被编译。通过将`--test`参数传递给rustc 或使用来启用测试模式`cargo test`。
+- ignore: 禁用测试功能。该ignore属性告诉测试工具不要执行该功能作为测试。在测试模式下，它仍将被编译。rustc测试工具支持该`--include-ignored`标志，以强制运行忽略的测试。
+- should_panic: 指明这个单元测试函数必然会panic。该should_panic属性可以选择使用必须出现在紧急消息中的输入字符串。如果在消息中找不到该字符串，则测试将失败
+
+## 3.派生
+
+- derive: 编译器提供一个编译器插件叫作derive，它可以帮你去生成一些代码去实现（impl）一些特定的Trait。目前derive仅支持标准库中部分的Trait。
+- automatically_derived: 用于由创建的实现的标记 derive。
+
+## 4.宏相关
+
+- macro_reexport: 应用于extern crate上，可以再把这些导入的宏再输出出去给别的库使用。
+
+- macro_export: 应于在宏上，可以使这个宏可以被导出给别的库使用。
+
+- macro_use: 把模块或库中定义的宏导出来。应用于mod上，则把此模块内定义的宏导出到它的父模块中，应用于
+
+  ```rust
+  extern crate
+  ```
+
+  上，则可以接受一个列表，
+
+  ```rust
+  #[macro_use(debug, trace)]
+  extern crate log;
+  则可以只导入列表中指定的宏，若不指定则导入所有的宏。
+  ```
+
+- proc_macro: 定义类似函数的宏
+
+- proc_macro_derive: 定义一个派生宏。
+
+- proc_macro_attribute: 定义属性宏。
+
+## 5.诊断
+
+- allow, warn, deny, forbid: lint 相关标志开关 (目前的Rust编译器已自带的Linter，它可以在编译时静态帮你检测不用的代码、死循环、编码风格等等)
+  - allow(C): 编译器将不会警告对于C条件的检查错误。
+  - deny(C): 编译器遇到违反C条件的错误将直接当作编译错误。
+    - forbit(C): 行为与deny(C)一样，但这个将不允许别人使用allow(C)去修改。
+    - warn(C): 编译器将对于C条件的检查错误输出警告。支持的C可以通过rustc -W help和默认设置一起找到，并记录在rustc书中。
+- deprecated: 生成弃用通知。
+- must_use: 为未使用的值生成lint。
+
+## 6.ABI, 链接, 符号, 和 FFI
+
+- link: 说明这个块需要链接一个native库，它有以下参数：
+  - name - 库的名字，比如libname.a的名字是name；
+  - kind - 库的类型，它包括
+    - dylib - 动态链接库
+    - static - 静态库
+    - framework - OS X里的Framework
+- link_name: 指定extern块中函数或静态变量的符号名称。
+- no_link: 应用于extern crate上，表示即使我们把它里面的库导入进来了，但是不要把这个库链接到目标文件中
+- repr: 控制类型布局。
+- crate_type: 指定Crate的类型，有以下几种选择
+  - “bin” - 编译为可执行文件；
+  - “lib” - 编译为库；
+  - “dylib” - 编译为动态链接库；
+  - “staticlib” - 编译为静态链接库；
+  - “rlib” - 编译为Rust特有的库文件，它是一种特殊的静态链接库格式，它里面会含有一些元数据供编译器使用，最终会静态链接到目标文件之中。
+- no_main: Disables emitting the main symbol.
+- export_name: 指定函数或静态的导出符号名称。
+- link_p
+- used: 强制编译器在输出目标文件中保留静态项。
+- crate_name: 指定Crate的名字。如`#[crate_name = "my_crate"]`则可以让编译出的库名字为`libmy_crate.rlib`
+- export_function: 用于静态变量或函数，指定它们在目标文件中的符号名。
+- no_mangle: 可以应用于任意的Item，表示取消对它们进行命名混淆，直接把它们的名字作为符号写到目标文件中。
+- simd: 可以用于元组结构体上，并自动实现了数值运算符，这些操作会生成相应的SIMD指令。
+
+## 7.代码生成
+
+- inline: 内联函数即建议编译器可以考虑把整个函数拷贝到调用者的函数体中，而不是生成一个call指令调用过去。这种优化对于短函数非常有用，有利于提高性能。
+  - `#[inline]`: 建议编译器内联这个函数
+  - `#[inline(always)]`: 要求编译器必须内联这个函数
+  - `#[inline(never)]`: 要求编译器不要内联这个函数
+- cold: 指明这个函数很可能是不会被执行的，因此优化的时候特别对待它。
+- no_builtins: 禁止使用某些内置功能。
+- target_feature: 配置特定于平台的代码生成。
+- track_caller: 将父呼叫位置传递到`std::panic::Location::caller()`。
+
+## 8.文档
+
+- doc: 为这个Item绑定文档
+
+## 9.预引入
+
+- no_std: Removes std from the prelude.
+- no_implicit_prelude: 取消自动插入`use std::prelude::*`。
+
+## 10.模块
+
+- path: 如声明mod a;，则寻找本文件夹下的a.rs文件，本文件夹下的a/mod.rs文件
+
+  ```rust
+  #[cfg(unix)]
+  #[path = "sys/unix.rs"]
+  mod sys;
+  
+  #[cfg(windows)]
+  #[path = "sys/windows.rs"]
+  mod sys;
+  ```
+
+## 11.限制
+
+- recursion_limit 设置某些编译时操作的最大递归限制。默认rustc值为128。
+- type_length_limit 设置了在单态化期间构造具体类型时进行类型替换的最大数量。默认rustc值为1048576。
+
+## 12.运行时
+
+- panic_handler 设置处理恐慌的功能。
+- global_allocator 设置全局内存分配器。
+- windows_subsystem 指定要链接的Windows子系统。
+
+## 13.语言特性
+
+- feature: 在非稳定版的Rust编译器中，可以使用一些不稳定的功能，比如一些还在讨论中的新功能、正在实现中的功能等。Rust编译器提供一个应用于Crate的属性feature来启用这些不稳定的功能。
+
+## 14.类型系统
+
+- non_exhaustive: 表示类型将来会添加更多字段/变量。
+
+# 应用
+
+## 应用于模块的属性
+
+- no_implicit_prelude
+- path
+
+## 应用于crate的属性
+
+- crate_name
+
+- crate_type
+
+- feature
+
+- no_builtins: 去掉内建函数。
+
+- no_main: 不生成main这个符号，当你需要链接的库中已经定义了main函数时会用到。
+
+- no_start: 不链接自带的native库。
+
+- no_std: 不链接自带的std库。
+
+- plugin: 加载编译器插件，一般用于加载自定义的编译器插件库。
+
+  ```
+        #![plugin(foo, bar)] // 加载foo, bar两个插件
+        #![plugin(foo(arg1, arg2))] // 或者给插件传入必要的初始化参数
+  复制代码
+  ```
+
+- recursive_limit: 设置在编译期最大的递归层级。比如自动解引用、递归定义的宏等。默认设置是`#![recursive_limit = "64"]`
+
+## 应用于函数的属性
+
+- main: 把这个函数作为入口函数，替代fn main，会被入口函数（Entry Point）调用。
+- plugin_registrar: 编写编译器插件时用，用于定义编译器插件的入口函数。
+- start: 把这个函数作为入口函数（Entry Point），改写 start language item。不再执行标准库中的初始化流程
+- test
+- should_panic
+- cold
+
+## 应用于FFI的属性
+
+- extern块可以应用以下属性
+
+  - link_args: 指定链接时给链接器的参数，平台和实现相关。
+  - link
+
+- 在extern块里面，可以使用
+
+  - link_name
+  - linkage: 对于全局变量，可以指定一些LLVM的链接类型（ http://llvm.org/docs/LangRef.html#linkage-types ）。
+
+- 对于enum类型，可以使用
+
+  - repr: 目前接受C，C表示兼容C ABI。
+
+    ```rust
+      #[repr(C)]
+      enum eType {
+          Operator,
+          Indicator,
+      }
+    ```
+
+- 对于struct类型，可以使用
+
+  - repr: 目前只接受C和packed，C表示结构体兼容C ABI，packed表示移除字段间的padding。
