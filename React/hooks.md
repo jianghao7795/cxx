@@ -446,3 +446,383 @@ export default function BlogList() {
 　　4.拆分复杂组件。
 
 其中，我通过四个案例来帮助你真正理解 Hooks ，并熟练掌握自定义 Hooks 的用法。应始终记得，要用 Hooks 的思路去解决问题，发挥 Hooks 的最大价值，就是要经常去思考哪些逻辑应该封装到一个独立的 Hook，保证每个 Hook 的短小精悍，从而让代码更加清晰，易于理解和维护。
+
+
+
+
+
+# 2
+
+## 自定义 Hook
+
+如果函数的名字以 `use` 开头，并且调用了其他的 `Hook` ，则就称其为一个自定义 `Hook` 。
+
+`Hook` **是一种复用状态逻辑的方式，它不复用 `state` 本身，事实上 `Hook` 的每次调用都有一个完全独立的 `state` 。**
+
+简单的自定义 `Hook` ：
+
+```react
+typescript复制代码function useTitle(title){
+    useEffect(()=>{
+        document.title = title;
+    },[title]);
+}
+```
+
+使用：
+
+```react
+typescript复制代码function CustomHook (){
+    useTitle('my use title');
+    return (
+        <div>CustomHook</div>
+    )
+}
+```
+
+我们来看一个稍微复杂点的例子，通过自定义 `hook` 实现 `input` 双向数据绑定。
+
+### input 实现双向数据绑定
+
+```react
+typescript复制代码function useBind(initVal){
+    let [value,setValue] = useState(initVal);
+    let onChange = function(event){
+        setValue(event.currentTarget.value);
+    }
+    return {
+        value,
+        onChange
+    }
+}
+```
+
+使用：
+
+```react
+typescript复制代码function CustomHook (){
+    const valueObj = useBind("");
+    return <input {...valueObj} />
+}
+```
+
+写到这里应该可以感受到 `hook` 的逻辑复用的能力。
+
+对比 `HOC` ，大量使用  `HOC` 的情况下让我们的代码变得嵌套层级非常深，使用自定义 `hook` ，我们可以实现扁平式的状态逻辑复用，而避免了大量的组件嵌套。
+
+既然自定义 `Hook` 这么香，那么有什么优秀的轮子值得我们来深入学习吗？
+
+阿里开源的 `ahooks` 。它是一个 `React Hooks` 库，致力提供常用且高质量的 `Hooks` 。
+
+首先安装： `npm install ahooks --save` 
+
+```react
+typescript复制代码import React from "react";
+import { useToggle } from "ahooks";
+
+function AHooks(){
+    const [ state, { toggle } ] = useToggle();
+    return (
+        <div>
+        <p>Current Boolean: {String(state)}</p>
+        <p>
+            <button onClick={() => toggle()}>Toggle</button>
+        </p>
+        </div>
+    );
+}
+
+export default AHooks;
+```
+
+它的使用可以自行查阅文档，我们今天挑选几个常用 `Hook` 来分析其源码。
+
+### useUpdate
+
+强制组件重新渲染的 `hook` 
+
+```react
+typescript复制代码const useUpdate = () => {
+    const [, setState] = useState(0);//{1}
+
+    return useCallback(() => setState((num) => {return num + 1}));//{2}
+};
+```
+
+分析：
+
+- {1} 定义一个初始状态；
+- {2} 调用 `setState` 方法则会导致 `state` 变化，从而刷新组件。
+
+### useUpdateEffect
+
+一个只在依赖更新时执行的 `useEffect hook` 。使用上与 `useEffect` 完全相同，只是它忽略了首次渲染，且只在依赖项更新时运行。
+
+```react
+typescript复制代码const useUpdateEffect = (effect, deps) => {
+    const isMounted = useRef(false); //{1}
+  
+    useEffect(() => {
+      // {2}
+      if (!isMounted.current) {
+        isMounted.current = true;
+      } else {
+        return effect();
+      }
+    }, deps);
+ };
+```
+
+解析：
+
+- {1} 使用 `useRef` 存一个布尔值；
+- {2} 当首次执行 `useEffect` 时，设置其值为 `true` 。再次执行时就可以执行 `effect` 回调函数。
+
+### usePersistFn
+
+持久化 `function` 的 `Hook` ，在某些场景中，你可能会需要用 `useCallback` 记住一个回调，但由于内部函数必须经常重新创建，记忆效果不是很好，导致子组件重复 `render` 。对于超级复杂的子组件，重新渲染会对性能造成影响。通过 `usePersistFn` ，可以保证函数地址永远不会变化。
+
+```react
+typescript复制代码  function usePersistFn(fn) {
+    const ref = useRef(() => {
+      throw new Error('Cannot call function while rendering.');
+    });
+  
+    ref.current = fn;
+  
+    const persistFn = useCallback(((...args) => ref.current(...args)), [ref]);
+  
+    return persistFn;
+  }
+```
+
+解析：`useCallback` 的第一个参数传入 `ref` ，由于 `ref` 在整个生命周期内是不会发生变化的，因此 `useCallback` 的返回值不会更新。
+
+### useMount and useUnmount
+
+组件挂载和组件卸载生命周期 `Hook` 。
+
+使用示例：
+
+```react
+typescript复制代码const MyComponent = () => {
+    useMount(() => {
+      console.log('mount'); // 挂载时触发
+    });
+    useUnmount(() => {
+        console.log('unmount'); // 卸载时触发
+    });    
+    return <div>Hello World</div>;
+  };
+
+function CustomHook (){
+    const [state, { toggle }] = useToggle(false);
+    return (
+        <div>
+            <button type="button" onClick={() => toggle()}>
+                {state ? 'unmount' : 'mount'}
+            </button>
+            {state && <MyComponent />}
+        </div>
+    )
+}
+```
+
+源码分析：
+
+```react
+typescript复制代码# mount
+const useMount = (fn) => {
+  const fnPersist = usePersistFn(fn);
+
+  useEffect(() => {
+    if (fnPersist && typeof fnPersist === 'function') {
+      fnPersist();
+    }
+  }, []);
+};
+
+# unmount
+const useUnmount = (fn) => {
+  const fnPersist = usePersistFn(fn);
+
+  useEffect(
+    () => () => {
+      if (fnPersist && typeof fnPersist === 'function') {
+        fnPersist();
+      }
+    },
+    [],
+  );
+};
+```
+
+以上是稍微简单的 `hook` 编写，通过编写这些 `hook` ，至少让我们知道，自定义 `hook` 并没有想象的那么复杂，接下来看几个有点难度的 `hook` 。
+
+### useDebounce
+
+用来处理防抖值的 `Hook` 。
+
+示例： `DebouncedValue` 只会在输入结束 `500ms` 后变化。
+
+```react
+typescript复制代码import React,{useState} from "react";
+import {useDebounce} from "./customHooks";
+
+function DebounceHook (){
+    const [value, setValue] = useState();
+    const debouncedValue = useDebounce(value,  500 );
+    return (
+        <div>
+            <input
+                value={value}
+                onChange={(e) => setValue(e.target.value) }
+                placeholder="Typed value"
+                style={{ width: 280 }}
+            />
+            <p style={{ marginTop: 16 }}>DebouncedValue: {debouncedValue}</p>
+        </div>
+    )
+}
+
+export default DebounceHook;
+```
+
+实现：
+
+```react
+typescript复制代码  const useDebounceFn = (fn,wait)=>{
+      const _wait =  wait || 0;
+    
+      const timer = useRef();
+      const fnRef = useRef(fn);
+      fnRef.current = fn;
+    
+      const cancel = useCallback(()=>{
+        if(timer.current){
+            clearTimeout(timer.current);
+        }
+      },[])
+
+      const run = useCallback((...args)=>{
+          cancel();
+          timer.current = setTimeout(()=>{
+            fnRef.current(...args);
+          },_wait)
+      },[_wait,cancel])
+
+      useEffect(()=> cancel,[]);
+
+      return {
+          run,
+          cancel
+      }
+  }
+
+  const useDebounce =(value,wait)=>{
+    const [debounced, setDebounced] = useState(value);
+
+    const { run } = useDebounceFn(() => {
+        setDebounced(value);
+      }, wait);
+    
+      useEffect(() => {
+        run();
+      }, [value]);
+    
+      return debounced;
+  }
+```
+
+解析：
+
+- `useDebounce` 收到 `value` 值变化时，会调用 `useEffect` 钩子；
+- `useEffect` 钩子调用 `run` 方法，也就是 `useDebounceFn` 这个钩子返回的；
+- `run` 方法中实现了防抖的核心功能。
+
+### useThrottle
+
+用来处理节流值的 `Hook` 。节流的处理，一定时间内只触发一次。
+
+示例： `ThrottledValue` 每隔 `500ms` 变化一次。
+
+```react
+typescript复制代码import React,{useState} from "react";
+import {useThrottle} from "./customHooks";
+
+function ThrottleHook (){
+    const [value, setValue] = useState();
+    const throttledValue = useThrottle(value,  500 );
+    return (
+        <div>
+            <input
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder="Typed value"
+                style={{ width: 280 }}
+            />
+            <p style={{ marginTop: 16 }}>throttledValue: {throttledValue}</p>
+        </div>
+    )
+}
+
+export default ThrottleHook;
+```
+
+实现：
+
+```react
+typescript复制代码  const useThrottleFn = (fn,wait)=>{
+    const _wait =  wait || 0;
+    const timer = useRef();
+    const fnRef = useRef(fn);
+    fnRef.current = fn;
+
+    const currentArgs = useRef([]);
+
+    const cancel = useCallback(()=>{
+      if(timer.current){
+          clearTimeout(timer.current);
+      }
+      timer.current = undefined;
+    },[])
+
+    const run = useCallback((...args)=>{
+        currentArgs.current = args;
+        if(!timer.current){
+            timer.current = setTimeout(()=>{
+                fnRef.current(...args);
+                timer.current = undefined;
+            },_wait)
+        }   
+    },[_wait,cancel])
+
+    useEffect(()=> cancel,[]);
+
+    return {
+        run,
+        cancel
+    }
+}
+
+const useThrottle =(value,wait)=>{
+    const [throttled, setThrottled] = useState(value);
+
+    const { run } = useThrottleFn(() => {
+        setThrottled(value);
+      }, wait);
+    
+      useEffect(() => {
+        run();
+      }, [value]);
+    
+      return throttled;
+}
+```
+
+解析：
+
+- `useThrottle` 收到 `value` 值变化时，会调用 `useEffect` 钩子；
+- `useEffect` 钩子调用 `run` 方法，也就是 `useThrottleFn` 这个钩子返回的；
+- `run` 方法中实现了节流的核心方法，每次判断定时器是否开启，如果没有开启则开启定时器执行函数；
+- 因此不论输入频率多快，都是每隔一定时间才会触发函数的执行。
