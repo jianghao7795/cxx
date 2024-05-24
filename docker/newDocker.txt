@@ -13,3 +13,4 @@ docker exec -i  mysql_server【docker容器名称/ID】 mysqltest_db_copy【数�
 4	#docker exec -ti 【容器名/ID】sh
 5	将文件导入数据库
 6	# mysql -uroot -p 【数据库名】 < ***.sql
+
