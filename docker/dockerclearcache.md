@@ -3,7 +3,7 @@
 一般情况下，运维清理镜像是通过命令 docker rm i 删除镜像的。但是这条命令不会删除docker build命令产生的缓存文件。这个时候需要使用 docker system 的系列命令来做相关处理。
 
 ```shell
-shell复制代码docker system --help
+docker system --help
 # 输出
 Usage:  docker system COMMAND
 
@@ -33,7 +33,7 @@ bash
 可以发现，存在大量使用 docker build 命令时产生的镜像缓存 (Build Cache) ，下面使用命令 prune 将其彻底清理。
 
 ```shell
-shell复制代码docker system prune --help
+docker system prune --help
 # 输出
 Flag shorthand -h has been deprecated, please use --help
 
