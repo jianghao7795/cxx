@@ -3,6 +3,10 @@
 docker run --name mysql01 -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7
 sudo docker run --name mariadb -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mariadb
 
+docker run --name mysql -d -p 3306:3306 -v /root/mysql/conf:/etc/mysql/conf.d -v /root/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql
+
+ docker run -itd --name redis -p 6379:6379 redis
+
 docker run --name mysql8 -d -e MYSQL_ROOT_PASSWORD=123456 -p 3316:3306 mysql:latest
 
 解析：
