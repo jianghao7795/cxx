@@ -4,7 +4,7 @@
 :art:
 ```
 
-Improve structure / format of the code.
+改进代码的结构/格式。
 
 ⚡️
 
@@ -12,7 +12,7 @@ Improve structure / format of the code.
 :zap:
 ```
 
-Improve performance.
+提高性能。
 
 🔥
 
@@ -20,7 +20,7 @@ Improve performance.
 :fire:
 ```
 
-Remove code or files.
+删除代码或文件。
 
 🐛
 
@@ -36,7 +36,7 @@ Fix a bug.
 :ambulance:
 ```
 
-Critical hotfix.
+关键修补程序。
 
 ✨
 
@@ -44,7 +44,7 @@ Critical hotfix.
 :sparkles:
 ```
 
-Introduce new features.
+引入新功能。
 
 📝
 
@@ -52,7 +52,7 @@ Introduce new features.
 :memo:
 ```
 
-Add or update documentation.
+添加或更新文档。
 
 🚀
 
@@ -60,7 +60,7 @@ Add or update documentation.
 :rocket:
 ```
 
-Deploy stuff.
+部署东西。
 
 💄
 
@@ -68,7 +68,7 @@ Deploy stuff.
 :lipstick:
 ```
 
-Add or update the UI and style files.
+添加或更新UI和样式文件。
 
 🎉
 
@@ -76,7 +76,7 @@ Add or update the UI and style files.
 :tada:
 ```
 
-Begin a project.
+开始一个项目。
 
 ✅
 
@@ -84,7 +84,7 @@ Begin a project.
 :white_check_mark:
 ```
 
-Add, update, or pass tests.
+Add, update, or pass tests.添加、更新或通过测试
 
 🔒️
 
@@ -92,7 +92,7 @@ Add, update, or pass tests.
 :lock:
 ```
 
-Fix security or privacy issues.
+Fix security or privacy issues.修复安全或隐私问题。
 
 🔐
 
@@ -100,7 +100,7 @@ Fix security or privacy issues.
 :closed_lock_with_key:
 ```
 
-Add or update secrets.
+Add or update secrets.添加或更新机密。
 
 🔖
 
@@ -108,7 +108,7 @@ Add or update secrets.
 :bookmark:
 ```
 
-Release / Version tags.
+Release / Version tags.发布/版本标签。
 
 🚨
 
@@ -116,7 +116,7 @@ Release / Version tags.
 :rotating_light:
 ```
 
-Fix compiler / linter warnings.
+Fix compiler / linter warnings.修复编译器/linter警告。
 
 🚧
 
@@ -124,7 +124,7 @@ Fix compiler / linter warnings.
 :construction:
 ```
 
-Work in progress.
+Work in progress.工作正在进行中。
 
 💚
 
@@ -132,7 +132,7 @@ Work in progress.
 :green_heart:
 ```
 
-Fix CI Build.
+Fix CI Build.修复CI生成。
 
 ⬇️
 
@@ -140,7 +140,7 @@ Fix CI Build.
 :arrow_down:
 ```
 
-Downgrade dependencies.
+Downgrade dependencies.降级依赖关系。
 
 ⬆️
 
@@ -148,7 +148,7 @@ Downgrade dependencies.
 :arrow_up:
 ```
 
-Upgrade dependencies.
+Upgrade dependencies.升级依赖项。
 
 📌
 
@@ -156,7 +156,7 @@ Upgrade dependencies.
 :pushpin:
 ```
 
-Pin dependencies to specific versions.
+Pin dependencies to specific versions.将依赖项固定到特定版本。
 
 👷
 
@@ -164,7 +164,7 @@ Pin dependencies to specific versions.
 :construction_worker:
 ```
 
-Add or update CI build system.
+Add or update CI build system.添加或更新CI生成系统
 
 📈
 
@@ -172,7 +172,7 @@ Add or update CI build system.
 :chart_with_upwards_trend:
 ```
 
-Add or update analytics or track code.
+Add or update analytics or track code.添加或更新分析或跟踪代码。
 
 ♻️
 
@@ -180,7 +180,7 @@ Add or update analytics or track code.
 :recycle:
 ```
 
-Refactor code.
+Refactor code.重构器代码
 
 ➕
 
@@ -188,7 +188,7 @@ Refactor code.
 :heavy_plus_sign:
 ```
 
-Add a dependency.
+Add a dependency.添加依赖项。
 
 ➖
 
@@ -196,7 +196,7 @@ Add a dependency.
 :heavy_minus_sign:
 ```
 
-Remove a dependency.
+Remove a dependency.删除依赖项。
 
 🔧
 
@@ -204,7 +204,7 @@ Remove a dependency.
 :wrench:
 ```
 
-Add or update configuration files.
+Add or update configuration files.添加或更新配置文件。
 
 🔨
 
@@ -212,7 +212,7 @@ Add or update configuration files.
 :hammer:
 ```
 
-Add or update development scripts.
+Add or update development scripts.添加或更新开发脚本。
 
 🌐
 
@@ -220,7 +220,7 @@ Add or update development scripts.
 :globe_with_meridians:
 ```
 
-Internationalization and localization.
+Internationalization and localization.国际化和本地化。
 
 ✏️
 
@@ -228,7 +228,7 @@ Internationalization and localization.
 :pencil2:
 ```
 
-Fix typos.
+Fix typos.修复拼写错误
 
 💩
 
@@ -236,7 +236,7 @@ Fix typos.
 :poop:
 ```
 
-Write bad code that needs to be improved.
+Write bad code that needs to be improved.编写需要改进的错误代码。
 
 ⏪️
 
@@ -244,7 +244,7 @@ Write bad code that needs to be improved.
 :rewind:
 ```
 
-Revert changes.
+Revert changes.还原更改。
 
 🔀
 
@@ -252,7 +252,7 @@ Revert changes.
 :twisted_rightwards_arrows:
 ```
 
-Merge branches.
+Merge branches.合并分支。
 
 📦️
 
@@ -260,7 +260,7 @@ Merge branches.
 :package:
 ```
 
-Add or update compiled files or packages.
+Add or update compiled files or packages.添加或更新已编译的文件或包。
 
 👽️
 
@@ -268,7 +268,7 @@ Add or update compiled files or packages.
 :alien:
 ```
 
-Update code due to external API changes.
+Update code due to external API changes.由于外部API更改而更新代码。
 
 🚚
 
@@ -276,7 +276,7 @@ Update code due to external API changes.
 :truck:
 ```
 
-Move or rename resources (e.g.: files, paths, routes).
+Move or rename resources (e.g.: files, paths, routes).移动或重命名资源（例如：文件、路径、路由）。
 
 📄
 
@@ -284,7 +284,7 @@ Move or rename resources (e.g.: files, paths, routes).
 :page_facing_up:
 ```
 
-Add or update license.
+Add or update license.添加或更新许可证
 
 💥
 
@@ -292,7 +292,7 @@ Add or update license.
 :boom:
 ```
 
-Introduce breaking changes.
+Introduce breaking changes.引入突破性变化。
 
 🍱
 
@@ -300,7 +300,7 @@ Introduce breaking changes.
 :bento:
 ```
 
-Add or update assets.
+Add or update assets.添加或更新资产
 
 ♿️
 
@@ -308,7 +308,7 @@ Add or update assets.
 :wheelchair:
 ```
 
-Improve accessibility.
+Improve accessibility提高可访问性
 
 💡
 
@@ -316,7 +316,7 @@ Improve accessibility.
 :bulb:
 ```
 
-Add or update comments in source code.
+Add or update comments in source code.在源代码中添加或更新注释。
 
 🍻
 
@@ -324,7 +324,7 @@ Add or update comments in source code.
 :beers:
 ```
 
-Write code drunkenly.
+Write code drunkenly.醉醺醺地写代码。
 
 💬
 
@@ -332,7 +332,7 @@ Write code drunkenly.
 :speech_balloon:
 ```
 
-Add or update text and literals.
+Add or update text and literals.添加或更新文本和文字
 
 🗃️
 
@@ -340,7 +340,7 @@ Add or update text and literals.
 :card_file_box:
 ```
 
-Perform database related changes.
+Perform database related changes.执行与数据库相关的更改。
 
 🔊
 
@@ -348,7 +348,7 @@ Perform database related changes.
 :loud_sound:
 ```
 
-Add or update logs.
+Add or update logs.添加或更新日志。
 
 🔇
 
@@ -356,7 +356,7 @@ Add or update logs.
 :mute:
 ```
 
-Remove logs.
+Remove logs.删除日志。
 
 👥
 
@@ -364,7 +364,7 @@ Remove logs.
 :busts_in_silhouette:
 ```
 
-Add or update contributor(s).
+Add or update contributor(s).添加或更新贡献者。
 
 🚸
 
@@ -372,7 +372,7 @@ Add or update contributor(s).
 :children_crossing:
 ```
 
-Improve user experience / usability.
+Improve user experience / usability.提高用户体验/可用性。
 
 🏗️
 
@@ -380,7 +380,7 @@ Improve user experience / usability.
 :building_construction:
 ```
 
-Make architectural changes.
+Make architectural changes.进行架构更改
 
 📱
 
@@ -388,7 +388,7 @@ Make architectural changes.
 :iphone:
 ```
 
-Work on responsive design.
+Work on responsive design.致力于响应式设计。
 
 🤡
 
@@ -396,7 +396,7 @@ Work on responsive design.
 :clown_face:
 ```
 
-Mock things.
+Mock things.嘲笑事物。
 
 🥚
 
@@ -404,7 +404,7 @@ Mock things.
 :egg:
 ```
 
-Add or update an easter egg.
+Add or update an easter egg.添加或更新复活节彩蛋。
 
 🙈
 
@@ -420,7 +420,7 @@ Add or update a .gitignore file.
 :camera_flash:
 ```
 
-Add or update snapshots.
+Add or update snapshots.添加或更新快照
 
 ⚗️
 
@@ -428,7 +428,7 @@ Add or update snapshots.
 :alembic:
 ```
 
-Perform experiments.
+Perform experiments.进行实验。
 
 🔍️
 

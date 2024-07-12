@@ -3,23 +3,26 @@
 
 防抖
 
+```javascript
 function debounce(func, wait) {
     let timeout;
     return function () {
         let context = this;
-        let args = arguments;
+        let args = arguments;if (timeout) clearTimeout(timeout);
 
-        if (timeout) clearTimeout(timeout);
-    
-        timeout = setTimeout(() => {
-            func.apply(context, args)
-        }, wait);
+    timeout = setTimeout(() => {
+        func.apply(context, args)
+    }, wait);
     }
-}
+    }
+```
+
+
 
 
 节流
 
+```javascript
 function throttle(func, wait) {
     let previous = 0;
     return function() {
@@ -32,8 +35,13 @@ function throttle(func, wait) {
         }
     }
 }
+```
+
+
 
 9.判断小数是否相等
+
+```javascript
 function epsEqu(x,y) {
   return Math.abs(x - y) < Math.pow(2, -52);
 }
@@ -49,20 +57,21 @@ function epsEqu(x,y) {
 JavaScript深入之new的模拟实现
 
 function objectFactory() {
+var obj = new Object(),//从Object.prototype上克隆一个对象
 
-    var obj = new Object(),//从Object.prototype上克隆一个对象
-    
-    Constructor = [].shift.call(arguments);//取得外部传入的构造器
-    
-    var F=function(){};
-    F.prototype= Constructor.prototype;
-    obj=new F();//指向正确的原型
-    
-    var ret = Constructor.apply(obj, arguments);//借用外部传入的构造器给obj设置属性
-    
-    return typeof ret === 'object' ? ret : obj;//确保构造器总是返回一个对象
+Constructor = [].shift.call(arguments);//取得外部传入的构造器
 
-};
+var F=function(){};
+F.prototype= Constructor.prototype;
+obj=new F();//指向正确的原型
+
+var ret = Constructor.apply(obj, arguments);//借用外部传入的构造器给obj设置属性
+
+return typeof ret === 'object' ? ret : obj;//确保构造器总是返回一个对象
+    };
+```
+
+
 
 数组方法：
 flat(Infinity)扁平化嵌套数组
@@ -129,6 +138,70 @@ function unique(arr) {
 ```
 
 
+
+深复制
+
+```javascript
+function clone(target, map = new Map()){
+    if (typeof target === 'object') { // 引用类型才继续深拷贝
+        let obj = Array.isArray(target) ? [] : {} // 考虑数组
+        //防止循环引用
+        if (map.get(target)) {
+            return map.get(target) // 有拷贝记录就直接返回
+        }
+        map.set(target,obj) // 没有就存储拷贝记录
+        for (let key in target) {
+            obj[key] = clone(target[key]) // 递归
+        }
+        return obj
+    } else {
+        return target
+    }
+}
+// 优化版
+// 用while来实现一个通用的forEach遍历
+function forEach(array, iteratee) {
+    let index = -1;
+    const length = array.length;
+    while (++index < length) {
+        iteratee(array[index], index);
+    }
+    return array;
+}
+// WeakMap 对象是键/值对集合，键必须是对象，而且是弱引用的，值可以是任意的
+function clone(target, map = new WeakMap()){
+    // 引用类型才继续深拷贝 
+    if (target instanceof Object) {
+        const isArray = Array.isArray(target)
+        // 克隆对象和数组类型
+        let cloneTarget = isArray ? [] : {} 
+        
+        // 防止循环引用
+        if (map.get(target)) {
+            // 有拷贝记录就直接返回
+            return map.get(target) 
+        }
+        // 没有就存储拷贝记录
+        map.set(target,cloneTarget) 
+        
+        // 是对象就拿出同级的键集合  返回是数组格式
+        const keys = isArray ? undefined : Object.keys(target)
+        // value是对象的key或者数组的值 key是下标 
+        forEach(keys || target, (value, key) => { 
+            if (keys) {
+                // 是对象就把下标换成value
+                key = value 
+            }
+            // 递归
+            cloneTarget[key] = clone(target[key], map) 
+        })
+        return cloneTarget
+    } else {
+        return target
+    }
+}
+
+```
 
 
 
