@@ -112,3 +112,97 @@ $ brew deps --installed --tree
 $ brew info <package>           # 显示某个包信息
 $ brew info                     # 显示安装的软件数量、文件数量以及占用空间
 ```
+
+#### 卸载包
+
+brew uninstall [包名]
+
+ 
+
+#### 搜索包
+
+brew search [包名]
+
+ 
+
+#### 显示已经安装软件列表
+
+brew list
+
+ 
+
+#### 更新 brew
+
+把所有的Formula目录更新，并且会对本机已经安装并有更新的软件用*标明。
+
+brew update
+
+ 
+
+#### 更新所有
+
+brew upgrade
+
+ 
+
+#### 更新某具体软件 
+
+brew upgrade git
+
+ 
+
+#### 查看那些已安装的程序需要更新
+
+brew outdated
+
+ 
+
+#### 清理旧版本
+
+//清理所有包的旧版本
+
+brew cleanup 
+
+
+
+//清理指定包的旧版本
+
+brew cleanup [包名]
+
+
+
+//查看可清理的旧版本包，不执行实际操作
+
+brew cleanup -n 
+
+ 
+
+#### 查看包信息
+
+brew info [包名]
+
+ 
+
+#### 用浏览器打开
+
+brew home
+
+ 
+
+#### 显示包依赖
+
+brew deps [包名]
+
+ 
+
+#### 显示包的依赖树
+
+brew deps --installed --tree
+
+ 
+
+#### 启动web服务器
+
+可以通过浏览器访问http://localhost:4567/ 来同网页来管理包
+
+brew server
