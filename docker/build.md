@@ -53,9 +53,8 @@ CMD ["/opt/main"]
 
 基本语法：
 
-```css
-css
-复制代码docker build -t [镜像名] [Dockerfile所在目录]
+```shell
+docker build -t [镜像名] [Dockerfile所在目录]
 ```
 
 具体示例：
