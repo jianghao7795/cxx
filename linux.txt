@@ -193,3 +193,23 @@ tar -jvcf buodo.tar.bz2 buodo
 解压
 tar -zxvf buodo.tar.gz
 tar -jvxf buodo.tar.bz2
+
+
+Linux查看CPU，内存，网卡，硬盘的型号
+主要命令是：dmidecode
+
+查看内存：
+dmidecode -t memory
+
+查看内存插槽：
+dmidecode | grep -A16 "Memory Device$"
+
+查看主板：
+dmidecode | grep -A16 "System Information$"
+
+查看硬盘：
+fdisk -l
+smartctl -a /dev/sda
+
+查看网卡：
+mii-tool
