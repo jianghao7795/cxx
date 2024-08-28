@@ -433,3 +433,5 @@ eg：
 
 创建下屏终端：ctrl + a  再按c
 下屏tail -f 命令
+//删除旧内核
+dnf remove --oldinstallonly --setopt installonly_limit=2 kernel
