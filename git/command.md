@@ -498,3 +498,9 @@ $ git config --global user.email "<email address>"
 $ git config --global alias.logg "log --graph --decorate --abbrev-commit --all"
 # 之后就可以开心地使用 git log了
 ```
+
+git reset --hard HEAD^ 可以本地删掉最后一个commit。
+
+git push --force-with-lease 推送到远程删掉最后一个commit。
+
+git cherry-pick HASH 最后本地恢复最后一个commit。
