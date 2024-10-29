@@ -1,3 +1,5 @@
+
+
 导出mysql 数据
  sudo docker exec -it mysql57 mysqldump -uroot -p123456 gva > /home/jianghao/gva.sql
 
@@ -118,6 +120,29 @@ docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
 镜像体积
 
 ```shell
-docker system df
+:docker system df
 ```
 
+docker中 启动所有的容器命令
+
+```shell
+docker start $(docker ps -a | awk '{ print $1}' | tail -n +2)
+```
+
+docker中 关闭所有的容器命令
+
+```shell
+docker stop $(docker ps -a | awk '{ print $1}' | tail -n +2)
+```
+
+docker中 删除所有的容器命令
+
+```shell
+docker rm $(docker ps -a | awk '{ print $1}' | tail -n +2)
+```
+
+docker中 删除所有的镜像
+
+```shell
+docker rmi $(docker images | awk '{print $3}' |tail -n +2)
+```
