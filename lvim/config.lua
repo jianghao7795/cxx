@@ -7,21 +7,50 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup({
     { name = "gofumpt",   filetype = { "go" } },
     { name = "goimports", filetype = { "go" } },
-    { name = "prettier",  filetype = { "javascipt", "javasciptreact", "typescript", "typescriptreact", "vue" } }
+    { name = "prettier",  filetype = { "javascipt", "javasciptreact", "typescript", "typescriptreact", "vue", "proto", "json" } }
 })
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "lunarvim"
+lvim.colorscheme = "onedark"
+-- lvim.builtin.lualine.options.theme = "auto"
+lvim.builtin.treesitter.highlight.enable = true  -- 启用精准语法高亮
+-- lvim.lsp.installer.setup.ensure_installed = { "volar" }
+-- lvim.lsp.automatic_configuration.skipped_servers = { "volar" } -- 防止与其他 LSP 冲突
+-- lvim.builtin.treesitter.ensure_installed = { "vue" }
+-- lvim.colorscheme = "slate"
+vim.opt.updatetime = 200
+vim.g.coc_global_extensions = { 'coc-nvim' }
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.keymap.set("i", "<C-y>", function()
+    require("copilot").accept()
+end)
 local lspconfig = require('lspconfig')
 lspconfig.volar.setup {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { 'vue' },
     init_options = {
         vue = {
             hybridMode = false,
         },
     },
 }
+
+-- lvim.builtin.nvimtree.setup = {
+--     view = {
+--         width = 30,        -- 直接指定宽度（数值越大窗口越宽）
+--         adaptive_size = false, -- 关闭自适应宽度（否则会根据内容动态调整）
+--     },
+-- }
+-- local nvim_lsp = require('lspconfig')
+-- lspconfig.denols.setup {
+--     -- on_attach = on_attach,
+--     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+-- }
+
+-- lspconfig.ts_ls.setup {
+--     -- on_attach = on_attach,
+--     root_dir = lspconfig.util.root_pattern("package.json"),
+--     single_file_support = false
+-- }
 
 -- local lsp_zero = require("lsp-zero")
 -- local lspconfig = require("lspconfig")
@@ -69,20 +98,81 @@ lvim.plugins = {
             }
         end
     },
+    -- {
+    --     "norcalli/nvim-colorizer.lua",
+    --     config = function()
+    --         require("colorizer").setup({ "css", "scss", "html", "javascript", "less", "vue", "go", "rust" }, {
+    --             RGB = true,      -- #RGB hex codes
+    --             RRGGBB = true,   -- #RRGGBB hex codes
+    --             RRGGBBAA = true, -- #RRGGBBAA hex codes
+    --             rgb_fn = true,   -- CSS rgb() and rgba() functions
+    --             hsl_fn = true,   -- CSS hsl() and hsla() functions
+    --             css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    --             css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    --         })
+    --     end,
+    -- },
     {
-        "norcalli/nvim-colorizer.lua",
+        "luozhiya/fittencode.nvim",
         config = function()
-            require("colorizer").setup({ "css", "scss", "html", "javascript", "less", "vue" }, {
-                RGB = true,      -- #RGB hex codes
-                RRGGBB = true,   -- #RRGGBB hex codes
-                RRGGBBAA = true, -- #RRGGBBAA hex codes
-                rgb_fn = true,   -- CSS rgb() and rgba() functions
-                hsl_fn = true,   -- CSS hsl() and hsla() functions
-                css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
-            })
-        end,
+            require("fittencode").setup({})
+        end
     },
+    -- 在 ~/.config/lvim/config.lua 的 plugins 部分添加
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "BufRead",
+        config = function()
+            require("gitsigns").setup({
+                signs = {
+                    add = { text = "│" },
+                    delete = { text = "_" },
+                    change = { text = "│" },
+                },
+                current_line_blame = true, -- 启用行级 Blame
+                current_line_blame_opts = {
+                    virt_text_pos = "eol", -- Blame 信息对齐右侧
+                    delay = 400,           -- 延迟显示
+                },
+            })
+        end
+    },
+    -- {
+    --     "github/copilot.vim",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({
+    --             -- 你的 Copilot 配置
+    --             enabled = true,
+    --             auto_accept = false,
+    --             delay = 500,
+    --             max_length = 120,
+    --             indicator = {
+    --                 enabled = true,
+    --                 text = "Copilot",
+    --             },
+    --         })
+    --     end,
+    -- }, -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     event = "InsertEnter",
+    --     dependencies = { "zbirenbaum/copilot.lua" },
+    --     config = function()
+    --         vim.defer_fn(function()
+    --             require("copilot").setup()     -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+    --             require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+    --         end, 100)
+    --     end,
+    -- }
+    -- {
+    --     "3rd/image.nvim"
+    -- },
+    -- {
+    --     'neoclide/coc.nvim',
+    -- },
+    { "folke/tokyonight.nvim" },       -- 安装东京之夜主题
+    { "rebelot/kanagawa.nvim" },       -- 安装金川水墨风主题
+    { "navarasu/onedark.nvim" },       -- 安装 OneDark 主题
 }
 
 -- lvim.builtin.treesitter.ensure_installed = { --这是已有的, 修改为你需要的语言即可
