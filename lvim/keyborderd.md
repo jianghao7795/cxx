@@ -82,3 +82,7 @@
 ## [nvimtree](https://github.com/nvim-tree/nvim-tree.lua) 
 
 `g?` 显示键位。
+
+Git 插件
+
+直接恢复该行（无需提交）： :Gitsigns reset_hunk
