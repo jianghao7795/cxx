@@ -249,3 +249,49 @@ func main() {
 
 select timeout 模式核心是通过 time.After 函数设置的超时时间，防止因为异常造成 select 语句无限等待。
  注意：不要写成这样 `case <- time.After(time.Second)`, 这样是本次监听动作的超时时间，意思就说，只有在本次 select 操作中会有效，再次 select 又会重新开始计时，但是有default ，每次都会走到 default，那case 超时操作，肯定执行不到了。
+
+### 1.1.9. 单向通道
+
+有的时候我们会将通道作为参数在多个任务函数间传递，很多时候我们在不同的任务函数中使用通道都会对其进行限制，比如限制通道在函数中只能发送或只能接收。
+
+Go语言中提供了单向通道来处理这种情况。例如，我们把上面的例子改造如下：
+
+```go
+func counter(out chan<- int) {
+    for i := 0; i < 100; i++ {
+        out <- i
+    }
+    close(out)
+}
+
+func squarer(out chan<- int, in <-chan int) {
+    for i := range in {
+        out <- i * i
+    }
+    close(out)
+}
+func printer(in <-chan int) {
+    for i := range in {
+        fmt.Println(i)
+    }
+}
+
+func main() {
+    ch1 := make(chan int)
+    ch2 := make(chan int)
+    go counter(ch1)
+    go squarer(ch2, ch1)
+    printer(ch2)
+}
+```
+
+其中，
+
+```shell
+    1.chan<- int是一个只能发送的通道，可以发送但是不能接收；
+    2.<-chan int是一个只能接收的通道，可以接收但是不能发送。
+```
+
+在函数传参及任何赋值操作中将双向通道转换为单向通道是可以的，但反过来是不可以的。
+
+![通道总结](C:\Users\jianghao\man\cxx\go\channel\1.png)

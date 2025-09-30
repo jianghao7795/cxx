@@ -77,3 +77,26 @@ bind -r L resizep -R 10 # to the right (prefix Ctrl+l)
 set -wg allow-rename off
 set -wg automatic-rename off
 ```
+
+基础配置
+
+```shell
+set -g status-bg black
+set -g mouse on
+set -g prefix C-a
+set -g default-terminal "tmux-256color"
+unbind C-b
+bind C-a send-prefix
+set -g escape-time 20
+bind-key -n Home send Escape "OH"
+bind-key -n End send Escape "OF"
+tmux_conf_copy_to_os_clipboard=true
+bind % split-window -h -c "#{pane_current_path}"  # 垂直分屏（左右分割）
+bind '"' split-window -v -c "#{pane_current_path}"  # 水平分屏（上下分割）
+set -g status-interval 1
+set -g status-left "#[fg=white]"
+set -g status-right "#[bold,bg=black,fg=white] #[fg=green]#S #[fg=cyan]%H:%M:%S #[fg=green]%d-%m-%Y #[fg=yellow]#H"
+set -g status-style "bg=white,fg=white,bold"
+set -g status-left-style "bg=black,fg=white"
+```
+

@@ -183,11 +183,11 @@ next: Function: 一定要调用该方法来 resolve 这个钩子。
 数组去重
 第一种：通过ES6新特性Set()
 例如：var arr = [1, 2, 3, 1, 2]; var newArr= [...new Set(arr)]
- 
 
 
 
- 
+
+
 
 第二种：封装函数利用 {} 和【】
 function uniqueEasy(arr) {
