@@ -1,0 +1,267 @@
+## General Mappings
+
+| Action                      | Mappings       |
+| --------------------------- | -------------- |
+| Leader key                  | `Space`        |
+| Local Leader key            | `,`            |
+| Resize up                   | `Ctrl + Up`    |
+| Resize Down                 | `Ctrl + Down`  |
+| Resize Left                 | `Ctrl + Left`  |
+| Resize Right                | `Ctrl + Right` |
+| Up Window                   | `Ctrl + k`     |
+| Down Window                 | `Ctrl + j`     |
+| Left Window                 | `Ctrl + h`     |
+| Right Window                | `Ctrl + l`     |
+| Force Write                 | `Ctrl + s`     |
+| Force Quit                  | `Ctrl + q`     |
+| New File                    | `Leader + n`   |
+| Rename Current File         | `Leader + R`   |
+| Close Buffer                | `Leader + c`   |
+| Next Tab (real vim tab)     | `]t`           |
+| Previous Tab (real vim tab) | `[t`           |
+| Horizontal Split            | `\`            |
+| Vertical Split              | `|`            |
+
+## Buffers
+
+| Action                                                       | Mappings       |
+| ------------------------------------------------------------ | -------------- |
+| Next Buffer                                                  | `]b`           |
+| Previous Buffer                                              | `[b`           |
+| Move Buffer Right                                            | `>b`           |
+| Move Buffer Left                                             | `<b`           |
+| Navigate to buffer tab with interactive picker               | `Leader + bb`  |
+| Close all buffers except the current                         | `Leader + bc`  |
+| Close all buffers                                            | `Leader + bC`  |
+| Delete a buffer tab with interactive picker                  | `Leader + bd`  |
+| Close all buffers to the left of the current                 | `Leader + bl`  |
+| Go to the previous buffer                                    | `Leader + bp`  |
+| Close all buffers to the right of the current                | `Leader + br`  |
+| Sort buffers by extension                                    | `Leader + bse` |
+| Sort buffers by buffer number                                | `Leader + bsi` |
+| Sort buffers by last modification                            | `Leader + bsm` |
+| Sort buffers by full path                                    | `Leader + bsp` |
+| Sort buffers by relative path                                | `Leader + bsr` |
+| Open a buffer tab in a new horizontal split with interactive picker | `Leader + b\`  |
+| Open a buffer tab in a new vertical split with interactive picker | `Leader + b|`  |
+
+## Commenting Mappings
+
+| Action                            | Mappings     |
+| --------------------------------- | ------------ |
+| Toggle comment of current line    | `Leader + /` |
+| Insert comment below current line | `gco`        |
+| Insert comment above current line | `gcO`        |
+
+## List Management
+
+| Action                    | Mappings      |
+| ------------------------- | ------------- |
+| Open Quickfix List        | `Leader + xq` |
+| Next Quickfix Entry       | `]q`          |
+| Previous Quickfix Entry   | `[q`          |
+| Last Quickfix Entry       | `]Q`          |
+| First Quickfix Entry      | `[Q`          |
+| Open Local List           | `Leader + xl` |
+| Next Local List Entry     | `]l`          |
+| Previous Local List Entry | `[l`          |
+| Last Local List Entry     | `]L`          |
+| First Local List Entry    | `[L`          |
+
+## Better Escape
+
+| Action     | Mappings   |
+| ---------- | ---------- |
+| Escape key | `jj`, `jk` |
+
+## Completion
+
+| Action                      | Mappings                                    |
+| --------------------------- | ------------------------------------------- |
+| Open completion menu        | `Ctrl + Space`                              |
+| Select completion           | `Enter`                                     |
+| Next snippet location       | `Tab`                                       |
+| Previous snippet location   | `Shift + Tab`                               |
+| Next completion             | `Down`, `Ctrl + n`, `Ctrl + j`, `Tab`       |
+| Previous completion         | `Up`, `Ctrl + p`, `Ctrl + k`, `Shift + Tab` |
+| Cancel completion           | `Ctrl + e`                                  |
+| Scroll up completion docs   | `Ctrl + u`                                  |
+| Scroll down completion docs | `Ctrl + d`                                  |
+
+## Neo-Tree
+
+| Action         | Mappings     |
+| -------------- | ------------ |
+| Neotree toggle | `Leader + e` |
+| Neotree focus  | `Leader + o` |
+
+## Dashboard Mappings
+
+| Action           | Mappings     |
+| ---------------- | ------------ |
+| Dashboard (Home) | `Leader + h` |
+
+## Session Manager Mappings
+
+| Action                         | Mappings      |
+| ------------------------------ | ------------- |
+| Save Session                   | `Leader + Ss` |
+| Last Session                   | `Leader + Sl` |
+| Delete Session                 | `Leader + Sd` |
+| Delete Directory Session       | `Leader + SD` |
+| Search Sessions                | `Leader + Sf` |
+| Search Directory Sessions      | `Leader + SF` |
+| Load Current Directory Session | `Leader + S.` |
+
+## Package Management Mappings
+
+| Action                    | Mappings      |
+| ------------------------- | ------------- |
+| Update Lazy and Mason     | `Leader + pa` |
+| Plugins Install           | `Leader + pi` |
+| Mason Installer           | `Leader + pm` |
+| Mason Updater             | `Leader + pM` |
+| Plugins Status            | `Leader + ps` |
+| Plugins Sync              | `Leader + pS` |
+| Plugins Check for Updates | `Leader + pu` |
+| Plugins Update            | `Leader + pU` |
+
+## LSP Mappings
+
+| Action                      | Mappings                         |
+| --------------------------- | -------------------------------- |
+| LSP Info                    | `Leader + li`                    |
+| None-ls Info                | `Leader + lI`                    |
+| Hover Document              | `K`                              |
+| Format Document             | `Leader + lf`                    |
+| Symbols Outline             | `Leader + lS`                    |
+| Line Diagnostics            | `gl`, `Leader + ld`, `<C-W> + d` |
+| All Diagnostics             | `Leader + lD`                    |
+| Code Actions                | `gra`, `Leader + la`             |
+| Source Code Actions         | `Leader + lA`                    |
+| Signature Help              | `Leader + lh`                    |
+| Rename                      | `grn`, `Leader + lr`             |
+| Document Symbols            | `Leader + ls`                    |
+| Workspace Symbols           | `Leader + lG`                    |
+| Diagnostic Next             | `]d`                             |
+| Diagnostics Previous        | `[d`                             |
+| Diagnostic Error Next       | `]e`                             |
+| Diagnostic Error Previous   | `[e`                             |
+| Diagnostic Warning Next     | `]w`                             |
+| Diagnostic Warning Previous | `[w`                             |
+| Document Symbol Next        | `]y`                             |
+| Document Symbol Previous    | `[y`                             |
+| Document Symbol             | `gO`                             |
+| Declaration                 | `gD`                             |
+| Type Definition             | `gy`                             |
+| Definition                  | `gd`                             |
+| Implementation              | `gri`                            |
+| References                  | `grr`, `Leader + lR`             |
+
+## Debugger Mappings
+
+| Action                  | Mappings                   |
+| ----------------------- | -------------------------- |
+| Start/Continue Debugger | `Leader + dc` or `<F5>`    |
+| Pause Debugger          | `Leader + dp` or `<F6>`    |
+| Restart Debugger        | `Leader + dr` or `<C-F5>`  |
+| Run Debugger to Cursor  | `Leader + ds`              |
+| Close Debugger Session  | `Leader + dq`              |
+| Terminate Debugger      | `Leader + dQ` or `<S-F5>`  |
+| Toggle Breakpoint       | `Leader + db` or `<F9>`    |
+| Conditional Breakpoint  | `Leader + dC` or `<S-F9>`  |
+| Clear Breakpoints       | `Leader + dB`              |
+| Step Over               | `Leader + do` or `<F10>`   |
+| Step Into               | `Leader + di` or `<F11>`   |
+| Step Out                | `Leader + dO` or `<S-F11>` |
+| Evaluate Expression     | `Leader + dE`              |
+| Toggle REPL             | `Leader + dR`              |
+| Toggle Debugger UI      | `Leader + du`              |
+| Debugger Hover          | `Leader + dh`              |
+
+## Picker Mappings
+
+| Action                            | Mappings             |
+| --------------------------------- | -------------------- |
+| Resume previous search            | `Leader + f + Enter` |
+| Marks                             | `Leader + f'`        |
+| AstroNvim config files            | `Leader + fa`        |
+| Buffers                           | `Leader + fb`        |
+| Word at cursor                    | `Leader + fc`        |
+| Commands                          | `Leader + fC`        |
+| Find files                        | `Leader + ff`        |
+| Find files (include hidden files) | `Leader + fF`        |
+| Git tracked files                 | `Leader + fg`        |
+| Help Tags                         | `Leader + fh`        |
+| Keymaps                           | `Leader + fk`        |
+| Lines                             | `Leader + fl`        |
+| Man Pages                         | `Leader + fm`        |
+| Notifications                     | `Leader + fn`        |
+| Old Files                         | `Leader + fo`        |
+| Old Files (current directory)     | `Leader + fO`        |
+| Projects                          | `Leader + fp`        |
+| Registers                         | `Leader + fr`        |
+| Smart (buffers,recent,files)      | `Leader + fs`        |
+| Colorschemes                      | `Leader + ft`        |
+| Undo History                      | `Leader + fu`        |
+| Live Grep                         | `Leader + fw`        |
+| Live Grep (include hidden files)  | `Leader + fW`        |
+| Git Branches                      | `Leader + gb`        |
+| Git Commits (repository)          | `Leader + gc`        |
+| Git Commits (current file)        | `Leader + gC`        |
+| Git browse (open)                 | `Leader + go`        |
+| Git Status                        | `Leader + gt`        |
+| Git Stash                         | `Leader + gT`        |
+| LSP Symbols                       | `Leader + ls`        |
+| LSP Workspace Symbols             | `Leader + lG`        |
+
+## Terminal Mappings
+
+| Action                   | Mappings                                        |
+| ------------------------ | ----------------------------------------------- |
+| Open Floating Terminal   | `Leader + tf`                                   |
+| Open Horizontal Terminal | `Leader + th`                                   |
+| Open Vertical Terminal   | `Leader + tv`                                   |
+| Open Toggle Lazygit      | `Leader + tl`                                   |
+| Open Toggle node         | `Leader + tn`                                   |
+| Open Toggle Python       | `Leader + tp`                                   |
+| Open Toggle btm          | `Leader + tt`                                   |
+| Toggle Current Terminal  | `<F7>` or `<C-'>` (not all terminals supported) |
+
+## UI/UX Mappings
+
+| Action                                 | Mappings      |
+| -------------------------------------- | ------------- |
+| Toggle autopairs                       | `Leader + ua` |
+| Toggle automatic root detection        | `Leader + uA` |
+| Toggle background                      | `Leader + ub` |
+| Toggle autocompletion (buffer)         | `Leader + uc` |
+| Toggle autocompletion (global)         | `Leader + uC` |
+| Toggle diagnostics                     | `Leader + ud` |
+| Dismiss notifications                  | `Leader + uD` |
+| Toggle autoformatting (buffer)         | `Leader + uf` |
+| Toggle autoformatting (global)         | `Leader + uF` |
+| Toggle signcolumn                      | `Leader + ug` |
+| Toggle foldcolumn                      | `Leader + u>` |
+| Toggle LSP inlay hints (buffer)        | `Leader + uh` |
+| Toggle LSP inlay hints (global)        | `Leader + uH` |
+| Toggle indent setting                  | `Leader + ui` |
+| Toggle indent guides                   | `Leader + u|` |
+| Toggle statusline                      | `Leader + ul` |
+| Toggle CodeLens                        | `Leader + uL` |
+| Change line numbering                  | `Leader + un` |
+| Toggle notifications                   | `Leader + uN` |
+| Toggle paste mode                      | `Leader + up` |
+| Toggle reference highlighting (buffer) | `Leader + ur` |
+| Toggle reference highlighting (global) | `Leader + uR` |
+| Toggle spellcheck                      | `Leader + us` |
+| Toggle conceal                         | `Leader + uS` |
+| Toggle tabline                         | `Leader + ut` |
+| Toggle URL highlighting                | `Leader + uu` |
+| Toggle diagnostics virtual text        | `Leader + uv` |
+| Toggle diagnostics virtual lines       | `Leader + uV` |
+| Toggle wrap                            | `Leader + uw` |
+| Toggle syntax highlighting (buffer)    | `Leader + uy` |
+| Toggle LSP semantic tokens (buffer)    | `Leader + uY` |
+| Toggle color highlighting              | `Leader + uz` |
+| Toggle zen mode                        | `Leader + uZ` |
