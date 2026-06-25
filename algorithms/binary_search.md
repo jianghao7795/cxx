@@ -1,3 +1,7 @@
+<!-- TOC -->
+123123
+<!-- /TOC -->
+
 ```go
 package main
 
