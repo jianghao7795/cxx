@@ -309,3 +309,14 @@ vim.keymap.set("v", "<leader>/", "gc", { remap = true, desc = "注释选中" })
 | `<leader>sr \c`     | 退出替换窗口                 | -                 |
 | `<leader>sr \r`     | 执行 `replace`               | -                 |
 | `<leader>sr \s`     | 执行 `sync`，效果同`replace` | -                 |
+
+LazyVim 沿用了 Neovim 原生的翻页快捷键，在 **Normal 模式**（按 Esc 确保退出插入模式）下使用：
+
+
+
+| 快捷键     | 说明                                 |
+| ---------- | ------------------------------------ |
+| `Ctrl + d` | **向下翻半页**（half Down）          |
+| `Ctrl + f` | **向下翻整页**（Forward / PageDown） |
+| `Ctrl + u` | 向上翻半页（Up）                     |
+| `Ctrl + b` | 向上翻整页（Backward / PageUp）      |
