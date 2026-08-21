@@ -1,0 +1,7 @@
+```table
+Type（类型说明）Header 中的 type 是必填项，用来告诉大家这次提交的分类：feat: 新增功能（feature）fix: 修补 Bugdocs: 文档变更（documentation）style: 格式修改（不影响代码运行，比如空格、分号等）refactor: 代码重构（未新增功能或改动 Bug）perf: 性能优化test: 测试用例chore: 构建过程或辅助工具的变动
+```
+
+<table style="min-width: 25px;">
+<colgroup><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1"><p><strong>Type（类型说明）</strong></p><p>Header 中的 <code>type</code> 是必填项，用来告诉大家这次提交的分类： [<a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/hzh100/git-commit-commitizen">1</a>, <a target="_blank" rel="noopener noreferrer nofollow" href="https://juejin.cn/post/7023927717292671012">2</a>]</p><ul class="tight" data-tight="true"><li><p><strong>feat</strong>: 新增功能（feature）</p></li><li><p><strong>fix</strong>: 修补 Bug</p></li><li><p><strong>docs</strong>: 文档变更（documentation）</p></li><li><p><strong>style</strong>: 格式修改（不影响代码运行，比如空格、分号等）</p></li><li><p><strong>refactor</strong>: 代码重构（未新增功能或改动 Bug）</p></li><li><p><strong>perf</strong>: 性能优化</p></li><li><p><strong>test</strong>: 测试用例</p></li><li><p><strong>chore</strong>: 构建过程或辅助工具的变动 [<a target="_blank" rel="noopener noreferrer nofollow" href="https://blog.csdn.net/weixin_44599143/article/details/128090981">1</a>]</p></li></ul></th></tr></tbody>
+</table>

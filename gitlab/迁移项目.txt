@@ -1,5 +1,0 @@
-迁移项目
-values.yaml
-replicaCount: 1
-
-去掉

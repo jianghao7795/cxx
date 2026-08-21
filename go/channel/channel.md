@@ -4,7 +4,6 @@
 
 ```go
 ch := make(chan string)
-复制代码
 ```
 
 - 使用 make 函数
@@ -45,7 +44,6 @@ func main() {
  value := <-ch
  fmt.Println("获取的chan的值为：",value)
 }
-复制代码
 ```
 
 运行结果：
@@ -54,7 +52,6 @@ func main() {
 我是无尘啊
 微客鸟窝
 获取的chan的值为： 执行完毕
-复制代码
 ```
 
 ## 有缓冲 channel
@@ -72,7 +69,6 @@ ch <- 1
 ch <- 2
 fmt.Println("容量为",cap(ch),"元素个数为：",len(ch))
 //打印结果：容量为 3 元素个数为：2
-复制代码
 ```
 
 # 关闭 channel
@@ -86,7 +82,6 @@ if num,ok := <- ch;ok == true{
 	//如果对端已经关闭，ok-->false
 	//如果对端没有关闭，ok-->true
 }
-复制代码
 ```
 
 也可以使用range 替代ok
@@ -97,7 +92,6 @@ if num,ok := <- ch;ok == true{
 for num := range ch{
   fmt.Println("读到数据：",num)
 }
-复制代码
 ```
 
 channel 关闭了就不能再向其发送数据了，否则会引起 panic 异常。 可以从关闭了的 channel 中接收数据，如果没数据，则接收到的是元素类型的零值。
@@ -109,7 +103,6 @@ channel 关闭了就不能再向其发送数据了，否则会引起 panic 异�
 ```go
 send := make(ch<- int) //只能发送数据给channel
 receive := make(<-ch int) //只能从channel中接收数据
-复制代码
 ```
 
 示例：
@@ -137,7 +130,6 @@ func main() {
 }
 
 //运行结果: str: 微客鸟窝
-复制代码
 ```
 
 # 实战技巧
@@ -179,7 +171,6 @@ func main(){
 	m1 <- true
 	close(m1)
 }
-复制代码
 ```
 
 ## for select 无限循环模式
@@ -196,7 +187,6 @@ for { //for 无限循环，或者使用 for range 循环
       //执行具体的任务
   }
 }
-复制代码
 ```
 
 这种是 `for + select` 多路复用的并发模式，哪个 case 满足条件就执行对应的分支，直到有满足退出的条件，才会退出循环。没有退出条件满足时，则会一直执行 default 分支。
@@ -234,7 +224,6 @@ func main() {
   }
  }
 }
-复制代码
 ```
 
 运行结果：
@@ -244,11 +233,10 @@ func main() {
 等待...
 等待...
 网络访问超时了
-复制代码
 ```
 
-select timeout 模式核心是通过 time.After 函数设置的超时时间，防止因为异常造成 select 语句无限等待。
- 注意：不要写成这样 `case <- time.After(time.Second)`, 这样是本次监听动作的超时时间，意思就说，只有在本次 select 操作中会有效，再次 select 又会重新开始计时，但是有default ，每次都会走到 default，那case 超时操作，肯定执行不到了。
+select timeout 模式核心是通过 time.After 函数设置的超时时间，防止因为异常造成 select 语句无限等待。  
+注意：不要写成这样 `case <- time.After(time.Second)`, 这样是本次监听动作的超时时间，意思就说，只有在本次 select 操作中会有效，再次 select 又会重新开始计时，但是有default ，每次都会走到 default，那case 超时操作，肯定执行不到了。
 
 ### 1.1.9. 单向通道
 
@@ -294,4 +282,4 @@ func main() {
 
 在函数传参及任何赋值操作中将双向通道转换为单向通道是可以的，但反过来是不可以的。
 
-![通道总结](C:\Users\jianghao\man\cxx\go\channel\1.png)
+![通道总结](C:%5CUsers%5Cjianghao%5Cman%5Ccxx%5Cgo%5Cchannel%5C1.png)

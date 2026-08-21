@@ -59,16 +59,13 @@ docker build -t [镜像名] [Dockerfile所在目录]
 
 具体示例：
 
-```erlang
-erlang
-复制代码docker build -t gin-demo .
+docker build -t gin-demo .
+
 ```
 
 # 运行容器
 
-```arduino
-arduino
-复制代码docker run -d -p 8080:8080 gin-demo 
+docker run -d -p 8080:8080 gin-demo
 ```
 
 成功执行后，该命令会返回类似af233da7afe9e330f119a834119eff74c2c7e3c4e908dde8c89f41c903f6d531这样的字符串，这个是运行的容器的ID，也叫container id。
@@ -92,6 +89,3 @@ ok 大功告成！
 5. 查看构建结果并运行
 6. 测试新建的Docker镜像
 
-
-
-, personalAccessToken: '${CD_PERSONAL_ACCESS_TOKEN}'
