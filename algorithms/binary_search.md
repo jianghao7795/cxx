@@ -1,6 +1,4 @@
-<!-- TOC -->
 123123
-<!-- /TOC -->
 
 ```go
 package main
@@ -39,6 +37,6 @@ func binarySearch(list []int, item int) int {
 		}
 	}
 	
-	return 0
+	return -1
 }
 ```
